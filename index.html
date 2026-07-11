@@ -1565,6 +1565,11 @@
             user = await signInAnonymously(auth);
             window.firebaseUser = user;
             console.log("Firebase Auth Verified: Real-Time Synced Stream Initialized.");
+            
+            // TRIGGER SYNC HERE: Now we know Firebase is ready!
+            if (typeof window.appInstance !== 'undefined') {
+                window.appInstance.syncTestimonialsWithFirestore();
+            }
         } catch (e) {
             console.warn("Firebase Auth Error:", e);
         }
