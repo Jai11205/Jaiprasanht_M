@@ -1782,6 +1782,13 @@
           // Retrieve live repository stats dynamically from the public API
           this.fetchGitHubActivity();
 
+          const checkFirebase = setInterval(() => {
+              if (window.firebaseDB && window.firebaseUser) {
+                  this.syncTestimonialsWithFirestore();
+                  clearInterval(checkFirebase);
+              }
+          }, 500);
+           
           window.addEventListener('scroll', () => {
             this.sc = window.scrollY > 20;
             this.updateSection();
@@ -1798,7 +1805,7 @@
         // Real-Time Firebase Sync Method for Reviews
       
                    // Replace your existing syncTestimonialsWithFirestore with this version
-        syncTestimonialsWithFirestore() {
+          syncTestimonialsWithFirestore() {
             if (window.firebaseDB && window.firebaseUser) {
                 const db = window.firebaseDB;
                 const appId = window.firebaseAppId;
@@ -1807,6 +1814,11 @@
                 console.log("Syncing from path:", 'artifacts/' + appId + '/public/data/testimonials');
                 
                 window.onSnapshotFirestore(colPath, (snapshot) => {
+                    if (snapshot.empty) {
+                        console.log("Firestore snapshot is empty, keeping offline fallbacks.");
+                        return;
+                    }
+
                     const loaded = [];
                     snapshot.forEach((doc) => {
                         loaded.push({ id: doc.id, ...doc.data() });
@@ -1826,8 +1838,6 @@
                         this.$nextTick(() => {
                             this.testimonials = loaded;
                         });
-                    } else {
-                        console.warn("No documents found in this Firestore collection path.");
                     }
                 }, (error) => {
                     console.error("Firestore live synchronization loop has encountered an error:", error);
@@ -1836,6 +1846,7 @@
                 console.log("Firestore skipped: Testimonials fallback to local memory.");
             }
         },
+
 
         async fetchGitHubActivity() {
             try {
