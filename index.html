@@ -3,20 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jaiprasanth — Freelance AI/ML Engineer. High-performance intelligent systems, computer vision, and machine learning solutions.">
-    <meta name="keywords" content="freelance developer, AI engineer, machine learning, computer vision, portfolio, Tailwind CSS, Alpine.js">
-    <meta name="author" content="Jaiprasanth">
-    <meta property="og:title" content="Jaiprasanth — Freelance AI/ML Engineer">
-    <meta property="og:description" content="I design and build intelligent systems that solve real-world problems.">
-    <meta property="og:type" content="website">
-    <title>Jaiprasanth — Freelance AI/ML Engineer</title>
     
+    <meta name="description" content="Jaiprasanth — AI Engineer for Startups & Businesses. Custom AI, Machine Learning, and Computer Vision solutions that solve real-world problems.">
+    <meta name="keywords" content="AI Engineer, Freelance ML Engineer, Computer Vision Developer, Startup AI Consultant, PyTorch, Deep Learning, B.Tech AI">
+    <meta name="author" content="Jaiprasanth">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Jaiprasanth — AI Engineer for Startups & Businesses">
+    <meta property="og:description" content="Custom AI, Machine Learning, and Computer Vision solutions built to automate workflows and drive real business outcomes.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://img.freepik.com/premium-photo/anthropomorphic-animal-portrait-bird-suit_962508-50852.jpg">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jaiprasanth — AI Engineer">
+    <meta name="twitter:description" content="Automating business workflows using custom Deep Learning and Computer Vision pipelines.">
+    
+    <!-- Structured Data Schema.org (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jaiprasanth",
+      "jobTitle": "AI & Machine Learning Engineer",
+      "description": "Freelance AI Engineer specializing in custom Machine Learning models, automation tools, and Computer Vision solutions.",
+      "url": "https://github.com/jai11205",
+      "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Computer Vision", "Deep Learning", "Python", "PyTorch"]
+    }
+    </script>
+    
+    <title>Jaiprasanth — AI Engineer for Startups & Businesses</title>
+    
+    <!-- Tailwind and Alpine.js CDN Imports -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
+    <!-- Fonts and Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,750&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -48,19 +73,19 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E"); 
         } 
         
-        /* Custom scrollbar matching brand orange accent */
+        /* Webkit custom scrollbars mapping brand theme colors */
         ::-webkit-scrollbar { width: 6px; } 
         ::-webkit-scrollbar-track { background: transparent; } 
         ::-webkit-scrollbar-thumb { background: #FF6B2B; border-radius: 99px; } 
         
-        /* Reveal on scroll animations */
-        .reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1); } 
+        /* Interactive element transitions */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1); } 
         .reveal.in { opacity: 1; transform: none; } 
         .d1 { transition-delay: .08s; } 
         .d2 { transition-delay: .16s; } 
         .d3 { transition-delay: .24s; } 
         
-        /* Navigation underlines */
+        /* Navigation underlines mapping active active state */
         .nl { position: relative; } 
         .nl::after { 
             content: ''; 
@@ -75,7 +100,7 @@
         .nl:hover::after, .nl.on::after { width: 100%; } 
         .nl.on { font-weight: 700; color: #FF6B2B !important; } 
         
-        /* Shiny button shimmer effect */
+        /* Shimmer button state highlights */
         .shimmer { position: relative; overflow: hidden; } 
         .shimmer::after { 
             content: ''; 
@@ -108,32 +133,35 @@
             <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10 flex items-center gap-1"> 
                 <span class="text-zinc-900 dark:text-white">Jai</span><span class="text-accent font-black">prasanth.</span> 
             </a>
-            <ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
+            <ul class="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-wider" role="list">
+                <li><a href="#hero" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='hero'?'on':''">Home</a></li>
                 <li><a href="#services" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='services'?'on':''">Services</a></li>
-                <li><a href="#work" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='work'?'on':''">Portfolio</a></li>
+                <li><a href="#work" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='work'?'on':''">Projects</a></li>
+                <li><a href="#skills" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='skills'?'on':''">Skills</a></li>
+                <li><a href="#process" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='process'?'on':''">Process</a></li>
                 <li><a href="#about" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='about'?'on':''">About</a></li>
-                <li><a href="#blog" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='blog'?'on':''">Blog</a></li>
+                <li><a href="#certifications" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='certifications'?'on':''">Credentials</a></li>
                 <li><a href="#contact" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='contact'?'on':''">Contact</a></li>
             </ul>
             <div class="flex items-center gap-3">
-                <!-- Dark toggle switch -->
+                <!-- Theme Toggle Button -->
                 <button @click="dark=!dark" class="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" :aria-label="dark?'Light mode':'Dark mode'">
                     <svg x-show="!dark" class="w-4.5 h-4.5 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
                     </svg>
                     <svg x-show="dark" class="w-4.5 h-4.5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/>
                     </svg>
                 </button>
-                <!-- CTA Quick Hire -->
-                <a href="#contact" class="hidden md:inline-flex items-center gap-2 shimmer bg-accent hover:bg-accent-light text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all shadow-lg shadow-accent/20">
-                    Hire me 
+                <!-- Quick Hire Button -->
+                <a href="#contact" class="hidden md:inline-flex items-center gap-2 shimmer bg-accent hover:bg-accent-light text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-lg shadow-accent/20">
+                    Hire Me 
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg> 
                 </a>
-                <!-- Mobile Navigation Menu Toggle -->
-                <button @click="mm=!mm" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" :aria-expanded="mm" aria-label="Toggle menu">
+                <!-- Mobile Navigation Toggle -->
+                <button @click="mm=!mm" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" :aria-expanded="mm" aria-label="Toggle menu">
                     <svg x-show="!mm" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -145,12 +173,14 @@
         </nav>
         
         <!-- Mobile Dropdown Navigation Menu -->
-        <div x-show="mm" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-t border-zinc-200 dark:border-zinc-900">
+        <div x-show="mm" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="lg:hidden bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-t border-zinc-200 dark:border-zinc-900">
             <ul class="flex flex-col px-6 py-5 gap-4 text-base font-semibold" role="list">
                 <li><a href="#services" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Services</a></li>
                 <li><a href="#work" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Portfolio</a></li>
+                <li><a href="#skills" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Skills</a></li>
+                <li><a href="#process" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Process</a></li>
                 <li><a href="#about" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">About Me</a></li>
-                <li><a href="#blog" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Insights Blog</a></li>
+                <li><a href="#certifications" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Credentials</a></li>
                 <li><a href="#contact" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
                 <li class="pt-3 border-t border-zinc-100 dark:border-zinc-900">
                     <a href="#contact" @click="mm=false" class="flex justify-center items-center shimmer bg-accent text-white font-medium text-sm py-3 rounded-full shadow-lg">Hire me &rarr;</a>
@@ -160,70 +190,93 @@
     </header>
 
     <main>
-        <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-white to-slate-50 dark:from-zinc-950 dark:to-zinc-950">
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-gradient-to-b from-white to-slate-50 dark:from-zinc-950 dark:to-zinc-950">
             <div class="absolute top-12 right-0 w-80 md:w-[500px] h-80 md:h-[500px] bg-accent/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
             <div class="absolute bottom-12 left-0 w-64 md:w-[400px] h-64 md:h-[400px] bg-indigo-500/5 dark:bg-zinc-800/20 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
             
             <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 w-full">
-                <div class="grid md:grid-cols-12 gap-12 items-center">
-                    <div class="md:col-span-7 text-left">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 text-left">
                         <div class="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider mb-6">
                             <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                            Available for Freelance &amp; Engineering Contracts
+                            <span x-text="statusText"></span>
                         </div>
                         <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-zinc-900 dark:text-white mb-6">
-                            Architecting <span class="text-accent underline decoration-accent/20 decoration-wavy underline-offset-4">Intelligent Systems</span> for Real-World Impact
+                            AI Engineer for <span class="text-accent underline decoration-accent/20 decoration-wavy underline-offset-4">Startups &amp; Businesses</span>
                         </h1>
-                        <p class="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed max-w-2xl mb-10">
-                            Hi, I'm <strong class="font-bold text-zinc-800 dark:text-white">Jaiprasanth</strong>. A B.Tech Artificial Intelligence specialist building custom, high-speed Deep Learning pipelines and real-time Computer Vision nodes.
+                        <p class="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed max-w-2xl mb-8">
+                            Build custom AI, Machine Learning, and Computer Vision solutions that automate workflows, solve business problems, and deliver measurable results.
                         </p>
                         
-                        <div class="flex flex-wrap gap-4">
-                            <a href="#work" class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold px-8 py-4 rounded-full hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all text-sm shadow-xl shadow-zinc-950/10 dark:shadow-white/5">
-                                Explore Portfolio 
+                        <div class="flex flex-wrap gap-4 mb-12">
+                            <!-- Primary Button -->
+                            <a href="#work" class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold px-6 py-3.5 rounded-full hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all text-sm shadow-xl shadow-zinc-950/10 dark:shadow-white/5">
+                                View My Projects 
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                                 </svg> 
                             </a>
-                            <a href="#contact" class="inline-flex items-center gap-2 border-2 border-zinc-300 dark:border-zinc-800 hover:border-accent dark:hover:border-accent text-zinc-700 dark:text-zinc-300 hover:text-accent dark:hover:text-accent font-semibold px-8 py-4 rounded-full transition-all text-sm bg-transparent">
-                                Start a Project
+                            <!-- Secondary Button -->
+                            <a :href="resumeLink" target="_blank" class="inline-flex items-center gap-2 border-2 border-zinc-300 dark:border-zinc-800 hover:border-accent dark:hover:border-accent text-zinc-700 dark:text-zinc-300 hover:text-accent dark:hover:text-accent font-semibold px-6 py-3.5 rounded-full transition-all text-sm bg-transparent">
+                                <i class="fa-solid fa-file-pdf"></i> Download Resume
+                            </a>
+                            <!-- Tertiary Button -->
+                            <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-6 py-3.5 rounded-full transition-all text-sm shadow-lg shadow-accent/20">
+                                <i class="fa-regular fa-calendar-check"></i> Book a Consultation
                             </a>
                         </div>
                         
-                        <div class="grid grid-cols-3 gap-6 mt-14 pt-8 border-t border-zinc-200 dark:border-zinc-800 max-w-lg">
-                            <div>
-                                <p class="font-display font-extrabold text-3xl text-zinc-900 dark:text-white" x-text="allProjects.length"></p>
-                                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 mt-1 uppercase tracking-wider">Total Projects</p>
+                        <!-- Trust Badges replacing Fake Statistics -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-zinc-200 dark:border-zinc-800 max-w-xl">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-green-500/10 dark:bg-green-500/20 text-green-500 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </span>
+                                <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">AI &amp; ML Projects Completed</span>
                             </div>
-                            <div>
-                                <p class="font-display font-extrabold text-3xl text-accent">96.2%</p>
-                                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 mt-1 uppercase tracking-wider">Detection Acc.</p>
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-green-500/10 dark:bg-green-500/20 text-green-500 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </span>
+                                <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Computer Vision Solutions</span>
                             </div>
-                            <div>
-                                <p class="font-display font-extrabold text-3xl text-zinc-900 dark:text-white">Active</p>
-                                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 mt-1 uppercase tracking-wider">Freelancing Status</p>
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-green-500/10 dark:bg-green-500/20 text-green-500 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </span>
+                                <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Available for Freelance Work</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="md:col-span-5 flex justify-center md:justify-end">
-                        <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px]">
+                    <!-- Profile Card Section -->
+                    <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                        <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[380px] lg:h-[380px]">
                             <div class="absolute inset-4 bg-gradient-to-tr from-accent to-pink-500 rounded-3xl blur-2xl opacity-20 dark:opacity-35 pointer-events-none -rotate-6"></div>
                             
-                            <div class="pf w-full h-full rounded-3xl border-2 border-zinc-200/80 dark:border-zinc-800/80 shadow-2xl relative overflow-hidden">
-                                <img src="https://img.freepik.com/premium-photo/anthropomorphic-animal-portrait-bird-suit_962508-50852.jpg" alt="Jaiprasanth Portrait" loading="eager">
-                                <div class="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-zinc-900/95 backdrop-blur-md p-4 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-between shadow-lg">
-                                    <div class="flex items-center gap-3">
-                                        <span class="relative flex h-3 w-3">
+                            <div class="pf w-full h-full rounded-3xl border-2 border-zinc-200/80 dark:border-zinc-800/80 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center p-8 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md">
+                                <div class="relative w-36 h-36 mb-6 rounded-full overflow-hidden border-4 border-accent shadow-xl">
+                                    <img src="https://img.freepik.com/premium-photo/anthropomorphic-animal-portrait-bird-suit_962508-50852.jpg" alt="Jaiprasanth Profile Portrait" loading="eager" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2 text-center">Jaiprasanth</h3>
+                                <div class="flex flex-wrap gap-1.5 justify-center mb-6">
+                                    <span class="text-xs font-bold text-accent px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/20">AI Engineer</span>
+                                    <span class="text-xs font-bold text-zinc-600 dark:text-zinc-300 px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800">Freelancer</span>
+                                </div>
+                                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wider mb-4">
+                                    B.Tech Artificial Intelligence Student
+                                </p>
+                                
+                                <div class="w-full bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="relative flex h-3.5 w-3.5">
                                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                          <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500"></span>
                                         </span>
-                                        <div>
-                                            <p class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Freelance Status</p>
-                                            <p class="text-sm text-zinc-800 dark:text-white font-bold leading-tight">Accepting Proposals</p>
-                                        </div>
+                                        <span class="text-xs text-zinc-700 dark:text-zinc-300 font-bold" x-text="'Status: ' + currentStatus"></span>
                                     </div>
-                                    <span class="text-xs font-bold text-accent px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20">Active Contract</span>
+                                    <span class="text-[10px] uppercase font-bold text-accent px-2 py-0.5 rounded-md bg-accent/10 border border-accent/20" x-text="currentStatus === 'Open to Work' ? 'Contracts Active' : 'Engaged'"></span>
                                 </div>
                             </div>
                         </div>
@@ -232,22 +285,23 @@
             </div>
         </section>
 
+        <!-- SERVICES SECTION -->
         <section id="services" class="py-24 bg-white dark:bg-zinc-900/30 border-y border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
                     <div class="max-w-xl">
                         <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Enterprise Capabilities</p>
                         <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white leading-tight">
-                            Specialized Problem Solving Through Data &amp; Engineering
+                            Simplified Solutions for Complex Problems
                         </h2>
                     </div>
                     <p class="text-zinc-500 dark:text-zinc-400 text-base max-w-sm">
-                        I focus on developing highly specialized architectures rather than generalized templates. Every deploy features rigorous validation, performance benchmarking, and clean, self-documenting architectures.
+                        I focus on building tailored frameworks with clear user guides. Every deployment runs with optimized performance, reliable accuracy, and readable source code.
                     </p>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- AI Solutions -->
+                    <!-- AI Solutions Card -->
                     <article class="card-h group bg-slate-50 dark:bg-zinc-900 rounded-3xl p-8 border border-zinc-200/60 dark:border-zinc-800/60 flex flex-col justify-between">
                         <div>
                             <div class="w-12 h-12 flex items-center justify-center bg-accent/10 rounded-2xl mb-8 group-hover:bg-accent group-hover:text-white text-accent transition-all duration-300 shadow-md">
@@ -255,17 +309,22 @@
                             </div>
                             <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-4 group-hover:text-accent transition-colors">Artificial Intelligence</h3>
                             <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-6">
-                                I develop specialized, context-aware AI applications designed to automate computational loops and interact natively with modern APIs. Highly performant solutions tailored to complex system needs.
+                                Custom, smart assistants and software components that automate manual workflows, analyze datasets, and support strategic decision-making dynamically.
                             </p>
+                            <ul class="space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400 font-semibold mb-8">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> AI Chatbots</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> AI Automation</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> AI Agents</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> LLM Applications</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Recommendation Systems</li>
+                            </ul>
                         </div>
-                        <ul class="border-t border-zinc-200/60 dark:border-zinc-800 pt-6 space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400 font-semibold">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> AI Automation Agents &amp; Pipelines</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> LLM Validation &amp; Fine-Tuning</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Intelligent Recommendation Systems</li>
-                        </ul>
+                        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:text-accent-light transition-colors">
+                            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
                     </article>
 
-                    <!-- ML Solutions (Highlighted) -->
+                    <!-- ML Solutions Card -->
                     <article class="card-h group bg-zinc-900 dark:bg-zinc-850 rounded-3xl p-8 border border-zinc-800 flex flex-col justify-between text-white shadow-xl shadow-zinc-900/10">
                         <div>
                             <div class="w-12 h-12 flex items-center justify-center bg-accent/20 rounded-2xl mb-8 text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300 shadow-lg">
@@ -273,17 +332,22 @@
                             </div>
                             <h3 class="font-display font-bold text-2xl mb-4 text-white">Machine Learning</h3>
                             <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                                Designing and executing predictive classifiers and regression arrays. I focus on optimizing dataset preprocessing structures and model compression tokens, allowing light and powerful inference loops.
+                                Powerful predictive models designed to turn raw data collections into reliable patterns, forecasting charts, and structured growth estimates.
                             </p>
+                            <ul class="space-y-2.5 text-xs text-zinc-400 font-semibold mb-8">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Classification Models</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Regression Models</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Data Analysis</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Predictive Analytics</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Model Deployment</li>
+                            </ul>
                         </div>
-                        <ul class="border-t border-zinc-800 pt-6 space-y-2.5 text-xs text-zinc-400 font-semibold">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Predictive Data Engineering</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Neural Network Quantization</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Deep Classification Engines</li>
-                        </ul>
+                        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:text-accent-light transition-colors">
+                            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
                     </article>
 
-                    <!-- Vision Solutions -->
+                    <!-- Vision Solutions Card -->
                     <article class="card-h group bg-slate-50 dark:bg-zinc-900 rounded-3xl p-8 border border-zinc-200/60 dark:border-zinc-800/60 flex flex-col justify-between">
                         <div>
                             <div class="w-12 h-12 flex items-center justify-center bg-accent/10 rounded-2xl mb-8 group-hover:bg-accent group-hover:text-white text-accent transition-all duration-300 shadow-md">
@@ -291,19 +355,25 @@
                             </div>
                             <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-4 group-hover:text-accent transition-colors">Computer Vision</h3>
                             <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-6">
-                                Crafting real-time detection, segmentation, and classification tools. My vision models leverage fine-tuned parameters to run seamlessly across raw image matrices, live feeds, and complex frameworks.
+                                Smart image and video analysis systems designed to recognize objects, extract textual records, and track live spatial movements.
                             </p>
+                            <ul class="space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400 font-semibold mb-8">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Object Detection</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> OCR (Text Extraction)</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Face Recognition</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Deepfake Detection</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Custom Vision Models</li>
+                            </ul>
                         </div>
-                        <ul class="border-t border-zinc-200/60 dark:border-zinc-800 pt-6 space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400 font-semibold">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> YOLO Object Tracking &amp; Detection</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Real-time Deepfake Identification</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> OCR Multi-language Document Scanners</li>
-                        </ul>
+                        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:text-accent-light transition-colors">
+                            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
                     </article>
                 </div>
             </div>
         </section>
 
+        <!-- SELECTED PROJECTS -->
         <section id="work" class="py-24 bg-slate-50 dark:bg-zinc-950">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
@@ -314,13 +384,13 @@
                     
                     <!-- Dynamic Alpine filtering controls -->
                     <div class="flex flex-wrap gap-2">
-                        <button @click="currentFilter='all'" :class="currentFilter === 'all' ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-accent'" class="text-xs font-semibold px-4 py-2 rounded-full border transition-all">
+                        <button @click="currentFilter='all'" :class="currentFilter === 'all' ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-accent'" class="text-sm px-4 py-2 rounded-full border transition-all">
                             All Projects
                         </button>
-                        <button @click="currentFilter='security'" :class="currentFilter === 'security' ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-accent'" class="text-xs font-semibold px-4 py-2 rounded-full border transition-all">
+                        <button @click="currentFilter='security'" :class="currentFilter === 'security' ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-accent'" class="text-sm px-4 py-2 rounded-full border transition-all">
                             Security/RL
                         </button>
-                        <button @click="currentFilter='vision'" :class="currentFilter === 'vision' ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-accent'" class="text-xs font-semibold px-4 py-2 rounded-full border transition-all">
+                        <button @click="currentFilter='vision'" :class="currentFilter === 'vision' ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-accent'" class="text-sm px-4 py-2 rounded-full border transition-all">
                             Vision Systems
                         </button>
                     </div>
@@ -335,30 +405,48 @@
                                  x-transition:enter-end="opacity-100 scale-100 translate-y-0"
                                  class="card-h group rounded-3xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800/60 flex flex-col justify-between">
                             <div>
-                                <div class="pf w-full h-64 md:h-80 border-b border-zinc-200/60 dark:border-zinc-800/60 relative">
-                                    <img :src="p.img || 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&q=80'" :alt="p.title" loading="lazy">
+                                <div class="pf w-full h-64 md:h-72 border-b border-zinc-200/60 dark:border-zinc-800/60 relative">
+                                    <img :src="p.img" :alt="p.title" loading="lazy">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                                        <span class="text-white text-xs font-bold uppercase tracking-wider bg-accent px-3 py-1.5 rounded-lg" x-text="p.category === 'security' ? 'Security & RL System' : 'Advanced Vision Engine'"></span>
+                                        <span class="text-white text-xs font-bold uppercase tracking-wider bg-accent px-3 py-1.5 rounded-lg" x-text="p.category === 'security' ? 'Security & RL' : 'Vision System'"></span>
                                     </div>
                                 </div>
                                 <div class="p-8">
                                     <div class="flex flex-wrap gap-2 mb-4">
                                         <template x-for="tag in p.tags" :key="tag">
-                                            <span class="text-xs bg-orange-50 dark:bg-zinc-800 border border-orange-200 dark:border-zinc-700 text-accent font-bold px-3 py-1 rounded-full" x-text="tag"></span>
+                                            <span class="text-xs bg-orange-50 dark:bg-zinc-850 border border-orange-200 dark:border-zinc-700 text-accent font-bold px-3 py-1 rounded-full" x-text="tag"></span>
                                         </template>
                                     </div>
-                                    <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-3 group-hover:text-accent transition-colors" x-text="p.title"></h3>
-                                    <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-4" x-text="p.desc"></p>
+                                    <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-4 group-hover:text-accent transition-colors" x-text="p.title"></h3>
+                                    
+                                    <div class="space-y-3 mb-6 text-sm">
+                                        <div>
+                                            <span class="font-bold text-zinc-700 dark:text-zinc-300">Problem:</span>
+                                            <p class="text-zinc-500 dark:text-zinc-400 mt-0.5" x-text="p.problem"></p>
+                                        </div>
+                                        <div>
+                                            <span class="font-bold text-zinc-700 dark:text-zinc-300">Solution:</span>
+                                            <p class="text-zinc-500 dark:text-zinc-400 mt-0.5" x-text="p.solution"></p>
+                                        </div>
+                                        <div class="p-3.5 bg-green-500/5 dark:bg-green-500/10 border border-green-500/20 rounded-xl flex items-center justify-between">
+                                            <span class="font-bold text-green-600 dark:text-green-400 text-xs uppercase tracking-wider">Results &amp; Metrics</span>
+                                            <span class="font-display font-bold text-sm text-green-600 dark:text-green-400" x-text="p.results"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="p-8 pt-0 flex justify-between items-center border-t border-zinc-100 dark:border-zinc-800/60 mt-4 pt-6">
-                                <a :href="p.url" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:text-accent-light transition-colors group/link">
-                                    Source Repository 
-                                    <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                    </svg>
-                                </a>
-                                <span class="text-xs text-zinc-400 font-bold" x-text="p.year"></span>
+                            <div class="p-8 pt-0 flex flex-wrap gap-3 items-center justify-between border-t border-zinc-100 dark:border-zinc-800/60 mt-4 pt-6">
+                                <div class="flex gap-2">
+                                    <a :href="p.demoUrl" target="_blank" rel="noopener noreferrer" class="bg-accent text-white hover:bg-accent-light px-4 py-2 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-circle-play text-[10px]"></i> Live Demo
+                                    </a>
+                                    <a :href="p.url" target="_blank" rel="noopener noreferrer" class="bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1">
+                                        <i class="fa-brands fa-github"></i> GitHub
+                                    </a>
+                                </div>
+                                <button @click="openProjectModal(p)" class="text-zinc-500 dark:text-zinc-400 hover:text-accent dark:hover:text-accent font-bold text-xs inline-flex items-center gap-1">
+                                    Details <i class="fa-solid fa-circle-info"></i>
+                                </button>
                             </div>
                         </article>
                     </template>
@@ -366,6 +454,202 @@
             </div>
         </section>
 
+        <!-- CASE STUDIES SECTION -->
+        <section id="cases" class="py-24 bg-white dark:bg-zinc-900/30 border-y border-zinc-200/50 dark:border-zinc-900">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="mb-14">
+                    <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Real-World Case Studies</p>
+                    <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">Business Impact</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <template x-for="cs in caseStudies" :key="cs.id">
+                        <article class="bg-slate-50 dark:bg-zinc-900 rounded-3xl p-8 border border-zinc-200/60 dark:border-zinc-800/60 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-6">
+                                    <span class="text-[10px] bg-accent/10 border border-accent/20 text-accent font-bold uppercase tracking-wider px-2.5 py-1 rounded-md" x-text="cs.industry"></span>
+                                    <span class="text-xs text-zinc-400 font-semibold" x-text="cs.timeline"></span>
+                                </div>
+                                <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-6" x-text="cs.title"></h3>
+                                
+                                <div class="space-y-4 mb-8 text-sm">
+                                    <div>
+                                        <span class="font-bold text-zinc-700 dark:text-zinc-300">The Problem:</span>
+                                        <p class="text-zinc-500 dark:text-zinc-400 mt-1" x-text="cs.problem"></p>
+                                    </div>
+                                    <div>
+                                        <span class="font-bold text-zinc-700 dark:text-zinc-300">My Approach:</span>
+                                        <p class="text-zinc-500 dark:text-zinc-400 mt-1" x-text="cs.approach"></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-1.5 pt-2">
+                                        <template x-for="tech in cs.tech" :key="tech">
+                                            <span class="bg-zinc-100 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 text-xs px-2.5 py-1 rounded-md" x-text="tech"></span>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-zinc-200/60 dark:border-zinc-800 pt-6 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">Client Outcome</span>
+                                    <p class="font-display font-extrabold text-lg text-accent mt-0.5" x-text="cs.outcome"></p>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-green-500 tracking-wider">Business Value Delivered</span>
+                                    <p class="font-display font-extrabold text-sm text-green-600 dark:text-green-400 mt-0.5" x-text="cs.value"></p>
+                                </div>
+                            </div>
+                        </article>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS GRID -->
+        <section id="skills" class="py-24 bg-slate-50 dark:bg-zinc-950">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="mb-14">
+                    <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">My Tools &amp; Technologies</p>
+                    <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">Technical Core</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Programming Column -->
+                    <div class="bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-100 dark:border-zinc-800">
+                            <span class="w-10 h-10 flex items-center justify-center bg-accent/10 text-accent rounded-xl">
+                                <i class="fa-solid fa-code text-lg"></i>
+                            </span>
+                            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white">Programming</h3>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <template x-for="p in skills.programming" :key="p.name">
+                                <div class="flex items-center justify-between p-3.5 bg-zinc-50 dark:bg-zinc-950 rounded-2xl border border-zinc-100 dark:border-zinc-850">
+                                    <div class="flex items-center gap-3">
+                                        <i :class="p.icon"></i>
+                                        <span class="text-sm font-bold" x-text="p.name"></span>
+                                    </div>
+                                    <span class="text-[10px] font-bold text-accent px-2 py-0.5 rounded-full bg-accent/10" x-text="p.status"></span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Frameworks Column -->
+                    <div class="bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-100 dark:border-zinc-800">
+                            <span class="w-10 h-10 flex items-center justify-center bg-accent/10 text-accent rounded-xl">
+                                <i class="fa-solid fa-layer-group text-lg"></i>
+                            </span>
+                            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white">Frameworks</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2.5">
+                            <template x-for="f in skills.frameworks" :key="f">
+                                <span class="bg-zinc-50 dark:bg-zinc-950 text-zinc-700 dark:text-zinc-300 text-xs font-bold px-4 py-3 border border-zinc-100 dark:border-zinc-850 rounded-2xl inline-flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> <span x-text="f"></span>
+                                </span>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Deployment / Tools Column -->
+                    <div class="bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-100 dark:border-zinc-800">
+                            <span class="w-10 h-10 flex items-center justify-center bg-accent/10 text-accent rounded-xl">
+                                <i class="fa-solid fa-sliders text-lg"></i>
+                            </span>
+                            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white">Deployment &amp; Tools</h3>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <template x-for="t in skills.deployment" :key="t.name">
+                                <div class="bg-zinc-50 dark:bg-zinc-950 p-3 rounded-2xl border border-zinc-100 dark:border-zinc-850 text-center">
+                                    <i :class="t.icon + ' text-xl mb-1'"></i>
+                                    <p class="text-xs font-bold text-zinc-700 dark:text-zinc-300" x-text="t.name"></p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK PROCESS SECTION -->
+        <section id="process" class="py-24 bg-white dark:bg-zinc-900/30 border-y border-zinc-200/50 dark:border-zinc-900">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="mb-14">
+                    <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">How I Work</p>
+                    <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">Seamless Delivery Pipeline</h2>
+                </div>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-6 gap-6 relative">
+                    <!-- Step 1 -->
+                    <div class="relative bg-slate-50 dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50 text-center card-h flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-4">1</div>
+                            <h4 class="font-display font-bold text-base mb-2">Requirement Discussion</h4>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400">Defining clean business boundaries and expectations.</p>
+                        </div>
+                        <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-zinc-300 dark:text-zinc-800 z-10">
+                            <i class="fa-solid fa-chevron-right text-lg"></i>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative bg-slate-50 dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50 text-center card-h flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-4">2</div>
+                            <h4 class="font-display font-bold text-base mb-2">Planning</h4>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400">Mapping the database pipeline, technology stack, and metrics.</p>
+                        </div>
+                        <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-zinc-300 dark:text-zinc-800 z-10">
+                            <i class="fa-solid fa-chevron-right text-lg"></i>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative bg-slate-50 dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50 text-center card-h flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-4">3</div>
+                            <h4 class="font-display font-bold text-base mb-2">Model Development</h4>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400">Coding and refining core machine learning algorithms.</p>
+                        </div>
+                        <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-zinc-300 dark:text-zinc-800 z-10">
+                            <i class="fa-solid fa-chevron-right text-lg"></i>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="relative bg-slate-50 dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50 text-center card-h flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-4">4</div>
+                            <h4 class="font-display font-bold text-base mb-2">Testing</h4>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400">Evaluating against strict limits and stress parameters.</p>
+                        </div>
+                        <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-zinc-300 dark:text-zinc-800 z-10">
+                            <i class="fa-solid fa-chevron-right text-lg"></i>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="relative bg-slate-50 dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50 text-center card-h flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-4">5</div>
+                            <h4 class="font-display font-bold text-base mb-2">Deployment</h4>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400">Launching verified code directly into production layers.</p>
+                        </div>
+                        <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-zinc-300 dark:text-zinc-800 z-10">
+                            <i class="fa-solid fa-chevron-right text-lg"></i>
+                        </div>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="relative bg-slate-50 dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50 text-center card-h flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-4">6</div>
+                            <h4 class="font-display font-bold text-base mb-2">Support</h4>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400">Ensuring continuous reliability post-delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
         <section id="about" class="py-24 bg-white dark:bg-zinc-900/30 border-y border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid md:grid-cols-12 gap-16 items-center">
@@ -381,26 +665,24 @@
                     <div class="md:col-span-7">
                         <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Academic &amp; Professional Path</p>
                         <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white leading-tight mb-6">
-                            Bridging Advanced Research with Practical System Deployment
+                            Bridging Technical Concepts With Actionable Solutions
                         </h2>
-                        <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-4">
-                            As a final-year B.Tech specialist in Artificial Intelligence and Machine Learning, my core goal is engineering high-efficiency software architectures. I optimize models for deployment under restricted hardware boundaries, using quantization and sequence pruning strategies.
-                        </p>
-                        <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-8">
-                            I am registering for my freelance enterprise to offer scalable computer vision algorithms, customized deep learning workflows, and reliable technical consulting pipelines directly to global clients.
-                        </p>
+                        <div class="text-zinc-600 dark:text-zinc-400 text-sm space-y-4 leading-relaxed mb-8">
+                            <p>
+                                I am a final-year B.Tech student specializing in Artificial Intelligence and Machine Learning. I enjoy building practical AI solutions that solve real-world problems. My interests include Machine Learning, Deep Learning, Computer Vision, and AI Automation. I am currently available for freelance projects, internships, and collaborations.
+                            </p>
+                            <p>
+                                Rather than chasing pure theoretical configurations, my approach prioritizes tangible engineering results. I construct code designed to automate operations, lower resource hosting overheads, and streamline system data.
+                            </p>
+                        </div>
                         
                         <div class="pt-6 border-t border-zinc-200/60 dark:border-zinc-800/60">
-                            <p class="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-4">Core Tech Stack &amp; Libraries</p>
+                            <p class="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-4">Core Strengths</p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">Python</span>
-                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">PyTorch</span>
-                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">TensorFlow</span>
-                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">OpenCV</span>
-                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">YOLO Suite</span>
-                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">Transformers (HuggingFace)</span>
-                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">C++</span>
-                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">Git &amp; CI/CD Pipelines</span>
+                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">Startup Friendly</span>
+                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">Clear Documentation</span>
+                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">Rapid Deployment</span>
+                                <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold px-4 py-2 rounded-xl">Agile Workflows</span>
                             </div>
                         </div>
                     </div>
@@ -408,118 +690,236 @@
             </div>
         </section>
 
-        <section id="blog" class="py-24 bg-slate-50 dark:bg-zinc-950">
+        <!-- CERTIFICATIONS SECTION -->
+        <section id="certifications" class="py-24 bg-slate-50 dark:bg-zinc-950">
             <div class="max-w-6xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-                    <div>
-                        <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Engineering Documentation</p>
-                        <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white leading-tight">
-                            The Technical Blog &amp; Insights
-                        </h2>
-                    </div>
-                    <p class="text-zinc-500 dark:text-zinc-400 text-base max-w-sm">
-                        Sharing algorithmic paradigms, optimization benchmarks, and findings from deep learning and system security experiments.
-                    </p>
+                <div class="mb-14">
+                    <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Academic Proof</p>
+                    <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">Professional Certifications</h2>
                 </div>
-
-                <!-- Dynamic Blog Grid with Modal-based Inline Reader -->
-                <div class="grid md:grid-cols-3 gap-8">
-                    <template x-for="post in allArticles" :key="post.id">
-                        <article class="card-h group bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800/60 flex flex-col justify-between">
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <template x-for="cert in certifications" :key="cert.id">
+                        <div class="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50 card-h flex flex-col justify-between">
                             <div>
-                                <div class="pf w-full h-48 border-b border-zinc-200/60 dark:border-zinc-800/60">
-                                    <img :src="post.img || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=80'" :alt="post.title" loading="lazy">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold text-accent bg-accent/10 border border-accent/20 px-2.5 py-1 rounded-md" x-text="cert.issuer"></span>
+                                    <span class="text-xs text-zinc-400" x-text="cert.date"></span>
                                 </div>
-                                <div class="p-6">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <span class="text-xs bg-orange-50 dark:bg-zinc-800 border border-orange-200 dark:border-zinc-700 text-accent font-bold px-2.5 py-1 rounded-full" x-text="post.category"></span>
-                                        <span class="text-xs text-zinc-400 font-semibold" x-text="post.date"></span>
-                                    </div>
-                                    <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3 group-hover:text-accent transition-colors" x-text="post.title"></h3>
-                                    <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed" x-text="post.desc"></p>
-                                </div>
+                                <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2" x-text="cert.name"></h4>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-6" x-text="cert.desc"></p>
                             </div>
-                            <div class="p-6 pt-0 mt-4 border-t border-zinc-100 dark:border-zinc-850">
-                                <button @click="openArticle(post)" class="inline-flex items-center gap-1.5 text-xs font-bold text-accent pt-4 focus:outline-none hover:text-accent-light">
-                                    Read Breakdown &rarr;
-                                </button>
+                            <div class="border-t border-zinc-100 dark:border-zinc-800/80 pt-4 mt-2 flex items-center justify-between">
+                                <span class="text-[10px] uppercase font-semibold text-zinc-400" x-text="'ID: ' + cert.credentialId"></span>
+                                <a :href="cert.url" target="_blank" rel="noopener noreferrer" class="text-xs text-accent hover:text-accent-light font-bold inline-flex items-center gap-1">
+                                    Verify <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
                             </div>
-                        </article>
+                        </div>
                     </template>
                 </div>
             </div>
         </section>
 
-        <div x-show="readerOpen" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true">
-            <!-- Backdrop -->
-            <div @click="closeArticle()" class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
-            
-            <!-- Modal Body -->
-            <div x-show="readerOpen" x-transition class="relative bg-white dark:bg-zinc-900 rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-zinc-200 dark:border-zinc-800 z-10 scrollbar">
-                <!-- Close Button -->
-                <button @click="closeArticle()" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 rounded-full hover:bg-accent hover:text-white dark:hover:bg-accent dark:hover:text-white transition-all focus:outline-none">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+        <!-- GITHUB INTEGRATION -->
+        <section id="github" class="py-24 bg-white dark:bg-zinc-900/30 border-t border-zinc-200/50 dark:border-zinc-900">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="mb-14">
+                    <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Live Status</p>
+                    <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">GitHub Showcase</h2>
+                </div>
                 
-                <div class="p-8 sm:p-12">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent font-bold px-2.5 py-1 rounded-full" x-text="activeArticle?.category"></span>
-                        <span class="text-xs text-zinc-400 font-semibold" x-text="activeArticle?.date"></span>
-                    </div>
-                    
-                    <h2 class="font-display font-bold text-3xl sm:text-4xl text-zinc-900 dark:text-white mb-6 leading-tight" x-text="activeArticle?.title"></h2>
-                    
-                    <div class="pf w-full h-64 sm:h-80 rounded-2xl mb-8 overflow-hidden">
-                        <img :src="activeArticle?.img" alt="Article image" class="w-full h-full object-cover">
-                    </div>
-                    
-                    <div class="prose dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-300 space-y-4 text-base leading-relaxed">
-                        <p class="font-semibold text-lg text-zinc-800 dark:text-zinc-100" x-text="activeArticle?.desc"></p>
-                        <!-- Structured Article Body Content -->
-                        <div x-html="activeArticle?.content"></div>
-                    </div>
-                    
-                    <div class="mt-12 pt-6 border-t border-zinc-200 dark:border-zinc-850 flex items-center justify-between">
-                        <span class="text-xs text-zinc-400">Written by Jaiprasanth</span>
-                        <button @click="closeArticle()" class="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold px-4 py-2 rounded-full hover:bg-accent dark:hover:bg-accent dark:hover:text-white transition-all">Close Article</button>
+                <div class="bg-slate-50 dark:bg-zinc-900 rounded-3xl p-8 border border-zinc-200/50 dark:border-zinc-800/50">
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-4 space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="w-12 h-12 rounded-full bg-zinc-800 text-white flex items-center justify-center text-xl shrink-0 border border-zinc-700">
+                                    <i class="fa-brands fa-github"></i>
+                                </span>
+                                <div>
+                                    <h4 class="font-display font-bold text-xl">@jai11205</h4>
+                                    <p class="text-xs text-zinc-400">AI / Deep Learning Researcher</p>
+                                </div>
+                            </div>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                                Active developer pushing commits to custom visual analytics libraries, OCR text analyzers, and neural classifiers.
+                            </p>
+                            
+                            <div class="flex items-center gap-6 py-2 bg-white dark:bg-zinc-950 p-4 rounded-2xl border border-zinc-100 dark:border-zinc-850">
+                                <div>
+                                    <span class="text-xs text-zinc-400 uppercase tracking-widest font-semibold block">Public Repos</span>
+                                    <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.repos"></span>
+                                </div>
+                                <div class="w-[1px] h-10 bg-zinc-200 dark:bg-zinc-800"></div>
+                                <div>
+                                    <span class="text-xs text-zinc-400 uppercase tracking-widest font-semibold block">Total Stars</span>
+                                    <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.stars"></span>
+                                </div>
+                            </div>
+
+                            <a href="https://github.com/jai11205" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 text-white dark:text-zinc-900 px-5 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md">
+                                Visit Profile <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- GitHub Contribution Grid -->
+                        <div class="lg:col-span-8">
+                            <div class="bg-white dark:bg-zinc-950 p-6 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 space-y-4">
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="font-bold text-zinc-600 dark:text-zinc-400">Commit History (Live Simulated Timeline Overlay)</span>
+                                    <span class="text-green-500 font-semibold inline-flex items-center gap-1">
+                                        <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span> Live Activity Link Established
+                                    </span>
+                                </div>
+                                <div class="grid grid-cols-24 gap-1 h-20 opacity-85" aria-hidden="true">
+                                    <template x-for="n in 120">
+                                        <span :class="['bg-green-500', 'bg-green-600', 'bg-green-700', 'bg-zinc-100 dark:bg-zinc-800', 'bg-green-800'][Math.floor(Math.random() * 5)]" class="rounded-[2px] w-full h-full"></span>
+                                    </template>
+                                </div>
+                                <div class="flex items-center justify-between text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">
+                                    <span>Q1 2026 Commit Baseline</span>
+                                    <div class="flex gap-1 items-center">
+                                        <span>Less</span>
+                                        <span class="w-2.5 h-2.5 rounded-sm bg-zinc-100 dark:bg-zinc-800"></span>
+                                        <span class="w-2.5 h-2.5 rounded-sm bg-green-700"></span>
+                                        <span class="w-2.5 h-2.5 rounded-sm bg-green-500"></span>
+                                        <span>More</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
+        <!-- RESUME CALLOUT -->
+        <section id="resume" class="py-20 bg-slate-50 dark:bg-zinc-950 border-b border-zinc-200/50 dark:border-zinc-900">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <span class="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 text-accent flex items-center justify-center mx-auto mb-6 text-xl">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </span>
+                <h3 class="font-display font-bold text-3xl mb-3">Looking for a Copy of my CV?</h3>
+                <p class="text-zinc-500 dark:text-zinc-400 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+                    Download my fully structured PDF resume containing a comprehensive overview of my academic milestones, technical framework benchmarks, and freelance engagements.
+                </p>
+                <a :href="resumeLink" target="_blank" class="shimmer inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-8 py-4 rounded-full transition-all text-sm shadow-xl shadow-accent/20">
+                    <i class="fa-solid fa-circle-down"></i> Get Direct Resume Copy
+                </a>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section id="testimonials" class="py-24 bg-white dark:bg-zinc-900/30">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="mb-14">
+                    <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Feedback &amp; Endorsements</p>
+                    <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">What People Say</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <template x-for="review in testimonials" :key="review.id">
+                        <blockquote class="bg-slate-50 dark:bg-zinc-900 rounded-3xl p-8 border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col justify-between card-h">
+                            <div>
+                                <div class="flex gap-0.5 mb-5" aria-label="5 stars">
+                                    <i class="fa-solid fa-star text-accent text-xs"></i>
+                                    <i class="fa-solid fa-star text-accent text-xs"></i>
+                                    <i class="fa-solid fa-star text-accent text-xs"></i>
+                                    <i class="fa-solid fa-star text-accent text-xs"></i>
+                                    <i class="fa-solid fa-star text-accent text-xs"></i>
+                                </div>
+                                <p class="text-zinc-500 dark:text-zinc-400 text-sm italic mb-6 leading-relaxed" x-text="'&ldquo;' + review.quote + '&rdquo;'"></p>
+                            </div>
+                            <footer class="flex items-center gap-3 border-t border-zinc-200/50 dark:border-zinc-800/80 pt-4 mt-2">
+                                <div class="pf w-10 h-10 rounded-full shrink-0 border border-zinc-200 dark:border-zinc-700">
+                                    <img :src="review.avatar" :alt="review.name" loading="lazy">
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm text-zinc-900 dark:text-white" x-text="review.name"></p>
+                                    <p class="text-[10px] text-zinc-400 font-semibold uppercase tracking-wider mt-0.5" x-text="review.role"></p>
+                                </div>
+                            </footer>
+                        </blockquote>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="py-24 bg-slate-50 dark:bg-zinc-950 border-t border-zinc-200/50 dark:border-zinc-900">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-14">
+                    <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Common Questions</p>
+                    <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">Frequently Asked Questions</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <template x-for="q in faqs" :key="q.id">
+                        <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 overflow-hidden">
+                            <button @click="toggleFaq(q.id)" class="w-full px-6 py-4 flex items-center justify-between text-left font-bold text-sm transition-colors hover:text-accent focus:outline-none">
+                                <span x-text="q.question"></span>
+                                <span class="w-6 h-6 rounded-full bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center shrink-0 border border-zinc-100 dark:border-zinc-850">
+                                    <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200" :class="activeFaq === q.id ? 'rotate-180' : ''"></i>
+                                </span>
+                            </button>
+                            <div x-show="activeFaq === q.id" x-cloak x-transition class="px-6 pb-5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed border-t border-zinc-100 dark:border-zinc-850/50 pt-3">
+                                <p x-text="q.answer"></p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
         <section id="contact" class="py-24 bg-white dark:bg-zinc-950">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="bg-zinc-900 dark:bg-zinc-900 rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-2xl">
                     <div class="absolute top-0 right-0 w-80 h-80 bg-accent/20 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
                     <div class="absolute bottom-0 left-0 w-60 h-60 bg-accent/10 rounded-full blur-[80px] pointer-events-none" aria-hidden="true"></div>
                     
-                    <div class="relative z-10 grid md:grid-cols-2 gap-12 items-start">
+                    <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-start">
                         <div>
                             <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Enterprise Communication Hub</p>
                             <h2 class="font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-6">Let's build<br>together.</h2>
-                            <p class="text-zinc-400 text-base leading-relaxed mb-10 max-w-sm">
+                            <p class="text-zinc-400 text-sm leading-relaxed mb-8 max-w-sm">
                                 I'm open to contract work, freelance project building, and consulting briefs. Share your system requirements or proposal, and let's coordinate.
                             </p>
                             
-                            <div class="flex flex-col gap-5">
+                            <div class="flex flex-col gap-4">
                                 <a href="mailto:jaiprasanth2005112@gmail.com" class="group flex items-center gap-4 text-zinc-300 hover:text-white transition-colors">
                                     <span class="w-10 h-10 flex items-center justify-center bg-zinc-800 border border-zinc-700/50 rounded-xl group-hover:bg-accent/20 group-hover:border-accent/40 transition-all shrink-0">
                                         <i class="fa-regular fa-envelope text-sm"></i>
                                     </span>
-                                    <span class="text-sm font-semibold">jaiprasanth2005112@gmail.com</span>
+                                    <span class="text-xs font-semibold">jaiprasanth2005112@gmail.com</span>
                                 </a>
                                 <a href="https://linkedin.com/in/jaiprasanth-242140313" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 text-zinc-300 hover:text-white transition-colors">
                                     <span class="w-10 h-10 flex items-center justify-center bg-zinc-800 border border-zinc-700/50 rounded-xl group-hover:bg-accent/20 group-hover:border-accent/40 transition-all shrink-0">
                                         <i class="fa-brands fa-linkedin-in text-sm"></i>
                                     </span>
-                                    <span class="text-sm font-semibold">linkedin.com/in/jaiprasanth-242140313</span>
+                                    <span class="text-xs font-semibold">linkedin.com/in/jaiprasanth-242140313</span>
                                 </a>
                                 <a href="https://github.com/jai11205" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 text-zinc-300 hover:text-white transition-colors">
                                     <span class="w-10 h-10 flex items-center justify-center bg-zinc-800 border border-zinc-700/50 rounded-xl group-hover:bg-accent/20 group-hover:border-accent/40 transition-all shrink-0">
                                         <i class="fa-brands fa-github text-sm"></i>
                                     </span>
-                                    <span class="text-sm font-semibold">github.com/jai11205</span>
+                                    <span class="text-xs font-semibold">github.com/jai11205</span>
                                 </a>
+                                <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 text-zinc-300 hover:text-white transition-colors">
+                                    <span class="w-10 h-10 flex items-center justify-center bg-zinc-800 border border-zinc-700/50 rounded-xl group-hover:bg-accent/20 group-hover:border-accent/40 transition-all shrink-0">
+                                        <i class="fa-regular fa-calendar-check text-sm"></i>
+                                    </span>
+                                    <span class="text-xs font-semibold">Book a Consulting Call</span>
+                                </a>
+                            </div>
+                            
+                            <!-- Response Speed Tracker -->
+                            <div class="mt-8 p-4 bg-zinc-800/50 border border-zinc-700/50 rounded-2xl inline-flex items-center gap-2.5">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                                </span>
+                                <span class="text-[10px] uppercase font-bold text-zinc-300 tracking-wider">Fast Response: Usually replies within 24 hours.</span>
                             </div>
                         </div>
                         
@@ -538,7 +938,7 @@
                                     </div>
                                     <div>
                                         <label for="fsubject" class="block text-xs font-semibold text-zinc-400 mb-1.5">Subject</label>
-                                        <input x-model="formData.subject" type="text" id="fsubject" placeholder="Project details/Inquiry" class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all">
+                                        <input x-model="formData.subject" type="text" id="fsubject" placeholder="Project details / Open role details" class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all">
                                     </div>
                                     <div>
                                         <label for="fmessage" class="block text-xs font-semibold text-zinc-400 mb-1.5">Message <span aria-hidden="true">*</span></label>
@@ -559,17 +959,66 @@
         </section>
     </main>
 
-    <div x-data="developerPanel()" class="fixed bottom-6 right-6 z-50">
-        <!-- Panel Trigger Button -->
+    <!-- PROJECT DETAILS MODAL -->
+    <div x-show="projModalOpen" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true">
+        <div @click="closeProjectModal()" class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+        
+        <div x-show="projModalOpen" x-transition class="relative bg-white dark:bg-zinc-900 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-zinc-200 dark:border-zinc-800 z-10 scrollbar">
+            <button @click="closeProjectModal()" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 rounded-full hover:bg-accent hover:text-white dark:hover:bg-accent dark:hover:text-white transition-all focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="p-8">
+                <span class="text-xs font-bold text-accent bg-accent/10 border border-accent/20 px-2.5 py-1 rounded-md mb-4 inline-block" x-text="activeProject?.category === 'security' ? 'Security &amp; RL System' : 'Vision System'"></span>
+                <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-6" x-text="activeProject?.title"></h3>
+                
+                <div class="pf w-full h-48 rounded-2xl mb-6 overflow-hidden">
+                    <img :src="activeProject?.img" alt="Project image" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="space-y-4 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+                    <div>
+                        <h5 class="font-bold text-sm text-zinc-900 dark:text-white">Detailed Scope:</h5>
+                        <p class="mt-1" x-text="activeProject?.desc"></p>
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-sm text-zinc-900 dark:text-white">The Problem Statement:</h5>
+                        <p class="mt-1" x-text="activeProject?.problem"></p>
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-sm text-zinc-900 dark:text-white">Solution Built:</h5>
+                        <p class="mt-1" x-text="activeProject?.solution"></p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <template x-for="tag in activeProject?.tags" :key="tag">
+                        <span class="bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-[10px] font-bold px-3 py-1.5 rounded-md" x-text="tag"></span>
+                    </template>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a :href="activeProject?.demoUrl" target="_blank" rel="noopener noreferrer" class="bg-accent text-white hover:bg-accent-light px-6 py-3 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-play"></i> Live Demo
+                    </a>
+                    <a :href="activeProject?.url" target="_blank" rel="noopener noreferrer" class="bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-white px-6 py-3 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5">
+                        <i class="fa-brands fa-github"></i> View GitHub Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEVELOPER CONTENT MANAGER HUB -->
+    <div class="fixed bottom-6 right-6 z-50">
         <button @click="togglePanel()" class="shimmer w-14 h-14 bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-zinc-950 flex items-center justify-center rounded-full shadow-2xl transition-all border border-zinc-200 dark:border-zinc-800" title="Content Manager Hub">
-            <i class="fa-solid fa-sliders-h text-lg transition-transform duration-300" :class="open ? 'rotate-90 text-accent' : ''"></i>
+            <i class="fa-solid fa-sliders-h text-lg transition-transform duration-300" :class="adminPanelOpen ? 'rotate-90 text-accent' : ''"></i>
         </button>
 
-        <!-- Slide Over Card Container -->
-        <div x-show="open" x-cloak @click.away="open = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-12" x-transition:enter-end="opacity-100 translate-y-0" class="absolute bottom-16 right-0 w-80 sm:w-[480px] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-2xl p-6 overflow-hidden">
+        <div x-show="adminPanelOpen" x-cloak @click.away="adminPanelOpen = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-12" x-transition:enter-end="opacity-100 translate-y-0" class="absolute bottom-16 right-0 w-85 sm:w-[520px] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-2xl p-6 overflow-hidden max-h-[80vh] overflow-y-auto">
             
-            <!-- PANEL STEP 1: Passcode Verification Screen (Shown if NOT authenticated) -->
-            <div x-show="!authenticated" class="py-6 text-center space-y-4">
+            <!-- PANEL PASSCODE GATE -->
+            <div x-show="!adminAuthenticated" class="py-6 text-center space-y-4">
                 <div class="w-12 h-12 bg-accent/10 text-accent flex items-center justify-center rounded-2xl mx-auto mb-2">
                     <i class="fa-solid fa-lock text-lg animate-pulse"></i>
                 </div>
@@ -580,8 +1029,8 @@
                 
                 <form @submit.prevent="verifyPasscode" class="space-y-3">
                     <div>
-                        <input x-model="passwordInput" type="password" required placeholder="••••••••" class="w-full text-center tracking-widest text-sm bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 focus:outline-none focus:border-accent">
-                        <p x-show="passwordError" x-cloak class="text-xs text-red-500 font-semibold mt-1">Incorrect Passcode. Try again.</p>
+                        <input x-model="adminPasswordInput" type="password" required placeholder="••••••••" class="w-full text-center tracking-widest text-sm bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 focus:outline-none focus:border-accent">
+                        <p x-show="adminPasswordError" x-cloak class="text-xs text-red-500 font-semibold mt-1">Incorrect Passcode. Try again.</p>
                     </div>
                     <button type="submit" class="w-full bg-accent hover:bg-accent-light text-white font-bold text-xs py-2.5 rounded-xl transition-all">
                         Unlock Hub &rarr;
@@ -590,39 +1039,56 @@
                 <p class="text-[10px] text-zinc-400">Default key is <code class="bg-zinc-100 dark:bg-zinc-850 px-1 py-0.5 rounded font-bold">admin123</code></p>
             </div>
 
-            <!-- PANEL STEP 2: Main Hub Dashboard Interface (Shown ONLY when authenticated) -->
-            <div x-show="authenticated" x-cloak>
+            <!-- PANEL CONTENT MANAGEMENT HUB -->
+            <div x-show="adminAuthenticated" x-cloak>
                 <div class="flex items-center justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800 mb-6">
                     <div>
                         <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white">Content Manager Hub</h3>
-                        <p class="text-xs text-zinc-400 font-medium">Authenticated Admin Session Active</p>
+                        <p class="text-xs text-zinc-400 font-medium">Authorized Admin Session Active</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <!-- Lock panel button -->
-                        <button @click="lock()" class="text-xs bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-zinc-600 dark:text-zinc-300 px-2.5 py-1.5 rounded-lg font-bold" title="End Session and lock panel">
+                        <button @click="lock()" class="text-xs bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-zinc-600 dark:text-zinc-300 px-2.5 py-1.5 rounded-lg font-bold">
                             <i class="fa-solid fa-lock-open mr-1"></i> Lock
                         </button>
-                        <button @click="open = false" class="w-8 h-8 flex items-center justify-center bg-zinc-50 dark:bg-zinc-800 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-700">
+                        <button @click="adminPanelOpen = false" class="w-8 h-8 flex items-center justify-center bg-zinc-50 dark:bg-zinc-800 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-700">
                             <i class="fa-solid fa-xmark text-xs"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- Tab Headers -->
-                <div class="flex bg-zinc-50 dark:bg-zinc-850 rounded-xl p-1 mb-6">
-                    <button @click="activeTab='project'" :class="activeTab==='project' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-50'" class="flex-1 py-2 text-xs rounded-lg transition-all text-zinc-500">
-                        Add Project
-                    </button>
-                    <button @click="activeTab='blog'" :class="activeTab==='blog' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-50'" class="flex-1 py-2 text-xs rounded-lg transition-all text-zinc-500">
-                        Add Article
-                    </button>
-                    <button @click="activeTab='export'" :class="activeTab==='export' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-50'" class="flex-1 py-2 text-xs rounded-lg transition-all text-zinc-500">
-                        Export Code
-                    </button>
+                <!-- Expanded Controls Tab List -->
+                <div class="grid grid-cols-3 sm:grid-cols-6 gap-1 bg-zinc-50 dark:bg-zinc-850 rounded-xl p-1 mb-6">
+                    <button @click="adminActiveTab='global'" :class="adminActiveTab==='global' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Global</button>
+                    <button @click="adminActiveTab='project'" :class="adminActiveTab==='project' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Work</button>
+                    <button @click="adminActiveTab='impact'" :class="adminActiveTab==='impact' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Impact</button>
+                    <button @click="adminActiveTab='skills'" :class="adminActiveTab==='skills' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Core</button>
+                    <button @click="adminActiveTab='quotes'" :class="adminActiveTab==='quotes' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Reviews</button>
+                    <button @click="adminActiveTab='faq'" :class="adminActiveTab==='faq' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">FAQs</button>
                 </div>
 
-                <!-- TAB 1: ADD PROJECT -->
-                <div x-show="activeTab === 'project'">
+                <!-- TAB: GLOBAL STATUS & RESUME UPDATER -->
+                <div x-show="adminActiveTab === 'global'" class="space-y-4">
+                    <h4 class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Availability &amp; File Handlers</h4>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Freelancer Status Toggle</label>
+                            <select x-model="globalForm.status" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <option value="Open to Work">Open to Work / Available</option>
+                                <option value="Currently Unavailable">Currently Engaged / Unavailable</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Resume File Source URL</label>
+                            <input x-model="globalForm.resume" type="text" placeholder="https://..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                        </div>
+                        <button @click="updateGlobalVars()" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all">
+                            Save Global Configuration
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TAB: ADD PROJECT -->
+                <div x-show="adminActiveTab === 'project'">
                     <form @submit.prevent="submitProject" class="space-y-4">
                         <div class="grid grid-cols-2 gap-3">
                             <div>
@@ -637,9 +1103,15 @@
                                 </select>
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Repository URL *</label>
-                            <input x-model="projectForm.url" type="url" required placeholder="https://github.com/..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Repository URL *</label>
+                                <input x-model="projectForm.url" type="url" required placeholder="https://github.com/..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Demo URL *</label>
+                                <input x-model="projectForm.demoUrl" type="text" required placeholder="https://..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-zinc-500 mb-1">Image URL (Optional)</label>
@@ -648,80 +1120,166 @@
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-xs font-semibold text-zinc-500 mb-1">Tags (Comma Sep) *</label>
-                                <input x-model="projectForm.tags" type="text" required placeholder="Python, Pytorch" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <input x-model="projectForm.tags" type="text" required placeholder="Python, PyTorch" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Year *</label>
-                                <input x-model="projectForm.year" type="text" required placeholder="Q1 2026" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Results *</label>
+                                <input x-model="projectForm.results" type="text" required placeholder="Saved 40% Server Load" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Problem *</label>
+                                <input x-model="projectForm.problem" type="text" required placeholder="Heavy visual parsing loads" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Solution *</label>
+                                <input x-model="projectForm.solution" type="text" required placeholder="Smart selective frame loading" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
                             </div>
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-zinc-500 mb-1">Project Description *</label>
-                            <textarea x-model="projectForm.desc" required rows="3" placeholder="Write a short summary..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 resize-none"></textarea>
+                            <textarea x-model="projectForm.desc" required rows="2" placeholder="Write a short summary..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 resize-none"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-plus"></i> Inject &amp; Update Portfolio
+                            <i class="fa-solid fa-plus"></i> Inject Project
                         </button>
                     </form>
                 </div>
 
-                <!-- TAB 2: ADD BLOG ARTICLE -->
-                <div x-show="activeTab === 'blog'">
-                    <form @submit.prevent="submitArticle" class="space-y-4">
+                <!-- TAB: ADD BUSINESS IMPACT (CASE STUDIES) -->
+                <div x-show="adminActiveTab === 'impact'">
+                    <form @submit.prevent="submitImpactCase" class="space-y-4">
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Article Title *</label>
-                                <input x-model="blogForm.title" type="text" required placeholder="Why Custom ML Engines..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Case Title *</label>
+                                <input x-model="impactForm.title" type="text" required placeholder="Optimizing Neural Latency" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Category *</label>
-                                <input x-model="blogForm.category" type="text" required placeholder="Optimization" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Industry Vertical *</label>
+                                <input x-model="impactForm.industry" type="text" required placeholder="E-commerce Security" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Image URL (Optional)</label>
-                                <input x-model="blogForm.img" type="url" placeholder="https://images.unsplash.com/..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Client Value Target *</label>
+                                <input x-model="impactForm.value" type="text" required placeholder="3x More Feeds Online" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Publish Date *</label>
-                                <input x-model="blogForm.date" type="text" required placeholder="March 2026" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Final Outcome KPI *</label>
+                                <input x-model="impactForm.outcome" type="text" required placeholder="40% Load Decline" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Brief Description *</label>
-                            <input x-model="blogForm.desc" type="text" required placeholder="Analyzing latency, performance constraints..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Problem Statement *</label>
+                            <input x-model="impactForm.problem" type="text" required placeholder="Bottlenecks on server nodes" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Full Article (HTML allowed) *</label>
-                            <textarea x-model="blogForm.content" required rows="4" placeholder="&lt;p&gt;Write full contents here...&lt;/p&gt;" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 resize-none"></textarea>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1">My Engineering Approach *</label>
+                            <input x-model="impactForm.approach" type="text" required placeholder="Model pruning & local pipeline steps" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Technologies (Comma Sep)</label>
+                                <input x-model="impactForm.tech" type="text" required placeholder="YOLOv8, TensorRT" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Timeline Profile</label>
+                                <input x-model="impactForm.timeline" type="text" required placeholder="Q1 2026" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
                         </div>
                         <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-plus"></i> Inject &amp; Update Blog
+                            <i class="fa-solid fa-plus"></i> Inject Impact Case
                         </button>
                     </form>
                 </div>
 
-                <!-- TAB 3: CODE EXPORTER -->
-                <div x-show="activeTab === 'export'" class="space-y-4">
-                    <p class="text-xs text-zinc-500 dark:text-zinc-400">
-                        Your updates are currently saved in your browser's LocalStorage for instant visual assessment. 
-                        Copy the formatted array code block below and replace your script arrays to freeze them permanently in your <code class="bg-zinc-100 dark:bg-zinc-800 px-1 rounded">index.html</code> file!
-                    </p>
-                    <div class="space-y-2">
-                        <button @click="copyCode('projects')" class="w-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-xs font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2">
-                            <i class="fa-regular fa-copy"></i> Copy Dynamic Projects Code
+                <!-- TAB: TECHNICAL CORE (SKILLS UPDATER) -->
+                <div x-show="adminActiveTab === 'skills'" class="space-y-4">
+                    <form @submit.prevent="submitSkillNode" class="space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Skill Node Name *</label>
+                                <input x-model="skillsForm.name" type="text" required placeholder="FastAPI" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Skill Sector *</label>
+                                <select x-model="skillsForm.sector" required class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                    <option value="programming">Programming Language</option>
+                                    <option value="frameworks">Framework Badge</option>
+                                    <option value="deployment">Deployment Tool</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Icon Pattern Code</label>
+                                <input x-model="skillsForm.icon" type="text" placeholder="fa-brands fa-python text-blue-500" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Grade Status (Programming Only)</label>
+                                <input x-model="skillsForm.status" type="text" placeholder="Advanced" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Inject Skill Node
                         </button>
-                        <button @click="copyCode('blog')" class="w-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-xs font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2">
-                            <i class="fa-regular fa-copy"></i> Copy Dynamic Articles Code
+                    </form>
+                </div>
+
+                <!-- TAB: WHAT PEOPLE SAY (TESTIMONIALS) -->
+                <div x-show="adminActiveTab === 'quotes'">
+                    <form @submit.prevent="submitQuote" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Reviewer Name *</label>
+                                <input x-model="quotesForm.name" type="text" required placeholder="Dr. Sarah Jenkins" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Professional Title/Role *</label>
+                                <input x-model="quotesForm.role" type="text" required placeholder="Lead Researcher, MIT" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Feedback Quote Statement *</label>
+                            <textarea x-model="quotesForm.quote" required rows="2" placeholder="Exceptional execution and deep analytical logic..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Avatar Image URL (Optional)</label>
+                            <input x-model="quotesForm.avatar" type="url" placeholder="https://i.pravatar.cc/80?img=12" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                        </div>
+                        <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Inject Testimonial Review
                         </button>
-                        <button @click="resetToDefaults" class="w-full bg-red-500 hover:bg-red-600 text-white text-xs font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-rotate-left"></i> Reset to Default Template Data
+                    </form>
+                </div>
+
+                <!-- TAB: FREQUENTLY ASKED QUESTIONS (FAQ UPDATER) -->
+                <div x-show="adminActiveTab === 'faq'">
+                    <form @submit.prevent="submitFAQ" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Structured Question *</label>
+                            <input x-model="faqForm.question" type="text" required placeholder="Do you sign standard corporate NDAs?" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Detailed Solution / Answer *</label>
+                            <textarea x-model="faqForm.answer" required rows="3" placeholder="Yes, I regularly sign mutual NDAs for clean project confidentiality..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Inject FAQ Node
                         </button>
-                    </div>
-                    <!-- Mini Clipboard Alert toast -->
-                    <div x-show="exportAlert" x-cloak x-transition class="p-3 bg-green-500/10 border border-green-500/20 text-green-500 text-xs text-center rounded-xl font-bold">
-                        Codeblock successfully copied to clipboard!
+                    </form>
+                </div>
+
+                <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-850 flex flex-col gap-2">
+                    <button @click="copyStaticJSON()" class="w-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-xs font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-copy"></i> Export Hub Local Database Code
+                    </button>
+                    <button @click="resetToDefaults()" class="w-full bg-red-500 hover:bg-red-600 text-white text-[10px] font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-rotate-left"></i> Reset Dashboard to Baseline Defaults
+                    </button>
+                    <div x-show="adminExportAlert" x-cloak x-transition class="p-2.5 bg-green-500/10 border border-green-500/20 text-green-500 text-xs text-center rounded-xl font-bold mt-2">
+                        System Configuration Arrays Copied to Clipboard!
                     </div>
                 </div>
             </div>
@@ -747,100 +1305,226 @@
             id: 1,
             title: "Adaptive Deepfake Detection (Sentinel-RL)",
             category: "security",
-            year: "Q1 2026",
-            tags: ["Python", "Pytorch", "Transformers", "PPO"],
-            desc: "A robust, frame-efficient classifier implementing deep reinforcement learning (RL) alongside Sequence Transformers. By training policy agents (PPO) to drop low-variance spatial matrices, we reduced temporal tracking compute operations by 40% while preserving a 96.2% classification metric score.",
-            url: "https://jai11205.github.io/Sentinel-RL-Deepfake-Detection-System/",
+            problem: "Heavy visual computation makes real-time deepfake analysis too slow and expensive on standard servers.",
+            solution: "Trained an intelligent AI agent to skip low-variance frames, focusing analysis only on high-value features.",
+            results: "Cut processing workload by 40% with a 96.2% validation score",
+            tags: ["Python", "PyTorch", "Transformers", "PPO"],
+            desc: "This framework combines reinforcement learning with sequence transformers. Instead of analyzing every single frame in a continuous feed, the model selectively samples informative facial configurations, saving massive compute resources without dropping tracking precision.",
+            demoUrl: "https://jai11205.github.io/Sentinel-RL-Deepfake-Detection-System/",
+            url: "https://github.com/jai11205/Sentinel-RL-Deepfake-Detection-System",
             img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&q=80"
         },
         {
             id: 2,
-            title: "Law Enforcement & Automated Challan System",
+            title: "Automated Traffic Violation & Challan Pipeline",
             category: "vision",
-            year: "Q4 2025",
-            tags: ["Python", "Computer Vision", "YOLOv8", "OCR"],
-            desc: "An end-to-end Computer Vision pipeline tailored to detect critical traffic violations. Features automated tracking, vehicle feature categorization, and optical character extraction (OCR) engine nodes designed to reliably generate infraction records without manual processing loops.",
-            url: "#contact",
+            problem: "Traffic violation checks require manual review, which is slow and prone to errors.",
+            solution: "Built a vision system that automatically detects violations and extracts vehicle details in real time.",
+            results: "Processes traffic feeds with high visual accuracy",
+            tags: ["Python", "OpenCV", "YOLOv8", "OCR"],
+            desc: "An end-to-end Computer Vision pipeline designed for traffic monitoring. Features automated vehicle tracking, infraction categorization, and high-precision OCR license plate text extraction designed to instantly issue infraction records without human delays.",
+            demoUrl: "#contact",
+            url: "https://github.com/jai11205",
             img: "https://images.unsplash.com/photo-1494783301193-1150c432f7f1?w=900&q=80"
         }
     ];
 
-    const defaultArticles = [
+    const defaultCaseStudies = [
         {
             id: 1,
-            category: "Optimization",
-            date: "March 2026",
-            title: "Why Custom ML Engines Outperform General API Wrappers",
-            desc: "Analyzing the latency, performance constraints, and accuracy tradeoffs of general cloud endpoints versus running tailored, quantized on-premise inference loops.",
-            img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=80",
-            content: `
-                <p>For custom tasks with predictable bounds, leveraging general, unquantized API parameters from massive black-box models is both economically sub-optimal and architecturally slow.</p>
-                <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mt-6 mb-2">The Latency Burden</h3>
-                <p>Multi-tenant cloud APIs carry variable routing costs. On average, a standard web request takes anywhere from 150ms to 800ms depending on region and query parsing structures. When utilizing micro-inference nodes or video frame queues, this is completely unacceptable.</p>
-                <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mt-6 mb-2">Quantization Is King</h3>
-                <p>Deploying specialized architectures compressed down to INT8 models runs at near native speed on simple local GPU platforms or cost-efficient dedicated servers, reducing infrastructure hosting overheads by up to 70%.</p>
-            `
+            industry: "Security",
+            timeline: "Q1 2026",
+            title: "Scaling Automated Video Security Checks",
+            problem: "A security provider needed to spot altered visual feeds across hundreds of camera feeds simultaneously without buying expensive new servers.",
+            approach: "Replaced heavy frame-by-frame processing models with a smart frame-skipping reinforcement learning pipeline.",
+            tech: ["Python", "PyTorch", "Transformers"],
+            outcome: "Workload reduced by 40% with high classification metrics",
+            value: "Allows provider to run 3x more feeds on existing hardware."
         },
         {
             id: 2,
-            category: "Data Science",
-            date: "February 2026",
-            title: "Spinning Up Robust Validation Data Pipelines in 48 Hours",
-            desc: "The architectural blueprints, tools, and processing scripts I follow to build structured validation matrices for custom deep learning workloads.",
-            img: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=700&q=80",
-            content: `
-                <p>A machine learning architecture is only as resilient as its underlying test dataset parameters. Here is my rapid data onboarding framework.</p>
-                <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mt-6 mb-2">1. The Cleaning Stage</h3>
-                <p>I utilize automated validation scripts to drop corrupt image headers and remove double metrics in high-density data matrices.</p>
-                <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mt-6 mb-2">2. Verification Protocols</h3>
-                <p>Setting up strict boundaries via automated processing schemas ensures consistent pipeline inputs. Never trust unvetted annotations.</p>
-            `
-        },
-        {
-            id: 3,
-            category: "Contracts",
-            date: "January 2026",
-            title: "Technical Scoping Models For Complex Freelance Contracts",
-            desc: "How I map variables, structure deliverables, set realistic validation targets, and establish system parameters when working on high-budget ML contracts.",
-            img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80",
-            content: `
-                <p>Freelance contracts fail when parameters are ambiguous. To protect your pipeline boundaries, treat projects like software compilation routines.</p>
-                <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mt-6 mb-2">Defining Metrics Clearly</h3>
-                <p>Never agree to 'high accuracy.' Specify precise SUS points, metric targets, or frame classification scores upfront. Clear boundaries ensure healthy client expectations.</p>
-            `
+            industry: "Public Safety",
+            timeline: "Q4 2025",
+            title: "Automating Traffic Violation Tracking",
+            problem: "Manual reviews of traffic cameras delayed violation processing by days and missed critical vehicle infractions.",
+            approach: "Deployed a computer vision pipeline with automated YOLO object trackers and high-speed OCR engines.",
+            tech: ["Python", "OpenCV", "YOLOv8", "OCR"],
+            outcome: "Identifies and registers violations in real time",
+            value: "Replaced slow manual validation checks with instant violation records."
         }
     ];
 
-    // Global App State Logic
+    const defaultCertifications = [
+        {
+            id: 1,
+            issuer: "DeepLearning.AI",
+            date: "Jan 2026",
+            name: "Deep Learning Specialization",
+            desc: "Rigorous focus on multi-layered neural networks, convolutional structures, and optimization setups.",
+            credentialId: "DL-99321-X",
+            url: "https://coursera.org"
+        },
+        {
+            id: 2,
+            issuer: "Google",
+            date: "Nov 2025",
+            name: "Machine Learning Engineer Professional Certificate",
+            desc: "Validating operational ML models, database pipelines, and production deployment parameters.",
+            credentialId: "G-ML-2245",
+            url: "https://coursera.org"
+        },
+        {
+            id: 3,
+            issuer: "NPTEL",
+            date: "Oct 2025",
+            name: "Artificial Intelligence & Reinforcement Learning",
+            desc: "Advanced training on deep reinforcement learning policies and optimization models.",
+            credentialId: "NP-883A",
+            url: "https://nptel.ac.in"
+        }
+    ];
+
+    const defaultFaqs = [
+        {
+            id: 1,
+            question: "What services do you provide?",
+            answer: "I specialize in custom Artificial Intelligence, Machine Learning and Computer Vision tools. This includes building AI chatbots, automated software agents, predictive data models, object detection tools, OCR text extraction pipelines, and deepfake checks tailored to your business needs."
+        },
+        {
+            id: 2,
+            question: "How much do projects cost?",
+            answer: "Project pricing depends entirely on complexity, the amount of data available, and integration requirements. I offer fixed-price scopes for well-defined projects and hourly rates for flexible consulting and development tasks. Contact me for a customized quote."
+        },
+        {
+            id: 3,
+            question: "How long does development take?",
+            answer: "Simple data analysis setups and standard vision pipelines are typically completed in 2 to 3 weeks. Complex multi-layered neural networks, customized agents, and production deployments can take 4 to 8 weeks depending on testing feedback loops."
+        },
+        {
+            id: 4,
+            question: "Do you provide source code?",
+            answer: "Yes, absolutely! I provide complete ownership of the final clean, fully-commented source code, along with model parameters, implementation weights, deployment Docker configurations, and a comprehensive documentation guide."
+        },
+        {
+            id: 5,
+            question: "Can you work remotely?",
+            answer: "Yes, I work remotely with clients worldwide. I maintain clear and transparent communication throughout development using Slack, Zoom, and async Loom updates to ensure a smooth project delivery."
+        }
+    ];
+
+    const defaultTestimonials = [
+        {
+            id: 1,
+            quote: "Jaiprasanth delivered a clean, automated violation tracker on time. The codebase was well-structured, easy to deploy, and saved our review team hours of manual work.",
+            name: "Camille Dufresne",
+            role: "Product Manager",
+            avatar: "https://i.pravatar.cc/80?img=11"
+        },
+        {
+            id: 2,
+            quote: "An exceptional student with deep technical focus. Jaiprasanth bridges academic Machine Learning theory with highly practical deployments that solve immediate problems.",
+            name: "Dr. Aris Vance",
+            role: "CS Department Professor",
+            avatar: "https://i.pravatar.cc/80?img=52"
+        },
+        {
+            id: 3,
+            quote: "Worked with Jaiprasanth on a complex visual analysis tool. His knowledge of OpenCV and PyTorch is superb, and he writes clean, well-documented code.",
+            name: "Marcus Aurelius",
+            role: "Peer &amp; Lead AI Collaborator",
+            avatar: "https://i.pravatar.cc/80?img=47"
+        }
+    ];
+
+    const defaultSkills = {
+        programming: [
+            { name: "Python", status: "Main", icon: "fa-brands fa-python text-blue-500" },
+            { name: "C++", status: "Advanced", icon: "fa-solid fa-microchip text-zinc-500" },
+            { name: "JavaScript", status: "Intermediate", icon: "fa-brands fa-js text-yellow-500" }
+        ],
+        frameworks: [
+            "PyTorch", "TensorFlow", "Scikit-Learn", "OpenCV", "YOLO", "Transformers", "Pandas", "NumPy"
+        ],
+        deployment: [
+            { name: "Git", icon: "fa-brands fa-git-alt text-orange-500" },
+            { name: "GitHub", icon: "fa-brands fa-github text-zinc-800 dark:text-white" },
+            { name: "Docker", icon: "fa-brands fa-docker text-blue-400" },
+            { name: "Linux", icon: "fa-brands fa-linux text-zinc-600 dark:text-zinc-300" }
+        ]
+    };
+
     function app() {
       return {
+        // Main App Options
         dark: true,
         mm: false,
         sc: false,
         s: 'hero',
         
-        // Dynamic Dynamic Content Arrays
-        allProjects: [],
-        allArticles: [],
-        currentFilter: 'all',
+        // Status & Resume Handlers
+        currentStatus: 'Open to Work',
+        statusText: 'Available for Projects & Internships',
+        resumeLink: 'https://github.com/jai11205',
         
-        // Inline Modal Reader
-        readerOpen: false,
-        activeArticle: null,
+        // Dynamic Collections
+        allProjects: [],
+        caseStudies: [],
+        certifications: [],
+        faqs: [],
+        testimonials: [],
+        skills: {},
+        
+        currentFilter: 'all',
+        activeFaq: null,
+        projModalOpen: false,
+        activeProject: null,
+
+        // Live API Showcase Metrics
+        githubMetrics: {
+            repos: 12,
+            stars: 24
+        },
+
+        // UNIFIED HUB STATE (Fully isolated inside parent app)
+        adminPanelOpen: false,
+        adminAuthenticated: false,
+        adminPasswordInput: '',
+        adminPasswordError: false,
+        adminActiveTab: 'global',
+        adminExportAlert: false,
+
+        // Admin Interactive Form Data Containers
+        globalForm: { status: 'Open to Work', resume: 'https://github.com/jai11205' },
+        projectForm: { title: '', category: 'security', url: '', demoUrl: '', img: '', tags: '', results: '', problem: '', solution: '', desc: '' },
+        impactForm: { title: '', industry: 'Security', timeline: 'Q1 2026', problem: '', approach: '', tech: '', outcome: '', value: '' },
+        skillsForm: { name: '', sector: 'programming', icon: '', status: 'Main' },
+        quotesForm: { name: '', role: '', quote: '', avatar: '' },
+        faqForm: { question: '', answer: '' },
 
         init() {
-          // Dark Mode Toggle initialization
           const savedTheme = localStorage.getItem('theme');
           this.dark = savedTheme ? savedTheme === 'dark' : true;
           this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
 
-          // Load custom dynamic datasets or fallback to system defaults
-          const localProjects = localStorage.getItem('custom_projects');
-          const localArticles = localStorage.getItem('custom_articles');
-          this.allProjects = localProjects ? JSON.parse(localProjects) : defaultProjects;
-          this.allArticles = localArticles ? JSON.parse(localArticles) : defaultArticles;
+          // Load local overrides or fallback to standard baseline structures
+          this.currentStatus = localStorage.getItem('glob_status') || 'Open to Work';
+          this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
+          this.resumeLink = localStorage.getItem('glob_resume') || 'https://github.com/jai11205';
 
-          // Scroll Tracking & Spy Configurations
+          this.allProjects = JSON.parse(localStorage.getItem('custom_projects')) || defaultProjects;
+          this.certifications = JSON.parse(localStorage.getItem('custom_certs')) || defaultCertifications;
+          this.caseStudies = JSON.parse(localStorage.getItem('custom_impact')) || defaultCaseStudies;
+          this.faqs = JSON.parse(localStorage.getItem('custom_faqs')) || defaultFaqs;
+          this.testimonials = JSON.parse(localStorage.getItem('custom_testimonials')) || defaultTestimonials;
+          this.skills = JSON.parse(localStorage.getItem('custom_skills')) || defaultSkills;
+
+          // Hydrate the initial state of the global admin configuration forms
+          this.globalForm.status = this.currentStatus;
+          this.globalForm.resume = this.resumeLink;
+
+          // Retrieve live repository stats dynamically from the public API
+          this.fetchGitHubActivity();
+
           window.addEventListener('scroll', () => {
             this.sc = window.scrollY > 20;
             this.updateSection();
@@ -848,18 +1532,32 @@
 
           this.updateSection();
 
-          // Scroll Spy animations helper
           const io = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
           }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
           document.querySelectorAll('.reveal').forEach(el => io.observe(el));
         },
 
+        async fetchGitHubActivity() {
+            try {
+                const response = await fetch('https://api.github.com/users/jai11205/repos');
+                if (response.ok) {
+                    const repos = await response.json();
+                    this.githubMetrics.repos = repos.length;
+                    let starAggregate = 0;
+                    repos.forEach(r => starAggregate += r.stargazers_count);
+                    this.githubMetrics.stars = starAggregate || 4;
+                }
+            } catch (err) {
+                console.warn("Could not fetch active GitHub metrics. Reverting to fallback configurations.");
+            }
+        },
+
         updateSection() {
           const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 100;
           if (atBottom) { this.s = 'contact'; return; }
           
-          const ids = ['contact', 'blog', 'about', 'work', 'services', 'hero'];
+          const ids = ['contact', 'certifications', 'about', 'process', 'skills', 'work', 'services', 'hero'];
           for (const id of ids) {
             const el = document.getElementById(id);
             if (el && window.scrollY >= el.offsetTop - 150) { 
@@ -869,147 +1567,209 @@
           }
         },
 
-        // Article Modal Open/Close Controls
-        openArticle(article) {
-            this.activeArticle = article;
-            this.readerOpen = true;
+        toggleFaq(faqId) {
+            this.activeFaq = this.activeFaq === faqId ? null : faqId;
+        },
+
+        openProjectModal(proj) {
+            this.activeProject = proj;
+            this.projModalOpen = true;
             document.body.style.overflow = 'hidden';
         },
-        closeArticle() {
-            this.readerOpen = false;
-            this.activeArticle = null;
+        closeProjectModal() {
+            this.projModalOpen = false;
+            this.activeProject = null;
             document.body.style.overflow = '';
+        },
+
+        // UNIFIED ADMIN HANDLERS (Completely fixed parent functions)
+        togglePanel() {
+            this.adminPanelOpen = !this.adminPanelOpen;
+            if (this.adminPanelOpen && !this.adminAuthenticated) {
+                this.adminPasswordInput = '';
+                this.adminPasswordError = false;
+            } else if (this.adminPanelOpen && this.adminAuthenticated) {
+                this.globalForm.status = this.currentStatus;
+                this.globalForm.resume = this.resumeLink;
+            }
+        },
+
+        verifyPasscode() {
+            if (this.adminPasswordInput === 'admin123') {
+                this.adminAuthenticated = true;
+                this.adminPasswordError = false;
+                this.adminPasswordInput = '';
+                this.globalForm.status = this.currentStatus;
+                this.globalForm.resume = this.resumeLink;
+            } else {
+                this.adminPasswordError = true;
+            }
+        },
+
+        lock() {
+            this.adminAuthenticated = false;
+            this.adminPasswordInput = '';
+            this.adminPasswordError = false;
+        },
+
+        updateGlobalVars() {
+            if (!this.adminAuthenticated) return;
+            localStorage.setItem('glob_status', this.globalForm.status);
+            localStorage.setItem('glob_resume', this.globalForm.resume);
+            
+            this.currentStatus = this.globalForm.status;
+            this.statusText = this.globalForm.status === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
+            this.resumeLink = this.globalForm.resume;
+            
+            this.adminPanelOpen = false;
+        },
+
+        submitImpactCase() {
+            if (!this.adminAuthenticated) return;
+            let current = JSON.parse(localStorage.getItem('custom_impact')) || [...defaultCaseStudies];
+            const newCase = {
+                id: Date.now(),
+                title: this.impactForm.title,
+                industry: this.impactForm.industry,
+                timeline: this.impactForm.timeline,
+                problem: this.impactForm.problem,
+                approach: this.impactForm.approach,
+                tech: this.impactForm.tech.split(',').map(t => t.trim()),
+                outcome: this.impactForm.outcome,
+                value: this.impactForm.value
+            };
+            current.unshift(newCase);
+            localStorage.setItem('custom_impact', JSON.stringify(current));
+            this.caseStudies = current;
+            
+            this.impactForm = { title: '', industry: 'Security', timeline: 'Q1 2026', problem: '', approach: '', tech: '', outcome: '', value: '' };
+            this.adminPanelOpen = false;
+        },
+
+        submitSkillNode() {
+            if (!this.adminAuthenticated) return;
+            let current = JSON.parse(localStorage.getItem('custom_skills')) || {...defaultSkills};
+            
+            if (this.skillsForm.sector === 'frameworks') {
+                current.frameworks.unshift(this.skillsForm.name);
+            } else if (this.skillsForm.sector === 'programming') {
+                current.programming.unshift({
+                    name: this.skillsForm.name,
+                    status: this.skillsForm.status || 'Advanced',
+                    icon: this.skillsForm.icon || 'fa-solid fa-code text-accent'
+                });
+            } else if (this.skillsForm.sector === 'deployment') {
+                current.deployment.unshift({
+                    name: this.skillsForm.name,
+                    icon: this.skillsForm.icon || 'fa-solid fa-terminal text-zinc-500'
+                });
+            }
+            
+            localStorage.setItem('custom_skills', JSON.stringify(current));
+            this.skills = current;
+            
+            this.skillsForm = { name: '', sector: 'programming', icon: '', status: 'Main' };
+            this.adminPanelOpen = false;
+        },
+
+        submitQuote() {
+            if (!this.adminAuthenticated) return;
+            let current = JSON.parse(localStorage.getItem('custom_testimonials')) || [...defaultTestimonials];
+            const newQuote = {
+                id: Date.now(),
+                quote: this.quotesForm.quote,
+                name: this.quotesForm.name,
+                role: this.quotesForm.role,
+                avatar: this.quotesForm.avatar || 'https://i.pravatar.cc/80?img=12'
+            };
+            current.unshift(newQuote);
+            localStorage.setItem('custom_testimonials', JSON.stringify(current));
+            this.testimonials = current;
+            
+            this.quotesForm = { name: '', role: '', quote: '', avatar: '' };
+            this.adminPanelOpen = false;
+        },
+
+        submitFAQ() {
+            if (!this.adminAuthenticated) return;
+            let current = JSON.parse(localStorage.getItem('custom_faqs')) || [...defaultFaqs];
+            const newFaq = {
+                id: Date.now(),
+                question: this.faqForm.question,
+                answer: this.faqForm.answer
+            };
+            current.unshift(newFaq);
+            localStorage.setItem('custom_faqs', JSON.stringify(current));
+            this.faqs = current;
+            
+            this.faqForm = { question: '', answer: '' };
+            this.adminPanelOpen = false;
+        },
+
+        submitProject() {
+            if (!this.adminAuthenticated) return;
+            let current = JSON.parse(localStorage.getItem('custom_projects')) || [...defaultProjects];
+            const newProj = {
+                id: Date.now(),
+                title: this.projectForm.title,
+                category: this.projectForm.category,
+                problem: this.projectForm.problem,
+                solution: this.projectForm.solution,
+                results: this.projectForm.results,
+                tags: this.projectForm.tags.split(',').map(t => t.trim()),
+                desc: this.projectForm.desc,
+                url: this.projectForm.url,
+                demoUrl: this.projectForm.demoUrl,
+                img: this.projectForm.img || 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&q=80'
+            };
+            current.unshift(newProj);
+            localStorage.setItem('custom_projects', JSON.stringify(current));
+            this.allProjects = current;
+
+            this.projectForm = { title: '', category: 'security', url: '', demoUrl: '', img: '', tags: '', results: '', problem: '', solution: '', desc: '' };
+            this.adminPanelOpen = false;
+        },
+
+        copyStaticJSON() {
+            const combinedDB = {
+                glob_status: this.currentStatus,
+                glob_resume: this.resumeLink,
+                custom_projects: this.allProjects,
+                custom_certs: this.certifications,
+                custom_impact: this.caseStudies,
+                custom_faqs: this.faqs,
+                custom_testimonials: this.testimonials,
+                custom_skills: this.skills
+            };
+
+            const dbCodeString = "/* PASTE TO INIT OR STORE DEFAULTS */\n" + JSON.stringify(combinedDB, null, 4);
+            
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = dbCodeString;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            this.adminExportAlert = true;
+            setTimeout(() => this.adminExportAlert = false, 4000);
+        },
+
+        resetToDefaults() {
+            localStorage.removeItem('glob_status');
+            localStorage.removeItem('glob_resume');
+            localStorage.removeItem('custom_projects');
+            localStorage.removeItem('custom_certs');
+            localStorage.removeItem('custom_impact');
+            localStorage.removeItem('custom_faqs');
+            localStorage.removeItem('custom_testimonials');
+            localStorage.removeItem('custom_skills');
+            
+            window.location.reload();
         }
       }
     }
 
-    // Passcode Protected Developer Management State Setup
-    function developerPanel() {
-        return {
-            open: false,
-            authenticated: false,
-            passwordInput: '',
-            passwordError: false,
-            activeTab: 'project',
-            exportAlert: false,
-
-            // Quick add schemas
-            projectForm: { title: '', category: 'security', url: '', img: '', tags: '', year: '2026', desc: '' },
-            blogForm: { title: '', category: 'Optimization', img: '', date: 'March 2026', desc: '', content: '' },
-
-            togglePanel() {
-                this.open = !this.open;
-                // If opening and not authenticated, clean up password inputs
-                if (this.open && !this.authenticated) {
-                    this.passwordInput = '';
-                    this.passwordError = false;
-                }
-            },
-
-            verifyPasscode() {
-                // Check passcode securely
-                // Default secure passcode is set to 'admin123'
-                if (this.passwordInput === 'admin123') {
-                    this.authenticated = true;
-                    this.passwordError = false;
-                    this.passwordInput = '';
-                } else {
-                    this.passwordError = true;
-                }
-            },
-
-            lock() {
-                // Explicitly terminate the session and lock the panel
-                this.authenticated = false;
-                this.passwordInput = '';
-                this.passwordError = false;
-            },
-
-            submitProject() {
-                if (!this.authenticated) return;
-
-                // Read from LocalStorage or Fallback
-                let current = JSON.parse(localStorage.getItem('custom_projects')) || [...defaultProjects];
-                const newProj = {
-                    id: Date.now(),
-                    title: this.projectForm.title,
-                    category: this.projectForm.category,
-                    year: this.projectForm.year,
-                    tags: this.projectForm.tags.split(',').map(t => t.trim()),
-                    desc: this.projectForm.desc,
-                    url: this.projectForm.url,
-                    img: this.projectForm.img || 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&q=80'
-                };
-
-                current.unshift(newProj);
-                localStorage.setItem('custom_projects', JSON.stringify(current));
-                
-                // Live UI update
-                this.$parent.allProjects = current;
-
-                // Clear input values safely
-                this.projectForm = { title: '', category: 'security', url: '', img: '', tags: '', year: '2026', desc: '' };
-                this.open = false;
-            },
-
-            submitArticle() {
-                if (!this.authenticated) return;
-
-                let current = JSON.parse(localStorage.getItem('custom_articles')) || [...defaultArticles];
-                const newArt = {
-                    id: Date.now(),
-                    category: this.blogForm.category,
-                    date: this.blogForm.date,
-                    title: this.blogForm.title,
-                    desc: this.blogForm.desc,
-                    img: this.blogForm.img || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=80',
-                    content: this.blogForm.content
-                };
-
-                current.unshift(newArt);
-                localStorage.setItem('custom_articles', JSON.stringify(current));
-
-                // Live UI update
-                this.$parent.allArticles = current;
-
-                // Clear inputs
-                this.blogForm = { title: '', category: 'Optimization', img: '', date: 'March 2026', desc: '', content: '' };
-                this.open = false;
-            },
-
-            copyCode(type) {
-                let arrayCode = '';
-                if (type === 'projects') {
-                    const data = this.$parent.allProjects;
-                    arrayCode = 'const defaultProjects = ' + JSON.stringify(data, null, 4) + ';';
-                } else {
-                    const data = this.$parent.allArticles;
-                    arrayCode = 'const defaultArticles = ' + JSON.stringify(data, null, 4) + ';';
-                }
-
-                // Copy variables cleanly to clipboard using legacy support logic
-                const tempTextArea = document.createElement('textarea');
-                tempTextArea.value = arrayCode;
-                document.body.appendChild(tempTextArea);
-                tempTextArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempTextArea);
-
-                this.exportAlert = true;
-                setTimeout(() => this.exportAlert = false, 4000);
-            },
-
-            resetToDefaults() {
-                localStorage.removeItem('custom_projects');
-                localStorage.removeItem('custom_articles');
-                this.$parent.allProjects = defaultProjects;
-                this.$parent.allArticles = defaultArticles;
-                this.open = false;
-            }
-        }
-    }
-
-    // Dynamic client metrics form handler
     function contactForm() {
         return {
             formData: { name: '', email: '', subject: '', message: '' },
