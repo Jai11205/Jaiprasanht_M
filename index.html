@@ -1807,9 +1807,17 @@
                 console.log("Syncing from path:", 'artifacts/' + appId + '/public/data/testimonials');
                 
                 window.onSnapshotFirestore(colPath, (snapshot) => {
-                    const loaded = [];
-                    snapshot.forEach((doc) => {
-                        loaded.push({ id: doc.id, ...doc.data() });
+                        const loaded = [];
+                        snapshot.forEach((doc) => {
+                            loaded.push({ id: doc.id, ...doc.data() });
+                        });
+                        
+                        console.log("--- DATA RECEIVED ---");
+                        console.log("Total docs:", loaded.length);
+                        console.log("First review keys:", Object.keys(loaded[0])); 
+                        console.log("First review data:", loaded[0]); 
+                        
+                        this.testimonials = loaded;
                     });
                     
                     console.log("Documents received from Firestore:", loaded.length);
