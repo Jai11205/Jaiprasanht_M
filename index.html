@@ -1774,7 +1774,7 @@
           this.skills = JSON.parse(localStorage.getItem('custom_skills')) || defaultSkills;
 
           // Set up Firestore observer sync for Testimonials (RULE 1, RULE 2 & RULE 3 compliant)
-          this.syncTestimonialsWithFirestore();
+         
 
           // Hydrate the initial state of the global admin configuration forms
           this.globalForm.status = this.currentStatus;
@@ -2248,6 +2248,14 @@
     }
 
     document.getElementById('yr').textContent = new Date().getFullYear();
+    // At the end of your main <script> tag:
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('app', () => {
+            const instance = app();
+            window.appInstance = instance; // Make app accessible to the module
+            return instance;
+        });
+    });
     </script>
 </body>
 </html>
