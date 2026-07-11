@@ -776,23 +776,22 @@
                         <div class="lg:col-span-8">
                             <div class="bg-white dark:bg-zinc-950 p-6 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 space-y-4 overflow-hidden">
                                 <div class="flex justify-between items-center text-xs">
-                                    <span class="font-bold text-zinc-600 dark:text-zinc-400">Commit History (Live Simulated Timeline Overlay)</span>
+                                    <span class="font-bold text-zinc-600 dark:text-zinc-400">Commit History (Real Live GitHub Contribution Chart)</span>
                                     <span class="text-green-500 font-semibold inline-flex items-center gap-1">
-                                        <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span> Live Activity Link Established
+                                        <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span> Sync Active: @jai11205
                                     </span>
                                 </div>
-                                <div class="contrib-grid h-20 opacity-85" aria-hidden="true">
-                                    <template x-for="n in 120">
-                                        <span :class="['bg-green-500', 'bg-green-600', 'bg-green-700', 'bg-zinc-100 dark:bg-zinc-800', 'bg-green-800'][Math.floor(Math.random() * 5)]" class="rounded-[2px] w-full h-full"></span>
-                                    </template>
+                                <div class="w-full flex items-center justify-center p-2 bg-slate-50 dark:bg-zinc-900 rounded-xl overflow-x-auto scrollbar-none" aria-label="GitHub Contributions Chart">
+                                    <!-- Dynamic SVG dynamically rendered from your actual GitHub activity, styled in custom orange (#FF6B2B) -->
+                                    <img src="https://ghchart.rshah.org/FF6B2B/jai11205" alt="Jaiprasanth's GitHub Contributions Chart" class="min-w-[600px] max-w-full h-auto dark:brightness-95 dark:contrast-125" loading="lazy" onerror="this.style.display='none'">
                                 </div>
                                 <div class="flex items-center justify-between text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">
-                                    <span>Q1 2026 Commit Baseline</span>
+                                    <span>Live GitHub Commit Feed</span>
                                     <div class="flex gap-1 items-center">
                                         <span>Less</span>
-                                        <span class="w-2.5 h-2.5 rounded-sm bg-zinc-100 dark:bg-zinc-800"></span>
-                                        <span class="w-2.5 h-2.5 rounded-sm bg-green-700"></span>
-                                        <span class="w-2.5 h-2.5 rounded-sm bg-green-500"></span>
+                                        <span class="w-2.5 h-2.5 rounded-sm bg-zinc-200 dark:bg-zinc-800"></span>
+                                        <span class="w-2.5 h-2.5 rounded-sm bg-[#FF6B2B]/40"></span>
+                                        <span class="w-2.5 h-2.5 rounded-sm bg-[#FF6B2B]"></span>
                                         <span>More</span>
                                     </div>
                                 </div>
