@@ -752,17 +752,22 @@
                                 </div>
                             </div>  
                             
-                            <div class="flex items-center gap-6 py-2 bg-white dark:bg-zinc-950 p-4 rounded-2xl border border-zinc-100 dark:border-zinc-850">
-                                <div>
-                                    <span class="text-xs text-zinc-400 uppercase tracking-widest font-semibold block">Public Repos</span>
+                         <div class="grid grid-cols-2 gap-4 py-3 px-4 bg-white dark:bg-zinc-950 rounded-2xl border border-zinc-100 dark:border-zinc-850">
+                                <div class="min-w-0">
+                                    <span class="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold block truncate">Public Repos</span>
                                     <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.repos"></span>
                                 </div>
-                                <div class="w-[1px] h-10 bg-zinc-200 dark:bg-zinc-800"></div>
-                                <div>
-                                    <span class="text-xs text-zinc-400 uppercase tracking-widest font-semibold block">Total Stars</span>
+                                <div class="min-w-0 border-l border-zinc-100 dark:border-zinc-850/80 pl-4">
+                                    <span class="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold block truncate">Total Stars</span>
                                     <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.stars"></span>
                                 </div>
                             </div>
+
+                            <!-- Wide, premium button placed safely below metrics to prevent squishing -->
+                            <a href="https://github.com/jai11205" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 text-white dark:text-zinc-950 px-5 py-3 rounded-xl text-xs font-bold transition-all shadow-md shrink-0">
+                                Visit Profile <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
 
                         </div>
                         
