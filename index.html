@@ -1573,19 +1573,6 @@
         } catch (e) {
             console.warn("Firebase Auth Error:", e);
         }
-        window.onSnapshotFirestore(colPath, (snapshot) => {
-    const loaded = [];
-    snapshot.forEach((doc) => {
-        const data = doc.data();
-        loaded.push({ id: doc.id, ...data });
-    });
-    
-    // DEBUG: This will print your data in the console
-    console.log("First review object structure:", loaded[0]); 
-    
-    loaded.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-    this.testimonials = loaded;
-});
     };
     authenticateUser();
 
@@ -1840,6 +1827,19 @@
             } else {
                 console.log("Firebase not initialized yet, waiting...");
             }
+            window.onSnapshotFirestore(colPath, (snapshot) => {
+    const loaded = [];
+    snapshot.forEach((doc) => {
+        const data = doc.data();
+        loaded.push({ id: doc.id, ...data });
+    });
+    
+    // DEBUG: This will print your data in the console
+    console.log("First review object structure:", loaded[0]); 
+    
+    loaded.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+    this.testimonials = loaded;
+});
         },
 
         async fetchGitHubActivity() {
