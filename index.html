@@ -1536,45 +1536,43 @@
     </footer>
 
     <!-- REAL-TIME CLOUD DATABASE (FIREBASE FIRESTORE MODULE) -->
-    <script type="module">
+  <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    // 1. Paste your actual credentials from your Firebase Console here:
+    const firebaseConfig = {
+          apiKey: "AIzaSyBDrn2448YmvJ_mM4IniYy0ZBz4GEx53_w",
+          authDomain: "portfolio-29a91.firebaseapp.com",
+          projectId: "portfolio-29a91",
+          storageBucket: "portfolio-29a91.firebasestorage.app",
+          messagingSenderId: "387816977198",
+          appId: "1:387816977198:web:13600022bc78e0208580bf",
+          measurementId: "G-4JHRN9QDPT"
+    };
 
-    // Fallback variables
-    let db = null;
-    let auth = null;
-    let appId = 'default-app-id';
+    // 2. Initialize Firebase Core Services
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const appId = "default-app-id"; // You can leave this as default
     let user = null;
 
-    try {
-        // Retrieve global configs from immersive sandbox environment safely
-        if (typeof __app_id !== 'undefined') {
-            appId = __app_id;
+    // 3. Securely Sign In Anonymous Users before allowing database reads/writes
+    const authenticateUser = async () => {
+        try {
+            user = await signInAnonymously(auth);
+            window.firebaseUser = user;
+            console.log("Firebase Auth Verified: Real-Time Synced Stream Initialized.");
+        } catch (e) {
+            console.warn("Firebase Auth Error:", e);
         }
-        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-            const firebaseConfig = typeof portfolio-29a91 === 'string' ? JSON.parse(__firebase_config) : portfolio-29a91;
-            const app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
+    };
+    authenticateUser();
 
-            // RULE 3 - Authenticate BEFORE queries are generated
-            const authenticateUser = async () => {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    user = await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    user = await signInAnonymously(auth);
-                }
-                window.firebaseUser = user;
-                console.log("Firebase Auth Verified: Real-Time Synced Stream Initialized.");
-            };
-            authenticateUser().catch(e => console.warn("Firebase Auth Error:", e));
-        }
-    } catch (err) {
-        console.warn("Firestore Database Module initialization bypassed. Running locally.", err);
-    }
-
-    // Expose references universally to Alpine app thread scope
+    // 4. Expose references globally to the Alpine.js app thread
     window.firebaseDB = db;
     window.firebaseAuth = auth;
     window.firebaseAppId = appId;
