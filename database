@@ -9,7 +9,7 @@
             "title": "Adaptive Deepfake Detection (Sentinel-RL)",
             "category": "security",
             "problem": "Heavy visual computation makes real-time deepfake analysis too slow and expensive on standard servers.",
-            "solution": "Trained an intelligent AI agent to skip low-variance frames, focusing analysis only on high-value features.",
+            "solution": "Trained an AI agent to skip low-variance frames, focusing analysis only on high-value features.",
             "results": "Cut processing workload by 40% with a 96.2% validation score",
             "tags": [
                 "Python",
