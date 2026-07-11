@@ -141,6 +141,7 @@
                 <li><a href="#process" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='process'?'on':''">Process</a></li>
                 <li><a href="#about" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='about'?'on':''">About</a></li>
                 <li><a href="#certifications" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='certifications'?'on':''">Credentials</a></li>
+                <li><a href="#testimonials" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='testimonials'?'on':''">Testimonials</a></li>
                 <li><a href="#contact" class="nl text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors py-1" :class="s==='contact'?'on':''">Contact</a></li>
             </ul>
             <div class="flex items-center gap-3">
@@ -181,6 +182,7 @@
                 <li><a href="#process" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Process</a></li>
                 <li><a href="#about" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">About Me</a></li>
                 <li><a href="#certifications" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Credentials</a></li>
+                <li><a href="#testimonials" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Testimonials</a></li>
                 <li><a href="#contact" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
                 <li class="pt-3 border-t border-zinc-100 dark:border-zinc-900">
                     <a href="#contact" @click="mm=false" class="flex justify-center items-center shimmer bg-accent text-white font-medium text-sm py-3 rounded-full shadow-lg">Hire me &rarr;</a>
@@ -222,7 +224,7 @@
                                 <i class="fa-solid fa-file-pdf"></i> Download Resume
                             </a>
                             <!-- Tertiary Button -->
-                            <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-6 py-3.5 rounded-full transition-all text-sm shadow-lg shadow-accent/20">
+                            <a href="#contact" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-6 py-3.5 rounded-full transition-all text-sm shadow-lg shadow-accent/20">
                                 <i class="fa-regular fa-calendar-check"></i> Book a Consultation
                             </a>
                         </div>
@@ -809,30 +811,85 @@
             </div>
         </section>
 
-        <!-- TESTIMONIALS SECTION -->
+        <!-- TESTIMONIALS & WRITE A REVIEW SECTION -->
         <section id="testimonials" class="py-24 bg-white dark:bg-zinc-900/30">
             <div class="max-w-6xl mx-auto px-6">
-                <div class="mb-14">
-                    <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Feedback &amp; Endorsements</p>
-                    <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">What People Say</h2>
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+                    <div>
+                        <p class="text-xs font-bold text-accent tracking-widest uppercase mb-3">Feedback &amp; Endorsements</p>
+                        <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">What People Say</h2>
+                    </div>
+                    <div>
+                        <button @click="showPublicReviewForm = !showPublicReviewForm" class="bg-accent hover:bg-accent-light text-white font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-full transition-all shadow-md shadow-accent/10 flex items-center gap-2">
+                            <i class="fa-solid fa-pen-nib"></i> <span x-text="showPublicReviewForm ? 'Close Form' : 'Write a Review'"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Public Review Form -->
+                <div x-show="showPublicReviewForm" x-cloak x-transition class="mb-16 bg-slate-50 dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200/60 dark:border-zinc-800 max-w-3xl mx-auto shadow-xl">
+                    <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2">Share Your Experience</h3>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-6">Your feedback helps me deliver higher quality AI and ML systems to clients worldwide.</p>
+                    
+                    <form @submit.prevent="submitPublicReview">
+                        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1.5">Your Name *</label>
+                                <input x-model="publicReviewForm.name" type="text" required placeholder="Dr. Sarah Jenkins" class="w-full text-sm bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-accent">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1.5">Your Professional Title / Role *</label>
+                                <input x-model="publicReviewForm.role" type="text" required placeholder="Lead Researcher, MIT" class="w-full text-sm bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-accent">
+                            </div>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1.5">Rating (1 to 5 Stars) *</label>
+                                <div class="flex items-center gap-1.5 mt-2">
+                                    <template x-for="star in [1,2,3,4,5]">
+                                        <button type="button" @click="publicReviewForm.rating = star" class="text-lg focus:outline-none">
+                                            <i class="fa-star" :class="star <= publicReviewForm.rating ? 'fa-solid text-yellow-400' : 'fa-regular text-zinc-300 dark:text-zinc-700'"></i>
+                                        </button>
+                                    </template>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-1.5">Avatar Image URL (Optional)</label>
+                                <input x-model="publicReviewForm.avatar" type="url" placeholder="https://i.pravatar.cc/80?img=12" class="w-full text-sm bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-accent">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-xs font-semibold text-zinc-500 mb-1.5">Your Feedback Statement *</label>
+                            <textarea x-model="publicReviewForm.quote" required rows="3" placeholder="Exceptional execution, deep analytical logic and great communication..." class="w-full text-sm bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-accent resize-none"></textarea>
+                        </div>
+                        
+                        <div class="flex items-center justify-between gap-4">
+                            <p class="text-[10px] text-zinc-400">All submissions are instantly updated into the dynamic testimonials list.</p>
+                            <button type="submit" class="bg-accent hover:bg-accent-light text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl transition-all shadow-md">
+                                Submit Feedback
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div x-show="publicReviewSuccess" x-cloak x-transition class="mt-4 p-4 rounded-xl text-xs bg-green-500/10 border border-green-500/20 text-green-500 font-bold">
+                        Thank you! Your testimonial has been saved and added to the carousel list below.
+                    </div>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-6">
                     <template x-for="review in testimonials" :key="review.id">
                         <blockquote class="bg-slate-50 dark:bg-zinc-900 rounded-3xl p-8 border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col justify-between card-h">
                             <div>
-                                <div class="flex gap-0.5 mb-5" aria-label="5 stars">
-                                    <i class="fa-solid fa-star text-accent text-xs"></i>
-                                    <i class="fa-solid fa-star text-accent text-xs"></i>
-                                    <i class="fa-solid fa-star text-accent text-xs"></i>
-                                    <i class="fa-solid fa-star text-accent text-xs"></i>
-                                    <i class="fa-solid fa-star text-accent text-xs"></i>
+                                <div class="flex gap-0.5 mb-5" aria-label="Rating Stars">
+                                    <template x-for="star in [...Array(review.rating || 5).keys()]">
+                                        <i class="fa-solid fa-star text-accent text-xs"></i>
+                                    </template>
                                 </div>
                                 <p class="text-zinc-500 dark:text-zinc-400 text-sm italic mb-6 leading-relaxed" x-text="'&ldquo;' + review.quote + '&rdquo;'"></p>
                             </div>
                             <footer class="flex items-center gap-3 border-t border-zinc-200/50 dark:border-zinc-800/80 pt-4 mt-2">
                                 <div class="pf w-10 h-10 rounded-full shrink-0 border border-zinc-200 dark:border-zinc-700">
-                                    <img :src="review.avatar" :alt="review.name" loading="lazy">
+                                    <img :src="review.avatar" :alt="review.name" loading="lazy" onerror="this.src='https://placehold.co/80x80/FF6B2B/ffffff?text=Avatar'">
                                 </div>
                                 <div>
                                     <p class="font-bold text-sm text-zinc-900 dark:text-white" x-text="review.name"></p>
@@ -904,12 +961,6 @@
                                         <i class="fa-brands fa-github text-sm"></i>
                                     </span>
                                     <span class="text-xs font-semibold">github.com/jai11205</span>
-                                </a>
-                                <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 text-zinc-300 hover:text-white transition-colors">
-                                    <span class="w-10 h-10 flex items-center justify-center bg-zinc-800 border border-zinc-700/50 rounded-xl group-hover:bg-accent/20 group-hover:border-accent/40 transition-all shrink-0">
-                                        <i class="fa-regular fa-calendar-check text-sm"></i>
-                                    </span>
-                                    <span class="text-xs font-semibold">Book a Consulting Call</span>
                                 </a>
                             </div>
                             
@@ -1015,7 +1066,7 @@
             <i class="fa-solid fa-sliders-h text-lg transition-transform duration-300" :class="adminPanelOpen ? 'rotate-90 text-accent' : ''"></i>
         </button>
 
-        <div x-show="adminPanelOpen" x-cloak @click.away="adminPanelOpen = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-12" x-transition:enter-end="opacity-100 translate-y-0" class="absolute bottom-16 right-0 w-85 sm:w-[520px] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-2xl p-6 overflow-hidden max-h-[80vh] overflow-y-auto">
+        <div x-show="adminPanelOpen" x-cloak @click.away="adminPanelOpen = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-12" x-transition:enter-end="opacity-100 translate-y-0" class="absolute bottom-16 right-0 w-85 sm:w-[540px] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-2xl p-6 overflow-hidden max-h-[80vh] overflow-y-auto text-zinc-900 dark:text-zinc-100">
             
             <!-- PANEL PASSCODE GATE -->
             <div x-show="!adminAuthenticated" class="py-6 text-center space-y-4">
@@ -1024,19 +1075,19 @@
                 </div>
                 <div>
                     <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white">Access Key Required</h3>
-                    <p class="text-xs text-zinc-400 font-medium">Please enter your master passcode to access management operations</p>
+                    <p class="text-xs text-zinc-600 dark:text-zinc-300 font-medium">Please enter your master passcode to access management operations</p>
                 </div>
                 
                 <form @submit.prevent="verifyPasscode" class="space-y-3">
                     <div>
-                        <input x-model="adminPasswordInput" type="password" required placeholder="••••••••" class="w-full text-center tracking-widest text-sm bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 focus:outline-none focus:border-accent">
-                        <p x-show="adminPasswordError" x-cloak class="text-xs text-red-500 font-semibold mt-1">Incorrect Passcode. Try again.</p>
+                        <input x-model="adminPasswordInput" type="password" required placeholder="••••••••" class="w-full text-center tracking-widest text-sm bg-zinc-100 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-xl p-3 focus:outline-none focus:border-accent">
+                        <p x-show="adminPasswordError" x-cloak class="text-xs text-red-500 font-bold mt-1">Incorrect Passcode. Try again.</p>
                     </div>
                     <button type="submit" class="w-full bg-accent hover:bg-accent-light text-white font-bold text-xs py-2.5 rounded-xl transition-all">
                         Unlock Hub &rarr;
                     </button>
                 </form>
-                <p class="text-[10px] text-zinc-400">Default key is <code class="bg-zinc-100 dark:bg-zinc-850 px-1 py-0.5 rounded font-bold">admin123</code></p>
+                <p class="text-[10px] text-zinc-600 dark:text-zinc-400">Default key is <code class="bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded font-bold text-zinc-900 dark:text-zinc-100">admin123</code></p>
             </div>
 
             <!-- PANEL CONTENT MANAGEMENT HUB -->
@@ -1044,26 +1095,27 @@
                 <div class="flex items-center justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800 mb-6">
                     <div>
                         <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white">Content Manager Hub</h3>
-                        <p class="text-xs text-zinc-400 font-medium">Authorized Admin Session Active</p>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-300 font-medium">Authorized Admin Session Active</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button @click="lock()" class="text-xs bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-zinc-600 dark:text-zinc-300 px-2.5 py-1.5 rounded-lg font-bold">
+                        <button @click="lock()" class="text-xs bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-zinc-800 dark:text-zinc-100 px-2.5 py-1.5 rounded-lg font-bold">
                             <i class="fa-solid fa-lock-open mr-1"></i> Lock
                         </button>
-                        <button @click="adminPanelOpen = false" class="w-8 h-8 flex items-center justify-center bg-zinc-50 dark:bg-zinc-800 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-700">
+                        <button @click="adminPanelOpen = false" class="w-8 h-8 flex items-center justify-center bg-zinc-50 dark:bg-zinc-800 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-100">
                             <i class="fa-solid fa-xmark text-xs"></i>
                         </button>
                     </div>
                 </div>
 
                 <!-- Expanded Controls Tab List -->
-                <div class="grid grid-cols-3 sm:grid-cols-6 gap-1 bg-zinc-50 dark:bg-zinc-850 rounded-xl p-1 mb-6">
-                    <button @click="adminActiveTab='global'" :class="adminActiveTab==='global' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Global</button>
-                    <button @click="adminActiveTab='project'" :class="adminActiveTab==='project' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Work</button>
-                    <button @click="adminActiveTab='impact'" :class="adminActiveTab==='impact' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Impact</button>
-                    <button @click="adminActiveTab='skills'" :class="adminActiveTab==='skills' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Core</button>
-                    <button @click="adminActiveTab='quotes'" :class="adminActiveTab==='quotes' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">Reviews</button>
-                    <button @click="adminActiveTab='faq'" :class="adminActiveTab==='faq' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-500'" class="py-2 text-[10px] rounded-lg transition-all">FAQs</button>
+                <div class="grid grid-cols-4 sm:grid-cols-7 gap-1 bg-zinc-50 dark:bg-zinc-850 rounded-xl p-1 mb-6">
+                    <button @click="adminActiveTab='global'" :class="adminActiveTab==='global' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'" class="py-2 text-[10px] rounded-lg transition-all">Global</button>
+                    <button @click="adminActiveTab='project'" :class="adminActiveTab==='project' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'" class="py-2 text-[10px] rounded-lg transition-all">Work</button>
+                    <button @click="adminActiveTab='impact'" :class="adminActiveTab==='impact' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'" class="py-2 text-[10px] rounded-lg transition-all">Impact</button>
+                    <button @click="adminActiveTab='skills'" :class="adminActiveTab==='skills' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'" class="py-2 text-[10px] rounded-lg transition-all">Core</button>
+                    <button @click="adminActiveTab='certs'" :class="adminActiveTab==='certs' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'" class="py-2 text-[10px] rounded-lg transition-all">Certs</button>
+                    <button @click="adminActiveTab='quotes'" :class="adminActiveTab==='quotes' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'" class="py-2 text-[10px] rounded-lg transition-all">Reviews</button>
+                    <button @click="adminActiveTab='faq'" :class="adminActiveTab==='faq' ? 'bg-white dark:bg-zinc-800 text-accent font-bold' : 'text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'" class="py-2 text-[10px] rounded-lg transition-all">FAQs</button>
                 </div>
 
                 <!-- TAB: GLOBAL STATUS & RESUME UPDATER -->
@@ -1071,15 +1123,15 @@
                     <h4 class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Availability &amp; File Handlers</h4>
                     <div class="space-y-3">
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Freelancer Status Toggle</label>
-                            <select x-model="globalForm.status" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
-                                <option value="Open to Work">Open to Work / Available</option>
-                                <option value="Currently Unavailable">Currently Engaged / Unavailable</option>
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Freelancer Status Toggle</label>
+                            <select x-model="globalForm.status" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                                <option value="Open to Work" class="text-zinc-900 dark:text-white bg-white dark:bg-zinc-800">Open to Work / Available</option>
+                                <option value="Currently Unavailable" class="text-zinc-900 dark:text-white bg-white dark:bg-zinc-800">Currently Engaged / Unavailable</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Resume File Source URL</label>
-                            <input x-model="globalForm.resume" type="text" placeholder="https://..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Resume File Source URL</label>
+                            <input x-model="globalForm.resume" type="text" placeholder="https://..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                         </div>
                         <button @click="updateGlobalVars()" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all">
                             Save Global Configuration
@@ -1087,198 +1139,368 @@
                     </div>
                 </div>
 
-                <!-- TAB: ADD PROJECT -->
-                <div x-show="adminActiveTab === 'project'">
+                <!-- TAB: ADD/DELETE PROJECTS -->
+                <div x-show="adminActiveTab === 'project'" class="space-y-6">
                     <form @submit.prevent="submitProject" class="space-y-4">
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Project Name *</label>
-                                <input x-model="projectForm.title" type="text" required placeholder="Sentinel-RL" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Project Name *</label>
+                                <input x-model="projectForm.title" type="text" required placeholder="Sentinel-RL" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Category *</label>
-                                <select x-model="projectForm.category" required class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
-                                    <option value="security">Security &amp; RL</option>
-                                    <option value="vision">Vision System</option>
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Category *</label>
+                                <select x-model="projectForm.category" required class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                                    <option value="security" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Security &amp; RL</option>
+                                    <option value="vision" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Vision System</option>
                                 </select>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Repository URL *</label>
-                                <input x-model="projectForm.url" type="url" required placeholder="https://github.com/..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Repository URL *</label>
+                                <input x-model="projectForm.url" type="url" required placeholder="https://github.com/..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Demo URL *</label>
-                                <input x-model="projectForm.demoUrl" type="text" required placeholder="https://..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Demo URL *</label>
+                                <input x-model="projectForm.demoUrl" type="text" required placeholder="https://..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Image URL (Optional)</label>
-                            <input x-model="projectForm.img" type="url" placeholder="https://unsplash.com/..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Image URL (Optional)</label>
+                            <input x-model="projectForm.img" type="url" placeholder="https://unsplash.com/..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Tags (Comma Sep) *</label>
-                                <input x-model="projectForm.tags" type="text" required placeholder="Python, PyTorch" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Tags (Comma Sep) *</label>
+                                <input x-model="projectForm.tags" type="text" required placeholder="Python, PyTorch" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Results *</label>
-                                <input x-model="projectForm.results" type="text" required placeholder="Saved 40% Server Load" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Results *</label>
+                                <input x-model="projectForm.results" type="text" required placeholder="Saved 40% Server Load" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Problem *</label>
-                                <input x-model="projectForm.problem" type="text" required placeholder="Heavy visual parsing loads" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Problem *</label>
+                                <input x-model="projectForm.problem" type="text" required placeholder="Heavy visual parsing loads" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Solution *</label>
-                                <input x-model="projectForm.solution" type="text" required placeholder="Smart selective frame loading" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Solution *</label>
+                                <input x-model="projectForm.solution" type="text" required placeholder="Smart selective frame loading" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Project Description *</label>
-                            <textarea x-model="projectForm.desc" required rows="2" placeholder="Write a short summary..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 resize-none"></textarea>
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Project Description *</label>
+                            <textarea x-model="projectForm.desc" required rows="2" placeholder="Write a short summary..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium resize-none"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
                             <i class="fa-solid fa-plus"></i> Inject Project
                         </button>
                     </form>
+
+                    <!-- Deletion Manager Block -->
+                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                        <h5 class="text-xs font-bold text-zinc-700 dark:text-zinc-200 uppercase tracking-wider mb-3">Delete Existing Projects</h5>
+                        <div class="space-y-2">
+                            <template x-for="p in allProjects" :key="p.id">
+                                <div class="flex items-center justify-between p-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg border border-zinc-200 dark:border-zinc-700">
+                                    <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200" x-text="p.title"></span>
+                                    <button @click="deleteProject(p.id)" class="text-red-500 hover:text-red-600 transition-colors p-1" title="Delete Project">
+                                        <i class="fa-solid fa-trash-can text-sm"></i>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- TAB: ADD BUSINESS IMPACT (CASE STUDIES) -->
-                <div x-show="adminActiveTab === 'impact'">
+                <!-- TAB: ADD/DELETE BUSINESS IMPACT (CASE STUDIES) -->
+                <div x-show="adminActiveTab === 'impact'" class="space-y-6">
                     <form @submit.prevent="submitImpactCase" class="space-y-4">
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Case Title *</label>
-                                <input x-model="impactForm.title" type="text" required placeholder="Optimizing Neural Latency" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Case Title *</label>
+                                <input x-model="impactForm.title" type="text" required placeholder="Optimizing Neural Latency" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Industry Vertical *</label>
-                                <input x-model="impactForm.industry" type="text" required placeholder="E-commerce Security" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Industry Vertical *</label>
+                                <input x-model="impactForm.industry" type="text" required placeholder="E-commerce Security" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Client Value Target *</label>
-                                <input x-model="impactForm.value" type="text" required placeholder="3x More Feeds Online" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Client Value Target *</label>
+                                <input x-model="impactForm.value" type="text" required placeholder="3x More Feeds Online" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Final Outcome KPI *</label>
-                                <input x-model="impactForm.outcome" type="text" required placeholder="40% Load Decline" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Final Outcome KPI *</label>
+                                <input x-model="impactForm.outcome" type="text" required placeholder="40% Load Decline" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Problem Statement *</label>
-                            <input x-model="impactForm.problem" type="text" required placeholder="Bottlenecks on server nodes" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Problem Statement *</label>
+                            <input x-model="impactForm.problem" type="text" required placeholder="Bottlenecks on server nodes" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">My Engineering Approach *</label>
-                            <input x-model="impactForm.approach" type="text" required placeholder="Model pruning & local pipeline steps" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">My Engineering Approach *</label>
+                            <input x-model="impactForm.approach" type="text" required placeholder="Model pruning & local pipeline steps" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Technologies (Comma Sep)</label>
-                                <input x-model="impactForm.tech" type="text" required placeholder="YOLOv8, TensorRT" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Technologies (Comma Sep)</label>
+                                <input x-model="impactForm.tech" type="text" required placeholder="YOLOv8, TensorRT" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Timeline Profile</label>
-                                <input x-model="impactForm.timeline" type="text" required placeholder="Q1 2026" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Timeline Profile</label>
+                                <input x-model="impactForm.timeline" type="text" required placeholder="Q1 2026" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                         </div>
                         <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
                             <i class="fa-solid fa-plus"></i> Inject Impact Case
                         </button>
                     </form>
+
+                    <!-- Deletion Manager Block -->
+                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                        <h5 class="text-xs font-bold text-zinc-700 dark:text-zinc-200 uppercase tracking-wider mb-3">Delete Existing Case Studies</h5>
+                        <div class="space-y-2">
+                            <template x-for="cs in caseStudies" :key="cs.id">
+                                <div class="flex items-center justify-between p-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg border border-zinc-200 dark:border-zinc-700">
+                                    <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200" x-text="cs.title"></span>
+                                    <button @click="deleteCaseStudy(cs.id)" class="text-red-500 hover:text-red-600 transition-colors p-1" title="Delete Case Study">
+                                        <i class="fa-solid fa-trash-can text-sm"></i>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- TAB: TECHNICAL CORE (SKILLS UPDATER) -->
-                <div x-show="adminActiveTab === 'skills'" class="space-y-4">
+                <div x-show="adminActiveTab === 'skills'" class="space-y-6">
                     <form @submit.prevent="submitSkillNode" class="space-y-3">
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Skill Node Name *</label>
-                                <input x-model="skillsForm.name" type="text" required placeholder="FastAPI" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Skill Node Name *</label>
+                                <input x-model="skillsForm.name" type="text" required placeholder="FastAPI" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Skill Sector *</label>
-                                <select x-model="skillsForm.sector" required class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
-                                    <option value="programming">Programming Language</option>
-                                    <option value="frameworks">Framework Badge</option>
-                                    <option value="deployment">Deployment Tool</option>
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Skill Sector *</label>
+                                <select x-model="skillsForm.sector" required class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                                    <option value="programming" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Programming Language</option>
+                                    <option value="frameworks" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Framework Badge</option>
+                                    <option value="deployment" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Deployment Tool</option>
                                 </select>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Icon Pattern Code</label>
-                                <input x-model="skillsForm.icon" type="text" placeholder="fa-brands fa-python text-blue-500" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Icon Pattern Code</label>
+                                <input x-model="skillsForm.icon" type="text" placeholder="fa-brands fa-python text-blue-500" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Grade Status (Programming Only)</label>
-                                <input x-model="skillsForm.status" type="text" placeholder="Advanced" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Grade Status (Programming Only)</label>
+                                <input x-model="skillsForm.status" type="text" placeholder="Advanced" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                         </div>
                         <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
                             <i class="fa-solid fa-plus"></i> Inject Skill Node
                         </button>
                     </form>
+
+                    <!-- Deletion Manager Block -->
+                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                        <h5 class="text-xs font-bold text-zinc-700 dark:text-zinc-200 uppercase tracking-wider mb-3">Delete Existing Skills</h5>
+                        <div class="space-y-4">
+                            <!-- Programming Section -->
+                            <div>
+                                <h6 class="text-[10px] uppercase font-bold text-zinc-600 dark:text-zinc-300 mb-2">Programming</h6>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <template x-for="(s, index) in skills.programming" :key="s.name">
+                                        <div class="flex items-center justify-between p-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg text-xs">
+                                            <span x-text="s.name" class="font-medium"></span>
+                                            <button @click="deleteSkill('programming', index)" class="text-red-500 hover:text-red-600 transition-colors">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                            <!-- Frameworks Section -->
+                            <div class="mt-3">
+                                <h6 class="text-[10px] uppercase font-bold text-zinc-600 dark:text-zinc-300 mb-2">Frameworks</h6>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <template x-for="(s, index) in skills.frameworks" :key="s">
+                                        <div class="flex items-center justify-between p-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg text-xs">
+                                            <span x-text="s" class="font-medium"></span>
+                                            <button @click="deleteSkill('frameworks', index)" class="text-red-500 hover:text-red-600 transition-colors">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                            <!-- Deployment Section -->
+                            <div class="mt-3">
+                                <h6 class="text-[10px] uppercase font-bold text-zinc-600 dark:text-zinc-300 mb-2">Deployment &amp; Tools</h6>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <template x-for="(s, index) in skills.deployment" :key="s.name">
+                                        <div class="flex items-center justify-between p-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg text-xs">
+                                            <span x-text="s.name" class="font-medium"></span>
+                                            <button @click="deleteSkill('deployment', index)" class="text-red-500 hover:text-red-600 transition-colors">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: ADD/DELETE CERTIFICATIONS -->
+                <div x-show="adminActiveTab === 'certs'" class="space-y-6">
+                    <form @submit.prevent="submitCertification" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Issuer *</label>
+                                <input x-model="certForm.issuer" type="text" required placeholder="Google" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Date *</label>
+                                <input x-model="certForm.date" type="text" required placeholder="Nov 2025" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Certification Name *</label>
+                            <input x-model="certForm.name" type="text" required placeholder="ML Engineer Professional" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Description *</label>
+                            <input x-model="certForm.desc" type="text" required placeholder="Deploying pipeline models..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Credential ID *</label>
+                                <input x-model="certForm.credentialId" type="text" required placeholder="G-ML-2245" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Verification URL *</label>
+                                <input x-model="certForm.url" type="url" required placeholder="https://coursera.org" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Inject Certificate Record
+                        </button>
+                    </form>
+
+                    <!-- Deletion Manager Block -->
+                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                        <h5 class="text-xs font-bold text-zinc-700 dark:text-zinc-200 uppercase tracking-wider mb-3">Delete Existing Credentials</h5>
+                        <div class="space-y-2">
+                            <template x-for="cert in certifications" :key="cert.id">
+                                <div class="flex items-center justify-between p-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg border border-zinc-200 dark:border-zinc-700">
+                                    <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200" x-text="cert.issuer + ': ' + cert.name"></span>
+                                    <button @click="deleteCertification(cert.id)" class="text-red-500 hover:text-red-600 transition-colors p-1" title="Delete Certification">
+                                        <i class="fa-solid fa-trash-can text-sm"></i>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- TAB: WHAT PEOPLE SAY (TESTIMONIALS) -->
-                <div x-show="adminActiveTab === 'quotes'">
+                <div x-show="adminActiveTab === 'quotes'" class="space-y-6">
                     <form @submit.prevent="submitQuote" class="space-y-4">
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Reviewer Name *</label>
-                                <input x-model="quotesForm.name" type="text" required placeholder="Dr. Sarah Jenkins" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Reviewer Name *</label>
+                                <input x-model="quotesForm.name" type="text" required placeholder="Dr. Sarah Jenkins" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-zinc-500 mb-1">Professional Title/Role *</label>
-                                <input x-model="quotesForm.role" type="text" required placeholder="Lead Researcher, MIT" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Professional Title/Role *</label>
+                                <input x-model="quotesForm.role" type="text" required placeholder="Lead Researcher, MIT" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Rating (1 to 5 Stars) *</label>
+                                <input x-model.number="quotesForm.rating" type="number" min="1" max="5" required placeholder="5" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Avatar Image URL (Optional)</label>
+                                <input x-model="quotesForm.avatar" type="url" placeholder="https://i.pravatar.cc/80?img=12" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Feedback Quote Statement *</label>
-                            <textarea x-model="quotesForm.quote" required rows="2" placeholder="Exceptional execution and deep analytical logic..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 resize-none"></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Avatar Image URL (Optional)</label>
-                            <input x-model="quotesForm.avatar" type="url" placeholder="https://i.pravatar.cc/80?img=12" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Feedback Quote Statement *</label>
+                            <textarea x-model="quotesForm.quote" required rows="2" placeholder="Exceptional execution and deep analytical logic..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium resize-none"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
                             <i class="fa-solid fa-plus"></i> Inject Testimonial Review
                         </button>
                     </form>
+
+                    <!-- Deletion Manager Block -->
+                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                        <h5 class="text-xs font-bold text-zinc-700 dark:text-zinc-200 uppercase tracking-wider mb-3">Delete Existing Testimonials</h5>
+                        <div class="space-y-2">
+                            <template x-for="review in testimonials" :key="review.id">
+                                <div class="flex items-center justify-between p-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg border border-zinc-200 dark:border-zinc-700">
+                                    <div class="flex flex-col">
+                                        <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200" x-text="review.name"></span>
+                                        <span class="text-[10px] text-zinc-600 dark:text-zinc-400" x-text="review.role"></span>
+                                    </div>
+                                    <button @click="deleteTestimonial(review.id)" class="text-red-500 hover:text-red-600 transition-colors p-1" title="Delete Testimonial">
+                                        <i class="fa-solid fa-trash-can text-sm"></i>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- TAB: FREQUENTLY ASKED QUESTIONS (FAQ UPDATER) -->
-                <div x-show="adminActiveTab === 'faq'">
+                <div x-show="adminActiveTab === 'faq'" class="space-y-6">
                     <form @submit.prevent="submitFAQ" class="space-y-4">
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Structured Question *</label>
-                            <input x-model="faqForm.question" type="text" required placeholder="Do you sign standard corporate NDAs?" class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Structured Question *</label>
+                            <input x-model="faqForm.question" type="text" required placeholder="Do you sign standard corporate NDAs?" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-zinc-500 mb-1">Detailed Solution / Answer *</label>
-                            <textarea x-model="faqForm.answer" required rows="3" placeholder="Yes, I regularly sign mutual NDAs for clean project confidentiality..." class="w-full text-xs bg-zinc-50 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 resize-none"></textarea>
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Detailed Solution / Answer *</label>
+                            <textarea x-model="faqForm.answer" required rows="3" placeholder="Yes, I regularly sign mutual NDAs for clean project confidentiality..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium resize-none"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all flex items-center justify-center gap-2">
                             <i class="fa-solid fa-plus"></i> Inject FAQ Node
                         </button>
                     </form>
+
+                    <!-- Deletion Manager Block -->
+                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                        <h5 class="text-xs font-bold text-zinc-700 dark:text-zinc-200 uppercase tracking-wider mb-3">Delete Existing FAQ Items</h5>
+                        <div class="space-y-2">
+                            <template x-for="q in faqs" :key="q.id">
+                                <div class="flex items-center justify-between p-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg border border-zinc-200 dark:border-zinc-700">
+                                    <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200" x-text="q.question"></span>
+                                    <button @click="deleteFAQ(q.id)" class="text-red-500 hover:text-red-600 transition-colors p-1" title="Delete FAQ">
+                                        <i class="fa-solid fa-trash-can text-sm"></i>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-850 flex flex-col gap-2">
-                    <button @click="copyStaticJSON()" class="w-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-xs font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2">
+                <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col gap-2">
+                    <button @click="copyStaticJSON()" class="w-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-xs font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2 border border-zinc-200 dark:border-zinc-700">
                         <i class="fa-regular fa-copy"></i> Export Hub Local Database Code
                     </button>
                     <button @click="resetToDefaults()" class="w-full bg-red-500 hover:bg-red-600 text-white text-[10px] font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-1">
                         <i class="fa-solid fa-rotate-left"></i> Reset Dashboard to Baseline Defaults
                     </button>
-                    <div x-show="adminExportAlert" x-cloak x-transition class="p-2.5 bg-green-500/10 border border-green-500/20 text-green-500 text-xs text-center rounded-xl font-bold mt-2">
+                    <div x-show="adminExportAlert" x-cloak x-transition class="p-2.5 bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 text-xs text-center rounded-xl font-bold mt-2">
                         System Configuration Arrays Copied to Clipboard!
                     </div>
                 </div>
@@ -1415,6 +1637,7 @@
     const defaultTestimonials = [
         {
             id: 1,
+            rating: 5,
             quote: "Jaiprasanth delivered a clean, automated violation tracker on time. The codebase was well-structured, easy to deploy, and saved our review team hours of manual work.",
             name: "Camille Dufresne",
             role: "Product Manager",
@@ -1422,6 +1645,7 @@
         },
         {
             id: 2,
+            rating: 5,
             quote: "An exceptional student with deep technical focus. Jaiprasanth bridges academic Machine Learning theory with highly practical deployments that solve immediate problems.",
             name: "Dr. Aris Vance",
             role: "CS Department Professor",
@@ -1429,9 +1653,10 @@
         },
         {
             id: 3,
+            rating: 5,
             quote: "Worked with Jaiprasanth on a complex visual analysis tool. His knowledge of OpenCV and PyTorch is superb, and he writes clean, well-documented code.",
             name: "Marcus Aurelius",
-            role: "Peer &amp; Lead AI Collaborator",
+            role: "Peer & Lead AI Collaborator",
             avatar: "https://i.pravatar.cc/80?img=47"
         }
     ];
@@ -1485,7 +1710,7 @@
             stars: 24
         },
 
-        // UNIFIED HUB STATE (Fully isolated inside parent app)
+        // UNIFIED HUB STATE
         adminPanelOpen: false,
         adminAuthenticated: false,
         adminPasswordInput: '',
@@ -1493,12 +1718,24 @@
         adminActiveTab: 'global',
         adminExportAlert: false,
 
+        // Public Review State
+        showPublicReviewForm: false,
+        publicReviewSuccess: false,
+        publicReviewForm: {
+            name: '',
+            role: '',
+            rating: 5,
+            quote: '',
+            avatar: ''
+        },
+
         // Admin Interactive Form Data Containers
         globalForm: { status: 'Open to Work', resume: 'https://github.com/jai11205' },
         projectForm: { title: '', category: 'security', url: '', demoUrl: '', img: '', tags: '', results: '', problem: '', solution: '', desc: '' },
         impactForm: { title: '', industry: 'Security', timeline: 'Q1 2026', problem: '', approach: '', tech: '', outcome: '', value: '' },
         skillsForm: { name: '', sector: 'programming', icon: '', status: 'Main' },
-        quotesForm: { name: '', role: '', quote: '', avatar: '' },
+        certForm: { issuer: '', date: '', name: '', desc: '', credentialId: '', url: '' },
+        quotesForm: { name: '', role: '', rating: 5, quote: '', avatar: '' },
         faqForm: { question: '', answer: '' },
 
         init() {
@@ -1546,7 +1783,7 @@
                     this.githubMetrics.repos = repos.length;
                     let starAggregate = 0;
                     repos.forEach(r => starAggregate += r.stargazers_count);
-                    this.githubMetrics.stars = starAggregate || 4;
+                    this.githubMetrics.stars = starAggregate || 24;
                 }
             } catch (err) {
                 console.warn("Could not fetch active GitHub metrics. Reverting to fallback configurations.");
@@ -1557,7 +1794,7 @@
           const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 100;
           if (atBottom) { this.s = 'contact'; return; }
           
-          const ids = ['contact', 'certifications', 'about', 'process', 'skills', 'work', 'services', 'hero'];
+          const ids = ['contact', 'testimonials', 'certifications', 'about', 'process', 'skills', 'work', 'services', 'hero'];
           for (const id of ids) {
             const el = document.getElementById(id);
             if (el && window.scrollY >= el.offsetTop - 150) { 
@@ -1582,7 +1819,7 @@
             document.body.style.overflow = '';
         },
 
-        // UNIFIED ADMIN HANDLERS (Completely fixed parent functions)
+        // UNIFIED ADMIN HANDLERS
         togglePanel() {
             this.adminPanelOpen = !this.adminPanelOpen;
             if (this.adminPanelOpen && !this.adminAuthenticated) {
@@ -1643,7 +1880,6 @@
             this.caseStudies = current;
             
             this.impactForm = { title: '', industry: 'Security', timeline: 'Q1 2026', problem: '', approach: '', tech: '', outcome: '', value: '' };
-            this.adminPanelOpen = false;
         },
 
         submitSkillNode() {
@@ -1669,7 +1905,6 @@
             this.skills = current;
             
             this.skillsForm = { name: '', sector: 'programming', icon: '', status: 'Main' };
-            this.adminPanelOpen = false;
         },
 
         submitQuote() {
@@ -1677,17 +1912,17 @@
             let current = JSON.parse(localStorage.getItem('custom_testimonials')) || [...defaultTestimonials];
             const newQuote = {
                 id: Date.now(),
+                rating: this.quotesForm.rating || 5,
                 quote: this.quotesForm.quote,
                 name: this.quotesForm.name,
                 role: this.quotesForm.role,
-                avatar: this.quotesForm.avatar || 'https://i.pravatar.cc/80?img=12'
+                avatar: this.quotesForm.avatar || 'https://placehold.co/80x80/FF6B2B/ffffff?text=Avatar'
             };
             current.unshift(newQuote);
             localStorage.setItem('custom_testimonials', JSON.stringify(current));
             this.testimonials = current;
             
-            this.quotesForm = { name: '', role: '', quote: '', avatar: '' };
-            this.adminPanelOpen = false;
+            this.quotesForm = { name: '', role: '', rating: 5, quote: '', avatar: '' };
         },
 
         submitFAQ() {
@@ -1703,7 +1938,25 @@
             this.faqs = current;
             
             this.faqForm = { question: '', answer: '' };
-            this.adminPanelOpen = false;
+        },
+
+        submitCertification() {
+            if (!this.adminAuthenticated) return;
+            let current = JSON.parse(localStorage.getItem('custom_certs')) || [...defaultCertifications];
+            const newCert = {
+                id: Date.now(),
+                issuer: this.certForm.issuer,
+                date: this.certForm.date,
+                name: this.certForm.name,
+                desc: this.certForm.desc,
+                credentialId: this.certForm.credentialId,
+                url: this.certForm.url
+            };
+            current.unshift(newCert);
+            localStorage.setItem('custom_certs', JSON.stringify(current));
+            this.certifications = current;
+            
+            this.certForm = { issuer: '', date: '', name: '', desc: '', credentialId: '', url: '' };
         },
 
         submitProject() {
@@ -1727,7 +1980,78 @@
             this.allProjects = current;
 
             this.projectForm = { title: '', category: 'security', url: '', demoUrl: '', img: '', tags: '', results: '', problem: '', solution: '', desc: '' };
-            this.adminPanelOpen = false;
+        },
+
+        deleteProject(projectId) {
+            if (!this.adminAuthenticated) return;
+            let current = this.allProjects.filter(p => p.id !== projectId);
+            localStorage.setItem('custom_projects', JSON.stringify(current));
+            this.allProjects = current;
+        },
+
+        deleteCaseStudy(caseId) {
+            if (!this.adminAuthenticated) return;
+            let current = this.caseStudies.filter(cs => cs.id !== caseId);
+            localStorage.setItem('custom_impact', JSON.stringify(current));
+            this.caseStudies = current;
+        },
+
+        deleteSkill(sector, index) {
+            if (!this.adminAuthenticated) return;
+            let current = {...this.skills};
+            if (sector === 'frameworks') {
+                current.frameworks.splice(index, 1);
+            } else if (sector === 'programming') {
+                current.programming.splice(index, 1);
+            } else if (sector === 'deployment') {
+                current.deployment.splice(index, 1);
+            }
+            localStorage.setItem('custom_skills', JSON.stringify(current));
+            this.skills = current;
+        },
+
+        deleteTestimonial(testimonialId) {
+            if (!this.adminAuthenticated) return;
+            let current = this.testimonials.filter(t => t.id !== testimonialId);
+            localStorage.setItem('custom_testimonials', JSON.stringify(current));
+            this.testimonials = current;
+        },
+
+        deleteCertification(certId) {
+            if (!this.adminAuthenticated) return;
+            let current = this.certifications.filter(c => c.id !== certId);
+            localStorage.setItem('custom_certs', JSON.stringify(current));
+            this.certifications = current;
+        },
+
+        deleteFAQ(faqId) {
+            if (!this.adminAuthenticated) return;
+            let current = this.faqs.filter(f => f.id !== faqId);
+            localStorage.setItem('custom_faqs', JSON.stringify(current));
+            this.faqs = current;
+        },
+
+        submitPublicReview() {
+            let current = JSON.parse(localStorage.getItem('custom_testimonials')) || [...defaultTestimonials];
+            const newReview = {
+                id: Date.now(),
+                rating: this.publicReviewForm.rating || 5,
+                quote: this.publicReviewForm.quote,
+                name: this.publicReviewForm.name,
+                role: this.publicReviewForm.role,
+                avatar: this.publicReviewForm.avatar || 'https://placehold.co/80x80/FF6B2B/ffffff?text=Avatar'
+            };
+            current.unshift(newReview);
+            localStorage.setItem('custom_testimonials', JSON.stringify(current));
+            this.testimonials = current;
+
+            // Reset form
+            this.publicReviewForm = { name: '', role: '', rating: 5, quote: '', avatar: '' };
+            this.publicReviewSuccess = true;
+            setTimeout(() => {
+                this.publicReviewSuccess = false;
+                this.showPublicReviewForm = false;
+            }, 4000);
         },
 
         copyStaticJSON() {
