@@ -219,10 +219,10 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                                 </svg> 
                             </a>
-                            <!-- Secondary Button -->
-                            <a :href="resumeLink" target="_blank" class="inline-flex items-center gap-2 border-2 border-zinc-300 dark:border-zinc-800 hover:border-accent dark:hover:border-accent text-zinc-700 dark:text-zinc-300 hover:text-accent dark:hover:text-accent font-semibold px-6 py-3.5 rounded-full transition-all text-sm bg-transparent">
-                                <i class="fa-solid fa-file-pdf"></i> Download Resume
-                            </a>
+                            <!-- Secondary PDF Download Button -->
+                            <button @click="downloadResume()" class="inline-flex items-center gap-2 border-2 border-zinc-300 dark:border-zinc-800 hover:border-accent dark:hover:border-accent text-zinc-700 dark:text-zinc-300 hover:text-accent dark:hover:text-accent font-semibold px-6 py-3.5 rounded-full transition-all text-sm bg-transparent">
+                                <i class="fa-solid fa-file-pdf"></i> <span x-text="resumeName ? 'Download ' + resumeName : 'Download Resume'"></span>
+                            </button>
                             <!-- Tertiary Button -->
                             <a href="#contact" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-6 py-3.5 rounded-full transition-all text-sm shadow-lg shadow-accent/20">
                                 <i class="fa-regular fa-calendar-check"></i> Book a Consultation
@@ -805,9 +805,9 @@
                 <p class="text-zinc-500 dark:text-zinc-400 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
                     Download my fully structured PDF resume containing a comprehensive overview of my academic milestones, technical framework benchmarks, and freelance engagements.
                 </p>
-                <a :href="resumeLink" target="_blank" class="shimmer inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-8 py-4 rounded-full transition-all text-sm shadow-xl shadow-accent/20">
-                    <i class="fa-solid fa-circle-down"></i> Get Direct Resume Copy
-                </a>
+                <button @click="downloadResume()" class="shimmer inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-8 py-4 rounded-full transition-all text-sm shadow-xl shadow-accent/20">
+                    <i class="fa-solid fa-circle-down"></i> <span x-text="resumeName ? 'Download ' + resumeName : 'Get Direct Resume Copy'"></span>
+                </button>
             </div>
         </section>
 
@@ -962,6 +962,12 @@
                                     </span>
                                     <span class="text-xs font-semibold">github.com/jai11205</span>
                                 </a>
+                                <button @click="downloadResume()" class="group flex items-center gap-4 text-zinc-300 hover:text-white text-left transition-colors">
+                                    <span class="w-10 h-10 flex items-center justify-center bg-zinc-800 border border-zinc-700/50 rounded-xl group-hover:bg-accent/20 group-hover:border-accent/40 transition-all shrink-0">
+                                        <i class="fa-solid fa-file-pdf text-sm"></i>
+                                    </span>
+                                    <span class="text-xs font-semibold" x-text="resumeName ? 'Download ' + resumeName : 'Download Resume PDF'"></span>
+                                </button>
                             </div>
                             
                             <!-- Response Speed Tracker -->
@@ -1130,8 +1136,9 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Resume File Source URL</label>
-                            <input x-model="globalForm.resume" type="text" placeholder="https://..." class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1.5">Upload Resume (PDF File) *</label>
+                            <input type="file" accept=".pdf" @change="uploadPDF($event)" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium focus:outline-none">
+                            <p class="text-[10px] text-zinc-500 mt-1" x-text="resumeName ? 'Active PDF: ' + resumeName : 'No custom PDF uploaded (Standard GitHub redirect active)'"></p>
                         </div>
                         <button @click="updateGlobalVars()" class="w-full bg-accent text-white font-bold text-xs py-2.5 rounded-xl hover:bg-accent-light transition-all">
                             Save Global Configuration
@@ -1686,10 +1693,11 @@
         sc: false,
         s: 'hero',
         
-        // Status & Resume Handlers
+        // Status & Resume Handlers (Now with PDF Base64 support)
         currentStatus: 'Open to Work',
         statusText: 'Available for Projects & Internships',
-        resumeLink: 'https://github.com/jai11205',
+        resumePDF: '',
+        resumeName: '',
         
         // Dynamic Collections
         allProjects: [],
@@ -1730,7 +1738,7 @@
         },
 
         // Admin Interactive Form Data Containers
-        globalForm: { status: 'Open to Work', resume: 'https://github.com/jai11205' },
+        globalForm: { status: 'Open to Work' },
         projectForm: { title: '', category: 'security', url: '', demoUrl: '', img: '', tags: '', results: '', problem: '', solution: '', desc: '' },
         impactForm: { title: '', industry: 'Security', timeline: 'Q1 2026', problem: '', approach: '', tech: '', outcome: '', value: '' },
         skillsForm: { name: '', sector: 'programming', icon: '', status: 'Main' },
@@ -1746,7 +1754,9 @@
           // Load local overrides or fallback to standard baseline structures
           this.currentStatus = localStorage.getItem('glob_status') || 'Open to Work';
           this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
-          this.resumeLink = localStorage.getItem('glob_resume') || 'https://github.com/jai11205';
+          
+          this.resumePDF = localStorage.getItem('resume_pdf_base64') || '';
+          this.resumeName = localStorage.getItem('resume_pdf_name') || '';
 
           this.allProjects = JSON.parse(localStorage.getItem('custom_projects')) || defaultProjects;
           this.certifications = JSON.parse(localStorage.getItem('custom_certs')) || defaultCertifications;
@@ -1757,7 +1767,6 @@
 
           // Hydrate the initial state of the global admin configuration forms
           this.globalForm.status = this.currentStatus;
-          this.globalForm.resume = this.resumeLink;
 
           // Retrieve live repository stats dynamically from the public API
           this.fetchGitHubActivity();
@@ -1827,17 +1836,15 @@
                 this.adminPasswordError = false;
             } else if (this.adminPanelOpen && this.adminAuthenticated) {
                 this.globalForm.status = this.currentStatus;
-                this.globalForm.resume = this.resumeLink;
             }
         },
 
         verifyPasscode() {
-            if (this.adminPasswordInput === 'admin123') { // <-- Change 'admin123' to your new password here
+            if (this.adminPasswordInput === 'admin123') { // <-- Custom key config line
                 this.adminAuthenticated = true;
                 this.adminPasswordError = false;
                 this.adminPasswordInput = '';
                 this.globalForm.status = this.currentStatus;
-                this.globalForm.resume = this.resumeLink;
             } else {
                 this.adminPasswordError = true;
             }
@@ -1849,14 +1856,48 @@
             this.adminPasswordError = false;
         },
 
+        uploadPDF(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            if (file.type !== "application/pdf") {
+                alert("Please select a valid PDF file.");
+                return;
+            }
+            if (file.size > 2 * 1024 * 1024) { // 2MB typical browser local storage standard limit
+                alert("The PDF file exceeds 2MB. Please compress the document before direct local upload.");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const base64 = e.target.result;
+                this.resumePDF = base64;
+                this.resumeName = file.name;
+                localStorage.setItem('resume_pdf_base64', base64);
+                localStorage.setItem('resume_pdf_name', file.name);
+            };
+            reader.readAsDataURL(file);
+        },
+
+        downloadResume() {
+            if (this.resumePDF) {
+                const link = document.createElement('a');
+                link.href = this.resumePDF;
+                link.download = this.resumeName || 'Jaiprasanth_Resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                // Standard safe remote fallback
+                window.open('https://github.com/jai11205', '_blank');
+            }
+        },
+
         updateGlobalVars() {
             if (!this.adminAuthenticated) return;
             localStorage.setItem('glob_status', this.globalForm.status);
-            localStorage.setItem('glob_resume', this.globalForm.resume);
             
             this.currentStatus = this.globalForm.status;
             this.statusText = this.globalForm.status === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
-            this.resumeLink = this.globalForm.resume;
             
             this.adminPanelOpen = false;
         },
@@ -2057,7 +2098,8 @@
         copyStaticJSON() {
             const combinedDB = {
                 glob_status: this.currentStatus,
-                glob_resume: this.resumeLink,
+                resume_pdf_base64: this.resumePDF,
+                resume_pdf_name: this.resumeName,
                 custom_projects: this.allProjects,
                 custom_certs: this.certifications,
                 custom_impact: this.caseStudies,
@@ -2081,7 +2123,8 @@
 
         resetToDefaults() {
             localStorage.removeItem('glob_status');
-            localStorage.removeItem('glob_resume');
+            localStorage.removeItem('resume_pdf_base64');
+            localStorage.removeItem('resume_pdf_name');
             localStorage.removeItem('custom_projects');
             localStorage.removeItem('custom_certs');
             localStorage.removeItem('custom_impact');
