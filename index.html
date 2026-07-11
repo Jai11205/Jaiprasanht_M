@@ -1774,7 +1774,7 @@
           this.skills = JSON.parse(localStorage.getItem('custom_skills')) || defaultSkills;
 
           // Set up Firestore observer sync for Testimonials (RULE 1, RULE 2 & RULE 3 compliant)
-         
+          this.testimonials = JSON.parse(localStorage.getItem('custom_testimonials')) || defaultTestimonials;
 
           // Hydrate the initial state of the global admin configuration forms
           this.globalForm.status = this.currentStatus;
@@ -1807,47 +1807,34 @@
                 console.log("Syncing from path:", 'artifacts/' + appId + '/public/data/testimonials');
                 
                 window.onSnapshotFirestore(colPath, (snapshot) => {
-                        const loaded = [];
-                        snapshot.forEach((doc) => {
-                            loaded.push({ id: doc.id, ...doc.data() });
-                        });
-                        
-                        console.log("--- DATA RECEIVED ---");
-                        console.log("Total docs:", loaded.length);
-                        console.log("First review keys:", Object.keys(loaded[0])); 
-                        console.log("First review data:", loaded[0]); 
-                        
-                        this.testimonials = loaded;
+                    const loaded = [];
+                    snapshot.forEach((doc) => {
+                        loaded.push({ id: doc.id, ...doc.data() });
                     });
                     
                     console.log("Documents received from Firestore:", loaded.length);
                     
                     if (loaded.length > 0) {
+                        // Debug log outputted directly to the developer console tab
+                        console.log("--- TESTIMONIAL SNAPSHOT ---");
+                        console.log("First review schema keys:", Object.keys(loaded[0]));
+                        console.log("First review schema content:", loaded[0]);
+
                         loaded.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-                        this.testimonials = loaded;
+                        
+                        // Force direct proxy update to sync changes into the view stream
+                        this.$nextTick(() => {
+                            this.testimonials = loaded;
+                        });
                     } else {
-                        console.warn("No documents found in this collection!");
-                        this.testimonials = []; // Clear current list if db is empty
+                        console.warn("No documents found in this Firestore collection path.");
                     }
                 }, (error) => {
-                    console.error("Firestore sync error:", error);
+                    console.error("Firestore live synchronization loop has encountered an error:", error);
                 });
             } else {
-                console.log("Firebase not initialized yet, waiting...");
+                console.log("Firestore skipped: Testimonials fallback to local memory.");
             }
-            window.onSnapshotFirestore(colPath, (snapshot) => {
-    const loaded = [];
-    snapshot.forEach((doc) => {
-        const data = doc.data();
-        loaded.push({ id: doc.id, ...data });
-    });
-    
-    // DEBUG: This will print your data in the console
-    console.log("First review object structure:", loaded[0]); 
-    
-    loaded.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-    this.testimonials = loaded;
-});
         },
 
         async fetchGitHubActivity() {
