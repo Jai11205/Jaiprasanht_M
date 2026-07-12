@@ -1532,12 +1532,12 @@
     import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     const firebaseConfig = {
-        apiKey: "AIzaSyBDrn2448YmvJ_mM4IniYy0ZBz4GEx53_w",
-        authDomain: "portfolio-29a91.firebaseapp.com",
-        projectId: "portfolio-29a91",
-        storageBucket: "portfolio-29a91.firebasestorage.app",
-        messagingSenderId: "387816977198",
-        appId: "1:387816977198:web:13600022bc78e0208580bf"
+          apiKey: "AIzaSyBDrn2448YmvJ_mM4IniYy0ZBz4GEx53_w",
+          authDomain: "portfolio-29a91.firebaseapp.com",
+          projectId: "portfolio-29a91",
+          storageBucket: "portfolio-29a91.firebasestorage.app",
+          messagingSenderId: "387816977198",
+          appId: "1:387816977198:web:13600022bc78e0208580bf"
     };
 
     // Initialize Firebase Core Services
@@ -1554,7 +1554,7 @@
             window.firebaseUser = user;
             console.log("Firebase Auth Verified: Real-Time Synced Stream Initialized.");
             
-            // Trigger synchronization loop once auth completes successfully
+            // TRIGGER BOTH SYNC CHANNELS HERE: This makes updates visible instantly to all viewers!
             if (typeof window.appInstance !== 'undefined') {
                 window.appInstance.syncTestimonialsWithFirestore();
                 window.appInstance.syncConfigWithFirestore();
