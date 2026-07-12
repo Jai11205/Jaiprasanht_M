@@ -724,26 +724,19 @@
                 </div>
                 
                 <div class="bg-slate-50 dark:bg-zinc-900 rounded-3xl p-5 sm:p-8 border border-zinc-200/50 dark:border-zinc-800/50">
-                    <div class="grid lg:grid-cols-12 gap-8 items-stretch">
-                        <!-- Desktop Aligned Column (lg:col-span-4) -->
-                        <div class="lg:col-span-4 flex flex-col justify-between space-y-6">
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-4">
-                                    <span class="w-12 h-12 rounded-full bg-zinc-800 text-white flex items-center justify-center text-xl shrink-0 border border-zinc-700">
-                                        <i class="fa-brands fa-github"></i>
-                                    </span>
-                                    <div>
-                                        <h4 class="font-display font-bold text-xl tracking-tight text-zinc-900 dark:text-white">@jai11205</h4>
-                                        <p class="text-xs text-zinc-400">AI / Deep Learning Researcher</p>
-                                    </div>
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-4 space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="w-12 h-12 rounded-full bg-zinc-800 text-white flex items-center justify-center text-xl shrink-0 border border-zinc-700">
+                                    <i class="fa-brands fa-github"></i>
+                                </span>
+                                <div>
+                                    <h4 class="font-display font-bold text-xl">@jai11205</h4>
+                                    <p class="text-xs text-zinc-400">AI / Deep Learning Researcher</p>
                                 </div>
-                                <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                                    Active developer pushing commits to custom visual analytics libraries, OCR text analyzers, and neural classifiers.
-                                </p>
-                            </div>
+                            </div>  
                             
-                            <!-- Premium stats layout grid -->
-                            <div class="grid grid-cols-2 gap-4 py-3.5 px-4 bg-white dark:bg-zinc-950 rounded-2xl border border-zinc-100 dark:border-zinc-850">
+                            <div class="grid grid-cols-2 gap-4 py-3 px-4 bg-white dark:bg-zinc-950 rounded-2xl border border-zinc-100 dark:border-zinc-850">
                                 <div class="min-w-0">
                                     <span class="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold block truncate">Public Repos</span>
                                     <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.repos"></span>
@@ -754,23 +747,21 @@
                                 </div>
                             </div>
 
-                            <!-- Wide desktop responsive action button safely stacked -->
                             <a href="https://github.com/jai11205" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 text-white dark:text-zinc-950 px-5 py-3 rounded-xl text-xs font-bold transition-all shadow-md shrink-0">
                                 Visit Profile <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
                         
-                        <!-- Chart Column (lg:col-span-8) -->
-                        <div class="lg:col-span-8 w-full overflow-hidden flex flex-col justify-center">
+                        <div class="lg:col-span-8 w-full overflow-hidden">
                             <div class="bg-white dark:bg-zinc-950 p-4 sm:p-6 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 space-y-4 overflow-hidden">
                                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
                                     <span class="font-bold text-zinc-600 dark:text-zinc-400">Commit History (Real Live GitHub Contribution Chart)</span>
-                                    <span class="text-green-500 font-semibold inline-flex items-center gap-1 self-start sm:self-auto">
+                                    <span class="text-green-500 font-semibold inline-flex items-center gap-1">
                                         <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span> Sync Active: @jai11205
                                     </span>
                                 </div>
-                                <div class="w-full flex items-center justify-start p-2 bg-slate-50 dark:bg-zinc-900 rounded-xl overflow-x-auto scrollbar-thin" aria-label="GitHub Contributions Chart">
-                                    <img src="https://ghchart.rshah.org/FF6B2B/jai11205" alt="Jaiprasanth's GitHub Contributions Chart" class="min-w-[640px] w-full h-auto dark:brightness-95 dark:contrast-125" loading="lazy" onerror="this.style.display='none'">
+                                <div class="w-full flex items-center justify-center p-2 bg-slate-50 dark:bg-zinc-900 rounded-xl overflow-x-auto scrollbar-none" aria-label="GitHub Contributions Chart">
+                                    <img src="https://ghchart.rshah.org/FF6B2B/jai11205" alt="Jaiprasanth's GitHub Contributions Chart" class="min-w-[600px] max-w-full h-auto dark:brightness-95 dark:contrast-125" loading="lazy" onerror="this.style.display='none'">
                                 </div>
                                 <div class="flex items-center justify-between text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">
                                     <span>Live GitHub Commit Feed</span>
@@ -864,7 +855,7 @@
                     </form>
                     
                     <div x-show="publicReviewSuccess" x-cloak x-transition class="mt-4 p-4 rounded-xl text-xs bg-green-500/10 border border-green-500/20 text-green-500 font-bold">
-                        Thank you! Your testimonial has been saved and added to the list.
+                        Thank you! Your testimonial has been saved and added to the carousel list below.
                     </div>
                 </div>
                 
@@ -873,7 +864,7 @@
                         <blockquote class="bg-slate-50 dark:bg-zinc-900 rounded-3xl p-8 border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col justify-between card-h">
                             <div>
                                 <div class="flex gap-0.5 mb-5" aria-label="Rating Stars">
-                                    <template x-for="star in [...Array(Math.max(1, Math.min(5, parseInt(review.rating) || 5))).keys()]">
+                                    <template x-for="star in [...Array(parseInt(review.rating) || 5).keys()]">
                                         <i class="fa-solid fa-star text-accent text-xs"></i>
                                     </template>
                                 </div>
@@ -1146,9 +1137,9 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Category *</label>
-                                <select x-model="projectForm.category" required class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
-                                    <option value="security" class="bg-white dark:bg-zinc-850 text-zinc-900 dark:text-white">Security &amp; RL</option>
-                                    <option value="vision" class="bg-white dark:bg-zinc-850 text-zinc-900 dark:text-white">Vision System</option>
+                                <select x-model="projectForm.category" required class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                                    <option value="security" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Security &amp; RL</option>
+                                    <option value="vision" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Vision System</option>
                                 </select>
                             </div>
                         </div>
@@ -1258,7 +1249,7 @@
                     </form>
 
                     <!-- Deletion Manager Block -->
-                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-850">
+                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800">
                         <h5 class="text-xs font-bold text-zinc-700 dark:text-zinc-200 uppercase tracking-wider mb-3">Delete Existing Case Studies</h5>
                         <div class="space-y-2">
                             <template x-for="cs in caseStudies" :key="cs.id">
@@ -1283,10 +1274,10 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Skill Sector *</label>
-                                <select x-model="skillsForm.sector" required class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
-                                    <option value="programming" class="bg-white dark:bg-zinc-850 text-zinc-900 dark:text-white">Programming Language</option>
-                                    <option value="frameworks" class="bg-white dark:bg-zinc-850 text-zinc-900 dark:text-white">Framework Badge</option>
-                                    <option value="deployment" class="bg-white dark:bg-zinc-850 text-zinc-900 dark:text-white">Deployment Tool</option>
+                                <select x-model="skillsForm.sector" required class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
+                                    <option value="programming" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Programming Language</option>
+                                    <option value="frameworks" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Framework Badge</option>
+                                    <option value="deployment" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white">Deployment Tool</option>
                                 </select>
                             </div>
                         </div>
@@ -1525,29 +1516,29 @@
     import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     const firebaseConfig = {
-          apiKey: "AIzaSyBDrn2448YmvJ_mM4IniYy0ZBz4GEx53_w",
-          authDomain: "portfolio-29a91.firebaseapp.com",
-          projectId: "portfolio-29a91",
-          storageBucket: "portfolio-29a91.firebasestorage.app",
-          messagingSenderId: "387816977198",
-          appId: "1:387816977198:web:13600022bc78e0208580bf"
+        apiKey: "AIzaSyBDrn2448YmvJ_mM4IniYy0ZBz4GEx53_w",
+        authDomain: "portfolio-29a91.firebaseapp.com",
+        projectId: "portfolio-29a91",
+        storageBucket: "portfolio-29a91.firebasestorage.app",
+        messagingSenderId: "387816977198",
+        appId: "1:387816977198:web:13600022bc78e0208580bf"
     };
 
-    // Initialize Firebase Core Services
+    // 2. Initialize Firebase Core Services
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const auth = getAuth(app);
-    const appId = "default-app-id"; 
+    const appId = "default-app-id"; // You can leave this as default
     let user = null;
 
-    // Securely Sign In Anonymous Users and trigger global sync streams
+    // 3. Securely Sign In Anonymous Users before allowing database reads/writes
     const authenticateUser = async () => {
         try {
             user = await signInAnonymously(auth);
             window.firebaseUser = user;
             console.log("Firebase Auth Verified: Real-Time Synced Stream Initialized.");
             
-            // TRIGGER BOTH SYNC CHANNELS HERE: This makes updates visible instantly to all viewers!
+            // TRIGGER SYNC HERE: Now we know Firebase is ready!
             if (typeof window.appInstance !== 'undefined') {
                 window.appInstance.syncTestimonialsWithFirestore();
                 window.appInstance.syncConfigWithFirestore();
@@ -1558,16 +1549,16 @@
     };
     authenticateUser();
 
-    // Expose references globally to Alpine app thread safely
+    // 4. Expose references globally to the Alpine.js app thread
     window.firebaseDB = db;
     window.firebaseAuth = auth;
     window.firebaseAppId = appId;
     window.addDocToFirestore = addDoc;
+    window.setDocFirestore = setDoc; // NOW CORRECTLY EXPOSED AND BOUND
     window.collectionFirestore = collection;
     window.onSnapshotFirestore = onSnapshot;
     window.deleteDocFirestore = deleteDoc;
     window.docFirestore = doc;
-    window.setDocFirestore = setDoc;
     </script>
 
     <script>
@@ -1651,7 +1642,7 @@
         {
             id: 5,
             question: "Can you work remotely?",
-            answer: "Yes, I work remotely with clients worldwide. I maintain clean and transparent communication throughout development using Slack, Zoom, and async Loom updates to ensure a smooth project delivery."
+            answer: "Yes, I work remotely with clients worldwide. I maintain clear and transparent communication throughout development using Slack, Zoom, and async Loom updates to ensure a smooth project delivery."
         }
     ];
 
@@ -1679,7 +1670,7 @@
         sc: false,
         s: 'hero',
         
-        // Status & Resume Handlers (ASCII-Safe Blank PDF Fallback String)
+        // Status & Resume Handlers (Resume PDF is kept in high-speed LocalStorage to stay under Firestore's 1MB limit)
         currentStatus: 'Open to Work',
         statusText: 'Available for Projects & Internships',
         resumePDF: '',
@@ -1740,10 +1731,10 @@
           // Load local overrides or fallback to standard baseline structures
           this.currentStatus = localStorage.getItem('glob_status') || 'Open to Work';
           this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
+          this.globalForm.status = this.currentStatus;
           
-          // Completely sanitized ASCII-safe base64 PDF fallback string
-          this.resumePDF = localStorage.getItem('resume_pdf_base64') || "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDwKL1R5cGUgL1BhZ2UvUGFyZW50IDIgMCBSCi9NZWRpYUJveCBbMCAwIDU5NSA4NDJdCi9SZXNvdXJjZXMgPDwKPj4KL0NvbnRlbnRzIDQgMCBSCj4+CmVuZG9iago0IDAgb2JqCjw8IC9MZW5ndGggNSA+PgpzdHJlYW0KCmVuZHN0cmVhbQplbmRvYmoKNSAwIG9iago2CmVuZG9iagp0cmFpbGVyCjw8Ci9TaXplIDYKL1Jvb3QgMSAwIFIKPj4KJSVFT0Y=";
-          this.resumeName = localStorage.getItem('resume_pdf_name') || "Jaiprasanth_resume.PDF";
+          this.resumePDF = localStorage.getItem('resume_pdf_base64') || '';
+          this.resumeName = localStorage.getItem('resume_pdf_name') || 'Jaiprasanth_resume.PDF';
 
           this.allProjects = JSON.parse(localStorage.getItem('custom_projects')) || defaultProjects;
           this.certifications = JSON.parse(localStorage.getItem('custom_certs')) || defaultCertifications;
@@ -1754,12 +1745,10 @@
           // Set up Firestore observer sync for Testimonials
           this.testimonials = JSON.parse(localStorage.getItem('custom_testimonials')) || defaultTestimonials;
 
-          // Hydrate the initial state of the global admin configuration forms
-          this.globalForm.status = this.currentStatus;
-
           // Retrieve live repository stats dynamically from the public API
           this.fetchGitHubActivity();
 
+          // Connect Firebase Firestore Real-Time listeners as soon as authentication finishes
           const checkFirebase = setInterval(() => {
               if (window.firebaseDB && window.firebaseUser) {
                   this.syncTestimonialsWithFirestore();
@@ -1767,7 +1756,7 @@
                   clearInterval(checkFirebase);
               }
           }, 500);
-            
+           
           window.addEventListener('scroll', () => {
             this.sc = window.scrollY > 20;
             this.updateSection();
@@ -1803,7 +1792,6 @@
                     
                     if (loaded.length > 0) {
                         loaded.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-                        
                         this.$nextTick(() => {
                             this.testimonials = loaded;
                         });
@@ -1811,74 +1799,70 @@
                 }, (error) => {
                     console.error("Firestore live synchronization loop has encountered an error:", error);
                 });
-            } else {
-                console.log("Firestore skipped: Testimonials fallback to local memory.");
             }
         },
 
-        // Real-Time Firebase Sync Method for Global Config State (Projects, Case Studies, FAQs, Resume, Status etc.)
+        // Real-Time Global Config Firestore Synchronization Loop (Even Segments path: artifacts/appId/public/data)
         syncConfigWithFirestore() {
             if (window.firebaseDB && window.firebaseUser) {
                 const db = window.firebaseDB;
                 const appId = window.firebaseAppId;
-                // Corrected to use 'data' as the document reference (4 segments)
                 const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data');
                 
-                window.onSnapshotFirestore(docRef, (snapshot) => {
-                    // Seed defaults to Firestore if database document is empty
-                    if (!snapshot.exists()) {
-                        console.log("No remote configuration document found in Firestore. Auto-seeding cloud database with portfolio defaults...");
-                        this.saveConfigToFirestore();
-                        return;
-                    }
-
-                    const data = snapshot.data();
-                    console.log("Global portfolio configuration parsed from Firestore, updating local memory.");
-                    
-                    this.$nextTick(() => {
-                        this.currentStatus = data.currentStatus || 'Open to Work';
-                        this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
-                        this.resumePDF = data.resumePDF || '';
-                        this.resumeName = data.resumeName || '';
-                        this.allProjects = data.allProjects || defaultProjects;
-                        this.caseStudies = data.caseStudies || defaultCaseStudies;
-                        this.certifications = data.certifications || defaultCertifications;
-                        this.faqs = data.faqs || defaultFaqs;
-                        this.skills = data.skills || defaultSkills;
+                window.onSnapshotFirestore(docRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        console.log("Config snapshot loaded:", data);
                         
-                        this.globalForm.status = this.currentStatus;
-                    });
+                        this.$nextTick(() => {
+                            if (data.status) {
+                                this.currentStatus = data.status;
+                                this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
+                                this.globalForm.status = data.status;
+                            }
+                            if (data.allProjects) this.allProjects = data.allProjects;
+                            if (data.caseStudies) this.caseStudies = data.caseStudies;
+                            if (data.certifications) this.certifications = data.certifications;
+                            if (data.faqs) this.faqs = data.faqs;
+                            if (data.skills) this.skills = data.skills;
+                            if (data.resumeName) this.resumeName = data.resumeName;
+                        });
+                    } else {
+                        // Seeding configuration on first load to instantiate collection docs
+                        console.log("No config found in Firestore. Seeding default configuration...");
+                        this.saveConfigToFirestore();
+                    }
                 }, (error) => {
-                    console.error("Firestore dynamic config synchronization loop encountered an error:", error);
+                    console.error("Config synchronization error:", error);
                 });
             }
         },
 
-        // Cloud Transmitter: Pushes all local Alpine state mutations dynamically to Firestore
-        async saveConfigToFirestore() {
+        // Save layout structures to Cloud Firestore (Even Path DocRef) - Payload is completely stripped of Alpine proxies
+        saveConfigToFirestore() {
             if (window.firebaseDB && window.firebaseUser) {
-                try {
-                    const db = window.firebaseDB;
-                    const appId = window.firebaseAppId;
-                    const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data');
-                    
-                    // Crucial: De-proxify Alpine.js reactive variables so Firestore can safely serialize them
-                    const plainConfig = JSON.parse(JSON.stringify({
-                        currentStatus: this.currentStatus,
-                        resumePDF: this.resumePDF,
-                        resumeName: this.resumeName,
-                        allProjects: this.allProjects,
-                        caseStudies: this.caseStudies,
-                        certifications: this.certifications,
-                        faqs: this.faqs,
-                        skills: this.skills
-                    }));
-
-                    await window.setDocFirestore(docRef, plainConfig);
-                    console.log("Config successfully updated in Firestore!");
-                } catch (e) {
-                    console.error("Failed to update config in Firestore:", e);
-                }
+                const db = window.firebaseDB;
+                const appId = window.firebaseAppId;
+                const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data');
+                
+                // We deep-clone to plain JavaScript objects to prevent Alpine Proxy write failures in Firestore
+                const payload = JSON.parse(JSON.stringify({
+                    status: this.currentStatus,
+                    allProjects: this.allProjects,
+                    caseStudies: this.caseStudies,
+                    certifications: this.certifications,
+                    faqs: this.faqs,
+                    skills: this.skills,
+                    resumeName: this.resumeName
+                }));
+                
+                window.setDocFirestore(docRef, payload)
+                    .then(() => {
+                        console.log("Config successfully updated in Firestore!");
+                    })
+                    .catch((err) => {
+                        console.error("Error saving config to Firestore:", err);
+                    });
             }
         },
 
@@ -1926,7 +1910,7 @@
             document.body.style.overflow = '';
         },
 
-        // UNIFIED HUB STATE HANDLERS
+        // UNIFIED ADMIN HANDLERS
         togglePanel() {
             this.adminPanelOpen = !this.adminPanelOpen;
             if (this.adminPanelOpen && !this.adminAuthenticated) {
@@ -1970,6 +1954,8 @@
                 const base64 = e.target.result;
                 this.resumePDF = base64;
                 this.resumeName = file.name;
+                
+                // Storing PDF Base64 string in high-speed LocalStorage to prevent Firestore 1MB document size limit crashes
                 localStorage.setItem('resume_pdf_base64', base64);
                 localStorage.setItem('resume_pdf_name', file.name);
                 
@@ -2004,7 +1990,7 @@
 
         submitImpactCase() {
             if (!this.adminAuthenticated) return;
-            let current = JSON.parse(localStorage.getItem('custom_impact')) || [...defaultCaseStudies];
+            let current = [...this.caseStudies];
             const newCase = {
                 id: Date.now(),
                 title: this.impactForm.title,
@@ -2017,16 +2003,15 @@
                 value: this.impactForm.value
             };
             current.unshift(newCase);
-            localStorage.setItem('custom_impact', JSON.stringify(current));
             this.caseStudies = current;
-            
             this.saveConfigToFirestore();
+            
             this.impactForm = { title: '', industry: 'Security', timeline: 'Q1 2026', problem: '', approach: '', tech: '', outcome: '', value: '' };
         },
 
         submitSkillNode() {
             if (!this.adminAuthenticated) return;
-            let current = JSON.parse(localStorage.getItem('custom_skills')) || {...defaultSkills};
+            let current = {...this.skills};
             
             if (this.skillsForm.sector === 'frameworks') {
                 current.frameworks.unshift(this.skillsForm.name);
@@ -2043,10 +2028,9 @@
                 });
             }
             
-            localStorage.setItem('custom_skills', JSON.stringify(current));
             this.skills = current;
-            
             this.saveConfigToFirestore();
+            
             this.skillsForm = { name: '', sector: 'programming', icon: '', status: 'Main' };
         },
 
@@ -2072,7 +2056,7 @@
                     console.error("Firestore write failed, using local storage fallback:", e);
                 }
             } else {
-                let current = JSON.parse(localStorage.getItem('custom_testimonials')) || [...defaultTestimonials];
+                let current = [...this.testimonials];
                 current.unshift({ id: Date.now(), ...newQuote });
                 localStorage.setItem('custom_testimonials', JSON.stringify(current));
                 this.testimonials = current;
@@ -2083,23 +2067,22 @@
 
         submitFAQ() {
             if (!this.adminAuthenticated) return;
-            let current = JSON.parse(localStorage.getItem('custom_faqs')) || [...defaultFaqs];
+            let current = [...this.faqs];
             const newFaq = {
                 id: Date.now(),
                 question: this.faqForm.question,
                 answer: this.faqForm.answer
             };
             current.unshift(newFaq);
-            localStorage.setItem('custom_faqs', JSON.stringify(current));
             this.faqs = current;
-            
             this.saveConfigToFirestore();
+            
             this.faqForm = { question: '', answer: '' };
         },
 
         submitCertification() {
             if (!this.adminAuthenticated) return;
-            let current = JSON.parse(localStorage.getItem('custom_certs')) || [...defaultCertifications];
+            let current = [...this.certifications];
             const newCert = {
                 id: Date.now(),
                 issuer: this.certForm.issuer,
@@ -2110,16 +2093,15 @@
                 url: this.certForm.url
             };
             current.unshift(newCert);
-            localStorage.setItem('custom_certs', JSON.stringify(current));
             this.certifications = current;
-            
             this.saveConfigToFirestore();
+            
             this.certForm = { issuer: '', date: '', name: '', desc: '', credentialId: '', url: '' };
         },
 
         submitProject() {
             if (!this.adminAuthenticated) return;
-            let current = JSON.parse(localStorage.getItem('custom_projects')) || [...defaultProjects];
+            let current = [...this.allProjects];
             const newProj = {
                 id: Date.now(),
                 title: this.projectForm.title,
@@ -2134,17 +2116,15 @@
                 img: this.projectForm.img || 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&q=80'
             };
             current.unshift(newProj);
-            localStorage.setItem('custom_projects', JSON.stringify(current));
             this.allProjects = current;
-
             this.saveConfigToFirestore();
+
             this.projectForm = { title: '', category: 'security', url: '', demoUrl: '', img: '', tags: '', results: '', problem: '', solution: '', desc: '' };
         },
 
         deleteProject(projectId) {
             if (!this.adminAuthenticated) return;
             let current = this.allProjects.filter(p => p.id !== projectId);
-            localStorage.setItem('custom_projects', JSON.stringify(current));
             this.allProjects = current;
             this.saveConfigToFirestore();
         },
@@ -2152,7 +2132,6 @@
         deleteCaseStudy(caseId) {
             if (!this.adminAuthenticated) return;
             let current = this.caseStudies.filter(cs => cs.id !== caseId);
-            localStorage.setItem('custom_impact', JSON.stringify(current));
             this.caseStudies = current;
             this.saveConfigToFirestore();
         },
@@ -2167,12 +2146,10 @@
             } else if (sector === 'deployment') {
                 current.deployment.splice(index, 1);
             }
-            localStorage.setItem('custom_skills', JSON.stringify(current));
             this.skills = current;
             this.saveConfigToFirestore();
         },
 
-        // Testimonial Deletion Hook
         async deleteTestimonial(testimonialId) {
             if (!this.adminAuthenticated) return;
             if (window.firebaseDB && typeof testimonialId === 'string') {
@@ -2194,7 +2171,6 @@
         deleteCertification(certId) {
             if (!this.adminAuthenticated) return;
             let current = this.certifications.filter(c => c.id !== certId);
-            localStorage.setItem('custom_certs', JSON.stringify(current));
             this.certifications = current;
             this.saveConfigToFirestore();
         },
@@ -2202,12 +2178,11 @@
         deleteFAQ(faqId) {
             if (!this.adminAuthenticated) return;
             let current = this.faqs.filter(f => f.id !== faqId);
-            localStorage.setItem('custom_faqs', JSON.stringify(current));
             this.faqs = current;
             this.saveConfigToFirestore();
         },
 
-        // Public User Review submission
+        // Public User Review submission (Synced with real-time Firebase DB)
         async submitPublicReview() {
             const newReview = {
                 rating: this.publicReviewForm.rating || 5,
@@ -2226,6 +2201,7 @@
                     await window.addDocToFirestore(col, newReview);
                 } catch (e) {
                     console.warn("Firestore submission failed, defaulting to local cache:", e);
+                    // Local Storage Fallback
                     let current = JSON.parse(localStorage.getItem('custom_testimonials')) || [...defaultTestimonials];
                     current.unshift({ id: Date.now(), ...newReview });
                     localStorage.setItem('custom_testimonials', JSON.stringify(current));
@@ -2315,10 +2291,11 @@
     document.addEventListener('alpine:init', () => {
         Alpine.data('app', () => {
             const instance = app();
-            window.appInstance = instance; 
+            window.appInstance = instance; // Make app accessible to the module
             return instance;
         });
     });
     </script>
 </body>
 </html>
+```
