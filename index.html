@@ -154,7 +154,7 @@
                     <svg x-show="dark" class="w-4.5 h-4.5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/>
                     </svg>
-                </</button>
+                </button>
                 <!-- Quick Hire Button -->
                 <a href="#contact" class="hidden md:inline-flex items-center gap-2 shimmer bg-accent hover:bg-accent-light text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-lg shadow-accent/20">
                     Hire Me 
@@ -193,7 +193,6 @@
     </header>
 
     <main>
-        <!-- HERO SECTION -->
         <section id="hero" class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-gradient-to-b from-white to-slate-50 dark:from-zinc-950 dark:to-zinc-950">
             <div class="absolute top-12 right-0 w-80 md:w-[500px] h-80 md:h-[500px] bg-accent/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
             <div class="absolute bottom-12 left-0 w-64 md:w-[400px] h-64 md:h-[400px] bg-indigo-500/5 dark:bg-zinc-800/20 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
@@ -288,7 +287,6 @@
             </div>
         </section>
 
-        <!-- SERVICES SECTION -->
         <section id="services" class="py-24 bg-white dark:bg-zinc-900/30 border-y border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
@@ -376,7 +374,6 @@
             </div>
         </section>
 
-        <!-- SELECTED PROJECTS -->
         <section id="work" class="py-24 bg-slate-50 dark:bg-zinc-950">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
@@ -385,6 +382,7 @@
                         <h2 class="font-display font-bold text-3xl md:text-5xl text-zinc-900 dark:text-white">Selected Projects</h2>
                     </div>
                     
+                    <!-- Dynamic Alpine filtering controls -->
                     <div class="flex flex-wrap gap-2">
                         <button @click="currentFilter='all'" :class="currentFilter === 'all' ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-accent'" class="text-sm px-4 py-2 rounded-full border transition-all">
                             All Projects
@@ -398,6 +396,7 @@
                     </div>
                 </div>
 
+                <!-- Projects grid populated dynamically from state -->
                 <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
                     <template x-for="p in allProjects" :key="p.id">
                         <article x-show="currentFilter === 'all' || p.category === currentFilter" 
@@ -455,7 +454,6 @@
             </div>
         </section>
 
-        <!-- CASE STUDIES SECTION -->
         <section id="cases" class="py-24 bg-white dark:bg-zinc-900/30 border-y border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="mb-14">
@@ -506,7 +504,6 @@
             </div>
         </section>
 
-        <!-- SKILLS GRID -->
         <section id="skills" class="py-24 bg-slate-50 dark:bg-zinc-950">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="mb-14">
@@ -574,7 +571,6 @@
             </div>
         </section>
 
-        <!-- WORK PROCESS SECTION -->
         <section id="process" class="py-24 bg-white dark:bg-zinc-900/30 border-y border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="mb-14">
@@ -650,7 +646,6 @@
             </div>
         </section>
 
-        <!-- ABOUT ME SECTION -->
         <section id="about" class="py-24 bg-white dark:bg-zinc-900/30 border-y border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid md:grid-cols-12 gap-16 items-center">
@@ -691,7 +686,6 @@
             </div>
         </section>
 
-        <!-- CERTIFICATIONS SECTION -->
         <section id="certifications" class="py-24 bg-slate-50 dark:bg-zinc-950">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="mb-14">
@@ -722,7 +716,6 @@
             </div>
         </section>
 
-        <!-- GITHUB INTEGRATION -->
         <section id="github" class="py-24 bg-white dark:bg-zinc-900/30 border-t border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="mb-14">
@@ -731,41 +724,36 @@
                 </div>
                 
                 <div class="bg-slate-50 dark:bg-zinc-900 rounded-3xl p-5 sm:p-8 border border-zinc-200/50 dark:border-zinc-800/50">
-                    <div class="grid lg:grid-cols-12 gap-8 items-stretch">
-                        <!-- Left Side - Profile Meta & Button Stacked -->
-                        <div class="lg:col-span-4 flex flex-col justify-between gap-5 h-full">
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-4">
-                                    <span class="w-12 h-12 rounded-full bg-zinc-800 text-white flex items-center justify-center text-xl shrink-0 border border-zinc-700">
-                                        <i class="fa-brands fa-github"></i>
-                                    </span>
-                                    <div>
-                                        <h4 class="font-display font-bold text-xl">@jai11205</h4>
-                                        <p class="text-xs text-zinc-400">AI / Deep Learning Researcher</p>
-                                    </div>
-                                </div>  
-                                
-                                <div class="grid grid-cols-2 gap-4 py-3 px-4 bg-white dark:bg-zinc-950 rounded-2xl border border-zinc-100 dark:border-zinc-850">
-                                    <div class="min-w-0">
-                                        <span class="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold block truncate">Public Repos</span>
-                                        <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.repos"></span>
-                                    </div>
-                                    <div class="min-w-0 border-l border-zinc-100 dark:border-zinc-850/80 pl-4">
-                                        <span class="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold block truncate">Total Stars</span>
-                                        <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.stars"></span>
-                                    </div>
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-4 space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="w-12 h-12 rounded-full bg-zinc-800 text-white flex items-center justify-center text-xl shrink-0 border border-zinc-700">
+                                    <i class="fa-brands fa-github"></i>
+                                </span>
+                                <div>
+                                    <h4 class="font-display font-bold text-xl">@jai11205</h4>
+                                    <p class="text-xs text-zinc-400">AI / Deep Learning Researcher</p>
+                                </div>
+                            </div>  
+                            
+                            <div class="grid grid-cols-2 gap-4 py-3 px-4 bg-white dark:bg-zinc-950 rounded-2xl border border-zinc-100 dark:border-zinc-850">
+                                <div class="min-w-0">
+                                    <span class="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold block truncate">Public Repos</span>
+                                    <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.repos"></span>
+                                </div>
+                                <div class="min-w-0 border-l border-zinc-100 dark:border-zinc-850/80 pl-4">
+                                    <span class="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold block truncate">Total Stars</span>
+                                    <span class="font-display font-bold text-2xl text-accent" x-text="githubMetrics.stars"></span>
                                 </div>
                             </div>
 
-                            <!-- Wide, premium button placed safely below metrics to prevent squishing -->
                             <a href="https://github.com/jai11205" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 text-white dark:text-zinc-950 px-5 py-3 rounded-xl text-xs font-bold transition-all shadow-md shrink-0">
                                 Visit Profile <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
                         
-                        <!-- Right Side - Live Contributions Chart -->
                         <div class="lg:col-span-8 w-full overflow-hidden">
-                            <div class="bg-white dark:bg-zinc-950 p-4 sm:p-6 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 space-y-4 overflow-hidden h-full flex flex-col justify-between">
+                            <div class="bg-white dark:bg-zinc-950 p-4 sm:p-6 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 space-y-4 overflow-hidden">
                                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
                                     <span class="font-bold text-zinc-600 dark:text-zinc-400">Commit History (Real Live GitHub Contribution Chart)</span>
                                     <span class="text-green-500 font-semibold inline-flex items-center gap-1">
@@ -773,7 +761,6 @@
                                     </span>
                                 </div>
                                 <div class="w-full flex items-center justify-center p-2 bg-slate-50 dark:bg-zinc-900 rounded-xl overflow-x-auto scrollbar-none" aria-label="GitHub Contributions Chart">
-                                    <!-- Dynamic SVG dynamically rendered from your actual GitHub activity -->
                                     <img src="https://ghchart.rshah.org/FF6B2B/jai11205" alt="Jaiprasanth's GitHub Contributions Chart" class="min-w-[600px] max-w-full h-auto dark:brightness-95 dark:contrast-125" loading="lazy" onerror="this.style.display='none'">
                                 </div>
                                 <div class="flex items-center justify-between text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">
@@ -793,7 +780,6 @@
             </div>
         </section>
 
-        <!-- RESUME CALLOUT -->
         <section id="resume" class="py-20 bg-slate-50 dark:bg-zinc-950 border-b border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <span class="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 text-accent flex items-center justify-center mx-auto mb-6 text-xl">
@@ -809,7 +795,6 @@
             </div>
         </section>
 
-        <!-- TESTIMONIALS & WRITE A REVIEW SECTION -->
         <section id="testimonials" class="py-24 bg-white dark:bg-zinc-900/30">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
@@ -879,7 +864,7 @@
                         <blockquote class="bg-slate-50 dark:bg-zinc-900 rounded-3xl p-8 border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col justify-between card-h">
                             <div>
                                 <div class="flex gap-0.5 mb-5" aria-label="Rating Stars">
-                                    <template x-for="star in [...Array(parseInt(review.rating || 5)).keys()]">
+                                    <template x-for="star in [...Array(parseInt(review.rating) || 5).keys()]">
                                         <i class="fa-solid fa-star text-accent text-xs"></i>
                                     </template>
                                 </div>
@@ -900,7 +885,6 @@
             </div>
         </section>
 
-        <!-- FAQ SECTION -->
         <section id="faq" class="py-24 bg-slate-50 dark:bg-zinc-950 border-t border-zinc-200/50 dark:border-zinc-900">
             <div class="max-w-4xl mx-auto px-6">
                 <div class="text-center mb-14">
@@ -926,7 +910,6 @@
             </div>
         </section>
 
-        <!-- CONTACT SECTION -->
         <section id="contact" class="py-24 bg-white dark:bg-zinc-950">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="bg-zinc-900 dark:bg-zinc-900 rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-2xl">
@@ -983,21 +966,21 @@
                                 <div class="flex flex-col gap-4">
                                     <div class="grid sm:grid-cols-2 gap-4">
                                         <div>
-                                            <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Name <span aria-hidden="true">*</span></label>
-                                            <input x-model="formData.name" type="text" placeholder="Jane Smith" required class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all">
+                                            <label for="fname" class="block text-xs font-semibold text-zinc-400 mb-1.5">Name <span aria-hidden="true">*</span></label>
+                                            <input x-model="formData.name" type="text" id="fname" placeholder="Jane Smith" required class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all">
                                         </div>
                                         <div>
-                                            <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Email <span aria-hidden="true">*</span></label>
-                                            <input x-model="formData.email" type="email" placeholder="jane@company.com" required class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all">
+                                            <label for="femail" class="block text-xs font-semibold text-zinc-400 mb-1.5">Email <span aria-hidden="true">*</span></label>
+                                            <input x-model="formData.email" type="email" id="femail" placeholder="jane@company.com" required class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all">
                                         </div>
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Subject</label>
-                                        <input x-model="formData.subject" type="text" placeholder="Project details / Open role details" class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all">
+                                        <label for="fsubject" class="block text-xs font-semibold text-zinc-400 mb-1.5">Subject</label>
+                                        <input x-model="formData.subject" type="text" id="fsubject" placeholder="Project details / Open role details" class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-semibold text-zinc-400 mb-1.5">Message <span aria-hidden="true">*</span></label>
-                                        <textarea x-model="formData.message" rows="4" placeholder="Briefly outline your goals or system parameters..." required class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all resize-none"></textarea>
+                                        <label for="fmessage" class="block text-xs font-semibold text-zinc-400 mb-1.5">Message <span aria-hidden="true">*</span></label>
+                                        <textarea x-model="formData.message" id="fmessage" rows="4" placeholder="Briefly outline your goals or system parameters..." required class="w-full bg-zinc-800/80 border border-zinc-700/80 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-500 focus:outline-none focus:border-accent focus:bg-zinc-800 transition-all resize-none"></textarea>
                                     </div>
                                     
                                     <button type="submit" :disabled="sending" class="shimmer w-full bg-accent hover:bg-accent-light text-white font-display font-bold text-sm py-3.5 rounded-xl transition-all shadow-lg shadow-accent/20 disabled:opacity-55 flex items-center justify-center gap-2">
@@ -1091,7 +1074,6 @@
                         Unlock Hub &rarr;
                     </button>
                 </form>
-                <p class="text-[10px] text-zinc-600 dark:text-zinc-400">Default key is <code class="bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded font-bold text-zinc-900 dark:text-zinc-100">admin123</code></p>
             </div>
 
             <!-- PANEL CONTENT MANAGEMENT HUB -->
@@ -1127,7 +1109,7 @@
                     <h4 class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Availability &amp; File Handlers</h4>
                     <div class="space-y-3">
                         <div>
-                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Freelancer Status Toggle (Manual/Local only)</label>
+                            <label class="block text-xs font-bold text-zinc-700 dark:text-zinc-200 mb-1">Freelancer Status Toggle</label>
                             <select x-model="globalForm.status" class="w-full text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2.5 font-medium">
                                 <option value="Open to Work" class="text-zinc-900 dark:text-white bg-white dark:bg-zinc-800">Open to Work / Available</option>
                                 <option value="Currently Unavailable" class="text-zinc-900 dark:text-white bg-white dark:bg-zinc-800">Currently Engaged / Unavailable</option>
@@ -1557,8 +1539,8 @@
             
             // TRIGGER SYNC HERE: Now we know Firebase is ready!
             if (typeof window.appInstance !== 'undefined') {
-                window.appInstance.syncConfigWithFirestore();
                 window.appInstance.syncTestimonialsWithFirestore();
+                window.appInstance.syncConfigWithFirestore();
             }
         } catch (e) {
             console.warn("Firebase Auth Error:", e);
@@ -1571,11 +1553,11 @@
     window.firebaseAuth = auth;
     window.firebaseAppId = appId;
     window.addDocToFirestore = addDoc;
+    window.setDocFirestore = setDoc; // NOW CORRECTLY EXPOSED AND BOUND
     window.collectionFirestore = collection;
     window.onSnapshotFirestore = onSnapshot;
     window.deleteDocFirestore = deleteDoc;
     window.docFirestore = doc;
-    window.setDocFirestore = setDoc;
     </script>
 
     <script>
@@ -1687,7 +1669,7 @@
         sc: false,
         s: 'hero',
         
-        // Status & Resume Handlers (MANUAL/LOCAL STORAGE COMPLIANT ONLY)
+        // Status & Resume Handlers (Resume PDF is kept in high-speed LocalStorage to stay under Firestore's 1MB limit)
         currentStatus: 'Open to Work',
         statusText: 'Available for Projects & Internships',
         resumePDF: '',
@@ -1745,13 +1727,13 @@
           this.dark = savedTheme ? savedTheme === 'dark' : true;
           this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
 
-          // Load local status manually (Strictly Manual/Local Storage fallback)
+          // Load local overrides or fallback to standard baseline structures
           this.currentStatus = localStorage.getItem('glob_status') || 'Open to Work';
           this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
           this.globalForm.status = this.currentStatus;
           
-          this.resumePDF = localStorage.getItem('resume_pdf_base64') || "data:application/pdf;base64,JVBERi0xLjQNCiWhs8XX...[Truncated Base64]...";
-          this.resumeName = localStorage.getItem('resume_pdf_name') || "Jaiprasanth_resume.PDF";
+          this.resumePDF = localStorage.getItem('resume_pdf_base64') || '';
+          this.resumeName = localStorage.getItem('resume_pdf_name') || 'Jaiprasanth_resume.PDF';
 
           this.allProjects = JSON.parse(localStorage.getItem('custom_projects')) || defaultProjects;
           this.certifications = JSON.parse(localStorage.getItem('custom_certs')) || defaultCertifications;
@@ -1759,16 +1741,17 @@
           this.faqs = JSON.parse(localStorage.getItem('custom_faqs')) || defaultFaqs;
           this.skills = JSON.parse(localStorage.getItem('custom_skills')) || defaultSkills;
 
-          // Set up Firestore observer sync strictly for Testimonials
+          // Set up Firestore observer sync for Testimonials
           this.testimonials = JSON.parse(localStorage.getItem('custom_testimonials')) || defaultTestimonials;
 
           // Retrieve live repository stats dynamically from the public API
           this.fetchGitHubActivity();
 
-          // Connect Firebase Firestore Real-Time listeners strictly for testimonials
+          // Connect Firebase Firestore Real-Time listeners as soon as authentication finishes
           const checkFirebase = setInterval(() => {
               if (window.firebaseDB && window.firebaseUser) {
                   this.syncTestimonialsWithFirestore();
+                  this.syncConfigWithFirestore();
                   clearInterval(checkFirebase);
               }
           }, 500);
@@ -1794,12 +1777,17 @@
                 const colPath = window.collectionFirestore(db, 'artifacts', appId, 'public', 'data', 'testimonials');
                 
                 window.onSnapshotFirestore(colPath, (snapshot) => {
-                    if (snapshot.empty) return;
+                    if (snapshot.empty) {
+                        console.log("Firestore snapshot is empty, keeping offline fallbacks.");
+                        return;
+                    }
 
                     const loaded = [];
                     snapshot.forEach((doc) => {
                         loaded.push({ id: doc.id, ...doc.data() });
                     });
+                    
+                    console.log("Documents received from Firestore:", loaded.length);
                     
                     if (loaded.length > 0) {
                         loaded.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
@@ -1810,6 +1798,70 @@
                 }, (error) => {
                     console.error("Firestore live synchronization loop has encountered an error:", error);
                 });
+            }
+        },
+
+        // Real-Time Global Config Firestore Synchronization Loop (Even Segments path: artifacts/appId/public/data)
+        syncConfigWithFirestore() {
+            if (window.firebaseDB && window.firebaseUser) {
+                const db = window.firebaseDB;
+                const appId = window.firebaseAppId;
+                const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data');
+                
+                window.onSnapshotFirestore(docRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        console.log("Config snapshot loaded:", data);
+                        
+                        this.$nextTick(() => {
+                            if (data.status) {
+                                this.currentStatus = data.status;
+                                this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
+                                this.globalForm.status = data.status;
+                            }
+                            if (data.allProjects) this.allProjects = data.allProjects;
+                            if (data.caseStudies) this.caseStudies = data.caseStudies;
+                            if (data.certifications) this.certifications = data.certifications;
+                            if (data.faqs) this.faqs = data.faqs;
+                            if (data.skills) this.skills = data.skills;
+                            if (data.resumeName) this.resumeName = data.resumeName;
+                        });
+                    } else {
+                        // Seeding configuration on first load to instantiate collection docs
+                        console.log("No config found in Firestore. Seeding default configuration...");
+                        this.saveConfigToFirestore();
+                    }
+                }, (error) => {
+                    console.error("Config synchronization error:", error);
+                });
+            }
+        },
+
+        // Save layout structures to Cloud Firestore (Even Path DocRef) - Payload is completely stripped of Alpine proxies
+        saveConfigToFirestore() {
+            if (window.firebaseDB && window.firebaseUser) {
+                const db = window.firebaseDB;
+                const appId = window.firebaseAppId;
+                const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data');
+                
+                // We deep-clone to plain JavaScript objects to prevent Alpine Proxy write failures in Firestore
+                const payload = JSON.parse(JSON.stringify({
+                    status: this.currentStatus,
+                    allProjects: this.allProjects,
+                    caseStudies: this.caseStudies,
+                    certifications: this.certifications,
+                    faqs: this.faqs,
+                    skills: this.skills,
+                    resumeName: this.resumeName
+                }));
+                
+                window.setDocFirestore(docRef, payload)
+                    .then(() => {
+                        console.log("Config successfully updated in Firestore!");
+                    })
+                    .catch((err) => {
+                        console.error("Error saving config to Firestore:", err);
+                    });
             }
         },
 
@@ -1902,8 +1954,11 @@
                 this.resumePDF = base64;
                 this.resumeName = file.name;
                 
+                // Storing PDF Base64 string in high-speed LocalStorage to prevent Firestore 1MB document size limit crashes
                 localStorage.setItem('resume_pdf_base64', base64);
                 localStorage.setItem('resume_pdf_name', file.name);
+                
+                this.saveConfigToFirestore();
             };
             reader.readAsDataURL(file);
         },
@@ -1923,11 +1978,12 @@
 
         updateGlobalVars() {
             if (!this.adminAuthenticated) return;
-            // Update purely to local storage (Manual)
-            this.currentStatus = this.globalForm.status;
-            this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
-            localStorage.setItem('glob_status', this.currentStatus);
+            localStorage.setItem('glob_status', this.globalForm.status);
             
+            this.currentStatus = this.globalForm.status;
+            this.statusText = this.globalForm.status === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
+            
+            this.saveConfigToFirestore();
             this.adminPanelOpen = false;
         },
 
@@ -1946,8 +2002,8 @@
                 value: this.impactForm.value
             };
             current.unshift(newCase);
-            localStorage.setItem('custom_impact', JSON.stringify(current));
             this.caseStudies = current;
+            this.saveConfigToFirestore();
             
             this.impactForm = { title: '', industry: 'Security', timeline: 'Q1 2026', problem: '', approach: '', tech: '', outcome: '', value: '' };
         },
@@ -1971,12 +2027,13 @@
                 });
             }
             
-            localStorage.setItem('custom_skills', JSON.stringify(current));
             this.skills = current;
+            this.saveConfigToFirestore();
             
             this.skillsForm = { name: '', sector: 'programming', icon: '', status: 'Main' };
         },
 
+        // Testimonial Submit Hook
         async submitQuote() {
             if (!this.adminAuthenticated) return;
             const newQuote = {
@@ -2016,8 +2073,8 @@
                 answer: this.faqForm.answer
             };
             current.unshift(newFaq);
-            localStorage.setItem('custom_faqs', JSON.stringify(current));
             this.faqs = current;
+            this.saveConfigToFirestore();
             
             this.faqForm = { question: '', answer: '' };
         },
@@ -2035,8 +2092,8 @@
                 url: this.certForm.url
             };
             current.unshift(newCert);
-            localStorage.setItem('custom_certs', JSON.stringify(current));
             this.certifications = current;
+            this.saveConfigToFirestore();
             
             this.certForm = { issuer: '', date: '', name: '', desc: '', credentialId: '', url: '' };
         },
@@ -2058,8 +2115,8 @@
                 img: this.projectForm.img || 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&q=80'
             };
             current.unshift(newProj);
-            localStorage.setItem('custom_projects', JSON.stringify(current));
             this.allProjects = current;
+            this.saveConfigToFirestore();
 
             this.projectForm = { title: '', category: 'security', url: '', demoUrl: '', img: '', tags: '', results: '', problem: '', solution: '', desc: '' };
         },
@@ -2067,15 +2124,15 @@
         deleteProject(projectId) {
             if (!this.adminAuthenticated) return;
             let current = this.allProjects.filter(p => p.id !== projectId);
-            localStorage.setItem('custom_projects', JSON.stringify(current));
             this.allProjects = current;
+            this.saveConfigToFirestore();
         },
 
         deleteCaseStudy(caseId) {
             if (!this.adminAuthenticated) return;
             let current = this.caseStudies.filter(cs => cs.id !== caseId);
-            localStorage.setItem('custom_impact', JSON.stringify(current));
             this.caseStudies = current;
+            this.saveConfigToFirestore();
         },
 
         deleteSkill(sector, index) {
@@ -2088,8 +2145,8 @@
             } else if (sector === 'deployment') {
                 current.deployment.splice(index, 1);
             }
-            localStorage.setItem('custom_skills', JSON.stringify(current));
             this.skills = current;
+            this.saveConfigToFirestore();
         },
 
         async deleteTestimonial(testimonialId) {
@@ -2113,15 +2170,15 @@
         deleteCertification(certId) {
             if (!this.adminAuthenticated) return;
             let current = this.certifications.filter(c => c.id !== certId);
-            localStorage.setItem('custom_certs', JSON.stringify(current));
             this.certifications = current;
+            this.saveConfigToFirestore();
         },
 
         deleteFAQ(faqId) {
             if (!this.adminAuthenticated) return;
             let current = this.faqs.filter(f => f.id !== faqId);
-            localStorage.setItem('custom_faqs', JSON.stringify(current));
             this.faqs = current;
+            this.saveConfigToFirestore();
         },
 
         // Public User Review submission (Synced with real-time Firebase DB)
@@ -2240,3 +2297,4 @@
     </script>
 </body>
 </html>
+```
