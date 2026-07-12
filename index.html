@@ -124,13 +124,6 @@
         .card-h:hover { transform: translateY(-4px); box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08); }
         .dark .card-h:hover { box-shadow: 0 12px 30px -10px rgba(255,107,43,0.15); }
         
-        /* Custom styles for grid layout compatibility on all screen resolutions */
-        .contrib-grid {
-            display: grid;
-            grid-template-columns: repeat(24, minmax(0, 1fr));
-            gap: 3px;
-        }
-        
         [x-cloak] { display: none !important; }
     </style>
 </head>
@@ -1265,7 +1258,7 @@
                     </form>
 
                     <!-- Deletion Manager Block -->
-                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                    <div class="pt-4 border-t border-zinc-100 dark:border-zinc-850">
                         <h5 class="text-xs font-bold text-zinc-700 dark:text-zinc-200 uppercase tracking-wider mb-3">Delete Existing Case Studies</h5>
                         <div class="space-y-2">
                             <template x-for="cs in caseStudies" :key="cs.id">
@@ -1933,7 +1926,7 @@
             document.body.style.overflow = '';
         },
 
-        // UNIFIED ADMIN HANDLERS
+        // UNIFIED HUB STATE HANDLERS
         togglePanel() {
             this.adminPanelOpen = !this.adminPanelOpen;
             if (this.adminPanelOpen && !this.adminAuthenticated) {
@@ -1945,7 +1938,7 @@
         },
 
         verifyPasscode() {
-            if (this.adminPasswordInput === 'Fuck You') { 
+            if (this.adminPasswordInput === 'Dear143') { 
                 this.adminAuthenticated = true;
                 this.adminPasswordError = false;
                 this.adminPasswordInput = '';
