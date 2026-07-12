@@ -1828,7 +1828,8 @@
             if (window.firebaseDB && window.firebaseUser) {
                 const db = window.firebaseDB;
                 const appId = window.firebaseAppId;
-                const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data', 'config');
+                // Corrected to use 'data' as the document reference (4 segments)
+                const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data');
                 
                 window.onSnapshotFirestore(docRef, (snapshot) => {
                     // Seed defaults to Firestore if database document is empty
@@ -1866,7 +1867,8 @@
                 try {
                     const db = window.firebaseDB;
                     const appId = window.firebaseAppId;
-                    const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data', 'config');
+                    // Corrected to use 'data' as the document reference (4 segments)
+                    const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data');
                     await window.setDocFirestore(docRef, {
                         currentStatus: this.currentStatus,
                         resumePDF: this.resumePDF,
