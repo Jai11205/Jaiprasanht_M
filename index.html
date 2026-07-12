@@ -1867,9 +1867,10 @@
                 try {
                     const db = window.firebaseDB;
                     const appId = window.firebaseAppId;
-                    // Corrected to use 'data' as the document reference (4 segments)
                     const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data');
-                    await window.setDocFirestore(docRef, {
+                    
+                    // Crucial: De-proxify Alpine.js reactive variables so Firestore can safely serialize them
+                    const plainConfig = JSON.parse(JSON.stringify({
                         currentStatus: this.currentStatus,
                         resumePDF: this.resumePDF,
                         resumeName: this.resumeName,
@@ -1878,7 +1879,9 @@
                         certifications: this.certifications,
                         faqs: this.faqs,
                         skills: this.skills
-                    });
+                    }));
+
+                    await window.setDocFirestore(docRef, plainConfig);
                     console.log("Config successfully updated in Firestore!");
                 } catch (e) {
                     console.error("Failed to update config in Firestore:", e);
