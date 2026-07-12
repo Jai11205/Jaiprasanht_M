@@ -1728,7 +1728,7 @@
           this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
 
           // Load local overrides or fallback to standard baseline structures
-          this.currentStatus = localStorage.getItem('glob_status') || 'Open to Work';
+          this.currentStatus = localStorage.getItem('glob_status') || 'Currently Unavailable';
           this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
           this.globalForm.status = this.currentStatus;
           
