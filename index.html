@@ -1529,7 +1529,7 @@
     <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyBDrn2448YmvJ_mM4IniYy0ZBz4GEx53_w",
@@ -1557,6 +1557,7 @@
             // Trigger synchronization loop once auth completes successfully
             if (typeof window.appInstance !== 'undefined') {
                 window.appInstance.syncTestimonialsWithFirestore();
+                window.appInstance.syncConfigWithFirestore();
             }
         } catch (e) {
             console.warn("Firebase Auth Error:", e);
@@ -1573,6 +1574,7 @@
     window.onSnapshotFirestore = onSnapshot;
     window.deleteDocFirestore = deleteDoc;
     window.docFirestore = doc;
+    window.setDocFirestore = setDoc;
     </script>
 
     <script>
@@ -1768,6 +1770,7 @@
           const checkFirebase = setInterval(() => {
               if (window.firebaseDB && window.firebaseUser) {
                   this.syncTestimonialsWithFirestore();
+                  this.syncConfigWithFirestore();
                   clearInterval(checkFirebase);
               }
           }, 500);
@@ -1791,8 +1794,6 @@
                 const db = window.firebaseDB;
                 const appId = window.firebaseAppId;
                 const colPath = window.collectionFirestore(db, 'artifacts', appId, 'public', 'data', 'testimonials');
-                
-                console.log("Syncing from path:", 'artifacts/' + appId + '/public/data/testimonials');
                 
                 window.onSnapshotFirestore(colPath, (snapshot) => {
                     if (snapshot.empty) {
@@ -1819,6 +1820,67 @@
                 });
             } else {
                 console.log("Firestore skipped: Testimonials fallback to local memory.");
+            }
+        },
+
+        // Real-Time Firebase Sync Method for Global Config State (Projects, Case Studies, FAQs, Resume, Status etc.)
+        syncConfigWithFirestore() {
+            if (window.firebaseDB && window.firebaseUser) {
+                const db = window.firebaseDB;
+                const appId = window.firebaseAppId;
+                const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data', 'config');
+                
+                window.onSnapshotFirestore(docRef, (snapshot) => {
+                    // Seed defaults to Firestore if database document is empty
+                    if (!snapshot.exists()) {
+                        console.log("No remote configuration document found in Firestore. Auto-seeding cloud database with portfolio defaults...");
+                        this.saveConfigToFirestore();
+                        return;
+                    }
+
+                    const data = snapshot.data();
+                    console.log("Global portfolio configuration parsed from Firestore, updating local memory.");
+                    
+                    this.$nextTick(() => {
+                        this.currentStatus = data.currentStatus || 'Open to Work';
+                        this.statusText = this.currentStatus === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
+                        this.resumePDF = data.resumePDF || '';
+                        this.resumeName = data.resumeName || '';
+                        this.allProjects = data.allProjects || defaultProjects;
+                        this.caseStudies = data.caseStudies || defaultCaseStudies;
+                        this.certifications = data.certifications || defaultCertifications;
+                        this.faqs = data.faqs || defaultFaqs;
+                        this.skills = data.skills || defaultSkills;
+                        
+                        this.globalForm.status = this.currentStatus;
+                    });
+                }, (error) => {
+                    console.error("Firestore dynamic config synchronization loop encountered an error:", error);
+                });
+            }
+        },
+
+        // Cloud Transmitter: Pushes all local Alpine state mutations dynamically to Firestore
+        async saveConfigToFirestore() {
+            if (window.firebaseDB && window.firebaseUser) {
+                try {
+                    const db = window.firebaseDB;
+                    const appId = window.firebaseAppId;
+                    const docRef = window.docFirestore(db, 'artifacts', appId, 'public', 'data', 'config');
+                    await window.setDocFirestore(docRef, {
+                        currentStatus: this.currentStatus,
+                        resumePDF: this.resumePDF,
+                        resumeName: this.resumeName,
+                        allProjects: this.allProjects,
+                        caseStudies: this.caseStudies,
+                        certifications: this.certifications,
+                        faqs: this.faqs,
+                        skills: this.skills
+                    });
+                    console.log("Config successfully updated in Firestore!");
+                } catch (e) {
+                    console.error("Failed to update config in Firestore:", e);
+                }
             }
         },
 
@@ -1912,6 +1974,8 @@
                 this.resumeName = file.name;
                 localStorage.setItem('resume_pdf_base64', base64);
                 localStorage.setItem('resume_pdf_name', file.name);
+                
+                this.saveConfigToFirestore();
             };
             reader.readAsDataURL(file);
         },
@@ -1936,6 +2000,7 @@
             this.currentStatus = this.globalForm.status;
             this.statusText = this.globalForm.status === 'Open to Work' ? 'Available for Projects & Internships' : 'Currently Unavailable / Contract Engaged';
             
+            this.saveConfigToFirestore();
             this.adminPanelOpen = false;
         },
 
@@ -1957,6 +2022,7 @@
             localStorage.setItem('custom_impact', JSON.stringify(current));
             this.caseStudies = current;
             
+            this.saveConfigToFirestore();
             this.impactForm = { title: '', industry: 'Security', timeline: 'Q1 2026', problem: '', approach: '', tech: '', outcome: '', value: '' };
         },
 
@@ -1982,6 +2048,7 @@
             localStorage.setItem('custom_skills', JSON.stringify(current));
             this.skills = current;
             
+            this.saveConfigToFirestore();
             this.skillsForm = { name: '', sector: 'programming', icon: '', status: 'Main' };
         },
 
@@ -2028,6 +2095,7 @@
             localStorage.setItem('custom_faqs', JSON.stringify(current));
             this.faqs = current;
             
+            this.saveConfigToFirestore();
             this.faqForm = { question: '', answer: '' };
         },
 
@@ -2047,6 +2115,7 @@
             localStorage.setItem('custom_certs', JSON.stringify(current));
             this.certifications = current;
             
+            this.saveConfigToFirestore();
             this.certForm = { issuer: '', date: '', name: '', desc: '', credentialId: '', url: '' };
         },
 
@@ -2070,6 +2139,7 @@
             localStorage.setItem('custom_projects', JSON.stringify(current));
             this.allProjects = current;
 
+            this.saveConfigToFirestore();
             this.projectForm = { title: '', category: 'security', url: '', demoUrl: '', img: '', tags: '', results: '', problem: '', solution: '', desc: '' };
         },
 
@@ -2078,6 +2148,7 @@
             let current = this.allProjects.filter(p => p.id !== projectId);
             localStorage.setItem('custom_projects', JSON.stringify(current));
             this.allProjects = current;
+            this.saveConfigToFirestore();
         },
 
         deleteCaseStudy(caseId) {
@@ -2085,6 +2156,7 @@
             let current = this.caseStudies.filter(cs => cs.id !== caseId);
             localStorage.setItem('custom_impact', JSON.stringify(current));
             this.caseStudies = current;
+            this.saveConfigToFirestore();
         },
 
         deleteSkill(sector, index) {
@@ -2099,6 +2171,7 @@
             }
             localStorage.setItem('custom_skills', JSON.stringify(current));
             this.skills = current;
+            this.saveConfigToFirestore();
         },
 
         // Testimonial Deletion Hook
@@ -2125,6 +2198,7 @@
             let current = this.certifications.filter(c => c.id !== certId);
             localStorage.setItem('custom_certs', JSON.stringify(current));
             this.certifications = current;
+            this.saveConfigToFirestore();
         },
 
         deleteFAQ(faqId) {
@@ -2132,6 +2206,7 @@
             let current = this.faqs.filter(f => f.id !== faqId);
             localStorage.setItem('custom_faqs', JSON.stringify(current));
             this.faqs = current;
+            this.saveConfigToFirestore();
         },
 
         // Public User Review submission
